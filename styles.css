@@ -115,6 +115,7 @@ p {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    z-index: 60;
 }
 
 .hamburger span {
@@ -123,6 +124,76 @@ p {
     background-color: #1a1a1a;
     margin: 3px 0;
     transition: 0.3s;
+}
+
+/* Hamburger animation when open */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile responsive navigation */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 4rem;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 4rem);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 2rem;
+        transition: left 0.3s ease;
+        z-index: 40;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu .nav-link {
+        font-size: 1.125rem;
+        padding: 1rem 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    .nav-brand {
+        font-size: 1rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+/* Extra small mobile screens */
+@media (max-width: 480px) {
+    .nav-brand {
+        font-size: 0.9rem;
+    }
+    
+    .nav-menu .nav-link {
+        font-size: 1rem;
+        padding: 0.875rem 0;
+    }
 }
 
 /* Buttons */
@@ -961,9 +1032,11 @@ p {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid #eee;
     padding-top: 2rem;
+    margin-top: 2rem;
     text-align: center;
+    color: #666;
 }
 
 .footer-bottom p {
@@ -972,160 +1045,80 @@ p {
     margin: 0;
 }
 
-/* Responsive Design */
+/* Photo Gallery Section */
+.photo-gallery-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+}
+
+.gallery-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.gallery-intro p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
+}
+
+.masonry-gallery {
+    column-count: 4;
+    column-gap: 1.5rem;
+    margin: 0;
+}
+
+@media (max-width: 1200px) {
+    .masonry-gallery {
+        column-count: 3;
+    }
+}
+
 @media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        padding: 1rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        gap: 0.5rem;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    .welcome-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .welcome-buttons .btn {
-        width: 200px;
-    }
-
-    .instructors-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Responsive instructor photos */
-    .instructor-image {
-        width: 150px;
-        height: 150px;
-    }
-
-    /* Responsive instructor quotes */
-    .instructor-quote {
-        padding: 1.25rem;
-    }
-
-    .quote-text {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    .quote-text::before {
-        font-size: 2.5rem;
-        left: -0.75rem;
-        top: -0.25rem;
-    }
-
-    .quote-author {
-        font-size: 0.875rem;
-    }
-
-    .lessons-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-
-    .organizations-grid,
-    .opportunities-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .container {
-        padding: 0 1rem;
+    .masonry-gallery {
+        column-count: 2;
+        column-gap: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.75rem;
-    }
-
-    .welcome-section {
-        min-height: 80vh;
-    }
-
-    .about-section,
-    .lessons-section,
-    .calendar-section,
-    .recitals-section,
-    .community-section,
-    .contact-section {
-        padding: 4rem 0;
-    }
-
-    .nav-brand {
-        font-size: 1rem;
-    }
-
-    /* Mobile instructor photos */
-    .instructor-image {
-        width: 120px;
-        height: 120px;
-    }
-
-    .instructor-photo {
-        padding: 1rem 1rem 0;
-    }
-
-    /* Mobile instructor quotes */
-    .instructor-quote {
-        padding: 1.25rem;
-        margin: 0.5rem 0;
-    }
-
-    .quote-text {
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-
-    .quote-text::before {
-        font-size: 2rem;
-        left: -0.5rem;
-        top: -0.1rem;
-    }
-
-    .quote-author {
-        font-size: 0.8rem;
+    .masonry-gallery {
+        column-count: 1;
     }
 }
 
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
+.gallery-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    break-inside: avoid;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px 12px 0 0;
+}
+
+.gallery-caption {
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+    text-align: center;
+    background: white;
+    border-radius: 0 0 12px 12px;
 }
 
 /* Section padding top to account for fixed navbar */

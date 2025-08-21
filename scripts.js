@@ -17,6 +17,41 @@ window.scrollToSection = function(sectionId) {
 
 // Initialize hero interactions
 document.addEventListener('DOMContentLoaded', function() {
+    // Setup hamburger menu
+    const setupHamburgerMenu = () => {
+        console.log('Setting up hamburger menu...');
+        
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        if (hamburger && navMenu) {
+            // Toggle menu when hamburger is clicked
+            hamburger.addEventListener('click', function() {
+                console.log('Hamburger clicked');
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when a nav link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Nav link clicked');
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+    };
+
     // Setup hero buttons
     const setupHeroButtons = () => {
         console.log('Setting up hero buttons...');
@@ -65,7 +100,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Initialize all hero interactions
+    // Initialize all interactions
+    setupHamburgerMenu();
     setupHeroButtons();
     setupChevron();
 });
