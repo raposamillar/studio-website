@@ -223,7 +223,7 @@ p {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('./assets/images/studio-window.jpg');
+    background-image: url('./assets/images/studio-windows.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -363,6 +363,13 @@ p {
     color: #9ca3af;
     font-size: 0.875rem;
     margin-bottom: 0.25rem;
+}
+
+.instructor-links {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    margin-left: 1.5rem;
 }
 
 .certification-section {
