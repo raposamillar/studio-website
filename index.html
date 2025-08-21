@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raposa Millar Piano & Theory Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">Raposa Millar Piano & Theory Studio</div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#welcome" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#lessons" class="nav-link">Lessons</a>
+                <a href="#calendar" class="nav-link">Calendar</a>
+                <a href="#recitals" class="nav-link">Recitals</a>
+                <a href="#community" class="nav-link">Community</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Welcome Section with Hero Background -->
+    <section id="welcome" class="welcome-section">
+        <div class="hero-background"></div>
+        <div class="hero-overlay">
+            <div class="container">
+                <h1>Welcome to Raposa Millar Piano & Theory Studio</h1>
+                <p class="welcome-subtitle">
+                    Discover the joy of music through expert piano and theory instruction in Swansea Village, Toronto. 
+                    Our experienced instructors provide personalized lessons for students of all levels.
+                </p>
+                <div class="welcome-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('lessons')">Explore Lessons</button>
+                    <button class="btn btn-outline" onclick="scrollToSection('contact')">Contact Us</button>
+                </div>
+                <div class="scroll-indicator">
+                    <svg class="chevron-down" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Us</h2>
+            
+            <!-- Studio Introduction -->
+            <div class="studio-intro">
+                <p>
+                    Established in 2017, Raposa Millar Piano & Theory Studio offers exceptional music education 
+                    in the heart of Swansea Village, Toronto. Our studio provides a nurturing environment where 
+                    students of all ages can develop their musical talents through personalized instruction.
+                </p>
+            </div>
+
+            <!-- Instructors -->
+            <div class="instructors-grid">
+                <div class="card instructor-card">
+                    <div class="card-header">
+                        <h3>Lisa Raposa Millar, DMA</h3>
+                        <p class="instructor-title">Piano Instructor</p>
+                        <p class="instructor-subtitle">20+ Years Teaching Experience</p>
+                        <p class="instructor-subtitle">Expert in Collaborative Piano</p>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Lisa brings over two decades of teaching experience and expertise in collaborative piano. 
+                            Her approach focuses on developing both technical proficiency and musical expression, 
+                            helping students discover their unique musical voice while building strong foundational skills.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card instructor-card">
+                    <div class="card-header">
+                        <h3>Gregory Millar, DMA</h3>
+                        <p class="instructor-title">Music Theory Instructor</p>
+                        <p class="instructor-subtitle">Member of the College of Examiners, Royal Conservatory of Music</p>
+                        <p class="instructor-subtitle">Chamber Musician, Soloist, and Arranger</p>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Gregory is certified by the Royal Conservatory of Music and serves as a Member of the College 
+                            of Examiners. His comprehensive approach to music theory instruction helps students understand 
+                            the grammar and vocabulary of music while preparing them for Royal Conservatory examinations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Certification -->
+            <div class="certification-section">
+                <h3>Professional Certification</h3>
+                <p>
+                    Gregory Millar is certified by the Royal Conservatory of Music and serves as a Member of the College of Examiners, 
+                    ensuring the highest standards of musical education and pedagogy in our theory instruction.
+                </p>
+                <div class="certification-logo">
+                    <img src="https://acquia-drupal-registration-service.rcmusic.com/sites/default/files/tcert_web_logos/TCertLogo22-26.png"
+                         alt="Royal Conservatory of Music Certified Teacher" class="rcm-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lessons Section -->
+    <section id="lessons" class="lessons-section">
+        <div class="container">
+            <h2>Piano & Theory Lessons</h2>
+            
+            <!-- Lesson Images -->
+            <div class="lesson-images">
+                <div class="lesson-images-grid">
+                    <div class="lesson-image-item">
+                        <img src="assets/images/piano-keyboard.jpg" alt="Piano keyboard" />
+                        <p class="image-caption">Piano Lessons</p>
+                    </div>
+                    <div class="lesson-image-item">
+                        <img src="assets/images/theory-example.jpg" alt="Music theory example" />
+                        <p class="image-caption">Music Theory</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Teaching Philosophy -->
+            <div class="philosophy-section">
+                <h3>Our Teaching Philosophy</h3>
+                <p>
+                    Playing the piano is one of life's great pleasures. We believe that anyone can be taught to play expressively. 
+                    There are musical wonders to be enjoyed at every stage, from the simplest of tunes to the most intricate counterpoint.
+                </p>
+                <p>
+                    Helping students develop technical and personal skills they can take beyond their years of lessons is our priority.
+                </p>
+            </div>
+
+            <!-- Lesson Programs -->
+            <div class="lessons-grid">
+                <div class="card lesson-card">
+                    <div class="card-header">
+                        <h3>Piano Lessons</h3>
+                        <p class="instructor-name">Lisa Raposa Millar, DMA</p>
+                        <p class="lesson-description">1:1 In-person or hybrid online/in-person lessons</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="lesson-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">🕒</span>
+                                <span>45 or 60 minutes weekly</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">👤</span>
+                                <span>Individual</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Levels:</strong> Late-beginner, Intermediate, Advanced, and Diploma Level
+                            </div>
+                            <div class="detail-item">
+                                <strong>Ages:</strong> Children 10+, Teenagers, Adults
+                            </div>
+                        </div>
+                        
+                        <div class="features-list">
+                            <h4>Key Focus Areas:</h4>
+                            <ul>
+                                <li>✓ Classical positioning and technique</li>
+                                <li>✓ Technical and personal skill development</li>
+                                <li>✓ Expressive playing focus</li>
+                                <li>✓ Hand coordination and movement</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn btn-primary full-width" onclick="scrollToSection('contact')">Contact Us</button>
+                    </div>
+                </div>
+
+                <div class="card lesson-card">
+                    <div class="card-header">
+                        <h3>Music Theory</h3>
+                        <p class="instructor-name">Gregory Millar, DMA</p>
+                        <p class="lesson-description">Online or in-person lessons following Royal Conservatory curriculum</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="lesson-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">🕒</span>
+                                <span>45 or 60 minutes weekly</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-icon">👤</span>
+                                <span>Individual</span>
+                            </div>
+                            <div class="detail-item">
+                                <strong>Levels:</strong> Beginner through ARCT
+                            </div>
+                            <div class="detail-item">
+                                <strong>Ages:</strong> Children 10+, Teenagers, Adults
+                            </div>
+                        </div>
+                        
+                        <div class="features-list">
+                            <h4>Key Focus Areas:</h4>
+                            <ul>
+                                <li>✓ Royal Conservatory curriculum alignment</li>
+                                <li>✓ Grammar and vocabulary of music</li>
+                                <li>✓ Faster, more secure repertoire learning</li>
+                                <li>✓ Deeper understanding and enjoyment</li>
+                            </ul>
+                        </div>
+                        
+                        <button class="btn btn-primary full-width" onclick="scrollToSection('contact')">Contact Us</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Piano Development by Age -->
+            <div class="age-groups-grid">
+                <div class="card age-group-card">
+                    <div class="card-header">
+                        <h3>Children (Ages 10-12)</h3>
+                        <p class="age-subtitle">Late-Beginning to Early-Intermediate</p>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Children who have already taken lessons for a couple of years often work through method books 
+                            or play multi-page sonatinas. We teach classical positioning of hands and fingers in coordination 
+                            with wrist and arm motions. Such movements bring character and life to music by composers like 
+                            Johann Sebastian Bach.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card age-group-card">
+                    <div class="card-header">
+                        <h3>Teenagers (Ages 13-18)</h3>
+                        <p class="age-subtitle">Intermediate to Advanced</p>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            As hands grow, more music becomes accessible, including pieces requiring an octave hand-span. 
+                            Early teens (13-15) learn four-note chords with big, full sound for romantic repertoire like 
+                            Chopin. Mid-to-late teens (16-18) develop subtler expression while studying music from the 
+                            17th through 21st centuries.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card age-group-card">
+                    <div class="card-header">
+                        <h3>Adults</h3>
+                        <p class="age-subtitle">All Levels Welcome</p>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Adults who wish to take up piano as a meaningful life project are welcome to contact us. 
+                            Our approach adapts to adult learning styles and goals, whether you're beginning your 
+                            musical journey or returning to the piano after years away.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="calendar-section">
+        <div class="container">
+            <h2>Academic Calendar</h2>
+            
+            <div class="calendar-intro">
+                <p>
+                    Our academic calendar includes important dates such as school year start/end, holidays when lessons are cancelled, 
+                    school breaks, and special events like recitals and competitions.
+                </p>
+            </div>
+
+            <div class="calendar-grid">
+                <div class="card calendar-card">
+                    <div class="card-header">
+                        <div class="calendar-event-header">
+                            <h3>School Year Begins</h3>
+                            <span class="badge badge-academic">Academic</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-date">
+                            <span class="calendar-icon">📅</span>
+                            <span>September 8, 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card calendar-card">
+                    <div class="card-header">
+                        <div class="calendar-event-header">
+                            <h3>Thanksgiving Break</h3>
+                            <span class="badge badge-holiday">Holiday</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-date">
+                            <span class="calendar-icon">📅</span>
+                            <span>October 13-14, 2025</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card calendar-card">
+                    <div class="card-header">
+                        <div class="calendar-event-header">
+                            <h3>Winter Break</h3>
+                            <span class="badge badge-break">Break</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-date">
+                            <span class="calendar-icon">📅</span>
+                            <span>December 22, 2025 - January 5, 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card calendar-card">
+                    <div class="card-header">
+                        <div class="calendar-event-header">
+                            <h3>Family Day</h3>
+                            <span class="badge badge-holiday">Holiday</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-date">
+                            <span class="calendar-icon">📅</span>
+                            <span>February 16, 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card calendar-card">
+                    <div class="card-header">
+                        <div class="calendar-event-header">
+                            <h3>March Break</h3>
+                            <span class="badge badge-break">Break</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-date">
+                            <span class="calendar-icon">📅</span>
+                            <span>March 16-20, 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card calendar-card">
+                    <div class="card-header">
+                        <div class="calendar-event-header">
+                            <h3>Spring Recital</h3>
+                            <span class="badge badge-event">Event</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-date">
+                            <span class="calendar-icon">📅</span>
+                            <span>April 18, 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card calendar-card">
+                    <div class="card-header">
+                        <div class="calendar-event-header">
+                            <h3>Victoria Day</h3>
+                            <span class="badge badge-holiday">Holiday</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-date">
+                            <span class="calendar-icon">📅</span>
+                            <span>May 18, 2026</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card calendar-card">
+                    <div class="card-header">
+                        <div class="calendar-event-header">
+                            <h3>School Year Ends</h3>
+                            <span class="badge badge-academic">Academic</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-date">
+                            <span class="calendar-icon">📅</span>
+                            <span>June 26, 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recitals Section -->
+    <section id="recitals" class="recitals-section">
+        <div class="container">
+            <h2>Student Recitals</h2>
+            
+            <div class="recitals-intro">
+                <p>
+                    Our student recitals provide valuable performance experience in a supportive environment. 
+                    These events celebrate student achievements and help build confidence on stage while sharing 
+                    the joy of music with family and friends.
+                </p>
+            </div>
+
+            <div class="recital-features">
+                <div class="card feature-card">
+                    <div class="card-header feature-header">
+                        <div class="feature-icon">🎵</div>
+                        <h3>Performance Experience</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Regular recitals give students opportunities to perform and build confidence 
+                            in a welcoming, supportive atmosphere.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card feature-card">
+                    <div class="card-header feature-header">
+                        <div class="feature-icon">🏆</div>
+                        <h3>Celebrate Progress</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Each recital is a celebration of student achievements and musical growth, 
+                            showcasing the hard work and dedication of our learners.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card feature-card">
+                    <div class="card-header feature-header">
+                        <div class="feature-icon">👥</div>
+                        <h3>Family & Friends</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Share the joy of music with loved ones as students perform pieces 
+                            they've been working on throughout the term.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community-section">
+        <div class="container">
+            <h2>Community</h2>
+            
+            <div class="community-intro">
+                <p>
+                    In addition to studio recitals, we encourage students to perform in festivals, 
+                    master classes, exams, and other events hosted by organizations in the GTA.
+                </p>
+            </div>
+
+            <!-- Organizations -->
+            <div class="community-section-block">
+                <h3>Professional Music Organizations</h3>
+                <div class="organizations-grid">
+                    <div class="card organization-card">
+                        <div class="card-header">
+                            <div class="organization-header">
+                                <div>
+                                    <h4>The Etobicoke-Mississauga Branch of ORMTA</h4>
+                                    <p class="organization-subtitle">Ontario Registered Music Teachers' Association</p>
+                                </div>
+                                <div class="organization-icon">👥</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card organization-card">
+                        <div class="card-header">
+                            <div class="organization-header">
+                                <div>
+                                    <h4>The Central Toronto Branch of ORMTA</h4>
+                                    <p class="organization-subtitle">Ontario Registered Music Teachers' Association</p>
+                                </div>
+                                <div class="organization-icon">👥</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Opportunities -->
+            <div class="community-section-block">
+                <h3>Performance & Examination Opportunities</h3>
+                <div class="opportunities-grid">
+                    <div class="card opportunity-card">
+                        <div class="card-header">
+                            <div class="opportunity-header">
+                                <div>
+                                    <h4>The Royal Conservatory – Exam Dates</h4>
+                                    <p class="opportunity-subtitle">Formal evaluation and certification opportunities</p>
+                                </div>
+                                <div class="opportunity-icon">🎵</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card opportunity-card">
+                        <div class="card-header">
+                            <div class="opportunity-header">
+                                <div>
+                                    <h4>Alliance for Canadian New Music Projects (ACNMP)</h4>
+                                    <p class="opportunity-subtitle">Contemporary Showcase</p>
+                                    <p class="opportunity-description">Platform for contemporary Canadian music performance</p>
+                                </div>
+                                <div class="opportunity-icon">🎵</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music Festivals -->
+            <div class="community-section-block">
+                <h3>Music Festivals</h3>
+                <div class="festivals-grid">
+                    <div class="card festival-card">
+                        <div class="card-header">
+                            <div class="festival-header">
+                                <div>
+                                    <h4>Hamilton Music Festival</h4>
+                                    <p class="festival-subtitle">Annual music competition and performance festival</p>
+                                </div>
+                                <div class="festival-icon">⭐</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card festival-card">
+                        <div class="card-header">
+                            <div class="festival-header">
+                                <div>
+                                    <h4>Peel Music Festival</h4>
+                                    <p class="festival-subtitle">Regional music festival with various categories</p>
+                                </div>
+                                <div class="festival-icon">⭐</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card festival-card">
+                        <div class="card-header">
+                            <div class="festival-header">
+                                <div>
+                                    <h4>Ontario Music Festivals Association (OMFA)</h4>
+                                    <p class="festival-subtitle">Provincial organization coordinating music festivals</p>
+                                </div>
+                                <div class="festival-icon">⭐</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>
+                        Ready to begin your musical journey? Contact us today to discuss lessons, 
+                        schedule a consultation, or ask any questions about our programs. We'd love 
+                        to hear from you and help you discover the joy of music.
+                    </p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <div>Swansea Village</div>
+                                <div>Toronto, Ontario, Canada</div>
+                                <div>M6S 3E2</div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a>
+                        </div>
+                    </div>
+
+                    <div class="lesson-formats">
+                        <h4>Lesson Formats</h4>
+                        <div class="format-info">
+                            <div><strong>Piano:</strong> In-person only</div>
+                            <div><strong>Theory:</strong> Online & In-person available</div>
+                            <div><strong>Makeup Sessions:</strong> Online available when needed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <div class="card contact-form-card">
+                        <div class="card-header">
+                            <h3>Send us a Message</h3>
+                            <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                        </div>
+                        <div class="card-content">
+                            <form class="contact-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" id="firstName" name="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" id="lastName" name="lastName" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone (optional)</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="lessonInterest">Lesson Interest</label>
+                                    <select id="lessonInterest" name="lessonInterest" required>
+                                        <option value="">Select an option</option>
+                                        <option value="piano">Piano Lessons</option>
+                                        <option value="theory">Music Theory</option>
+                                        <option value="both">Both Piano and Theory</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your musical goals, experience level, or any questions you have..."></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary full-width">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Raposa Millar Piano & Theory Studio</h3>
+                    <p>
+                        Offering piano & theory lessons to students of all levels in the GTA since 2017. 
+                        Located in Swansea Village, Toronto.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Navigation</h4>
+                    <div class="footer-links">
+                        <a href="#welcome" onclick="scrollToSection('welcome')">Welcome</a>
+                        <a href="#about" onclick="scrollToSection('about')">About Us</a>
+                        <a href="#lessons" onclick="scrollToSection('lessons')">Lessons</a>
+                        <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="footer-contact">
+                        <div>Swansea Village</div>
+                        <div>Toronto, Ontario, Canada</div>
+                        <div>M6S 3E2</div>
+                        <div>studio@raposamillar.ca</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Raposa Millar Piano & Theory Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
