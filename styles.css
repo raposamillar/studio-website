@@ -407,10 +407,107 @@ p {
     color: #E06610;
 }
 
+/* Instructor Quotes Section */
+.instructor-quotes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Instructor Quote Styling */
+.instructor-quote {
+    position: relative;
+    border-left: 4px solid #030213;
+    border-radius: 0.625rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+/* Background images for specific quotes */
+.instructor-quote:nth-child(1) {
+    background-image: url('./assets/images/piano-keyboard.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.instructor-quote:nth-child(2) {
+    background-image: url('./assets/images/theory-example.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Dark overlay to ensure text readability */
+.instructor-quote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.65)
+    );
+    border-radius: 0.625rem;
+    z-index: 1;
+}
+
+/* Ensure text content appears above overlay */
+.instructor-quote > * {
+    position: relative;
+    z-index: 2;
+}
+
+.instructor-quote:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.quote-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.quote-text::before {
+    content: "";
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.4);
+    position: absolute;
+    left: -1rem;
+    top: -0.5rem;
+    font-family: serif;
+    z-index: 1;
+}
+
+.quote-author {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #ffffff;
+    display: block;
+    text-align: right;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
 .certification-section {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 3rem auto 0;
 }
 
 .certification-logo {
@@ -920,6 +1017,26 @@ p {
         height: 150px;
     }
 
+    /* Responsive instructor quotes */
+    .instructor-quote {
+        padding: 1.25rem;
+    }
+
+    .quote-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .quote-text::before {
+        font-size: 2.5rem;
+        left: -0.75rem;
+        top: -0.25rem;
+    }
+
+    .quote-author {
+        font-size: 0.875rem;
+    }
+
     .lessons-grid {
         grid-template-columns: 1fr;
     }
@@ -977,6 +1094,27 @@ p {
 
     .instructor-photo {
         padding: 1rem 1rem 0;
+    }
+
+    /* Mobile instructor quotes */
+    .instructor-quote {
+        padding: 1.25rem;
+        margin: 0.5rem 0;
+    }
+
+    .quote-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .quote-text::before {
+        font-size: 2rem;
+        left: -0.5rem;
+        top: -0.1rem;
+    }
+
+    .quote-author {
+        font-size: 0.8rem;
     }
 }
 
