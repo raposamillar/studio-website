@@ -19,6 +19,7 @@ body {
     line-height: 1.6;
     color: #1a1a1a;
     background-color: #ffffff;
+    overflow-x: hidden;
 }
 
 /* Typography */
@@ -188,6 +189,7 @@ p {
 @media (max-width: 480px) {
     .nav-brand {
         font-size: 0.9rem;
+        line-height: 1.2;
     }
     
     .nav-menu .nav-link {
@@ -588,6 +590,7 @@ p {
 
 .rcm-logo {
     max-width: 320px;
+    width: 100%;
     height: auto;
 }
 
@@ -595,6 +598,12 @@ p {
 .lessons-section {
     padding: 6rem 0;
     background-color: rgba(236, 236, 240, 0.05);
+}
+
+/* Theory Levels Section */
+.theory-levels-section {
+    padding: 4rem 0;
+    background-color: #f9f9fb;
 }
 
 /* Lesson Images */
@@ -716,7 +725,7 @@ p {
 
 .age-groups-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -742,7 +751,7 @@ p {
 
 .calendar-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
@@ -750,6 +759,8 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .calendar-date {
@@ -777,7 +788,7 @@ p {
 
 .recital-features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -819,7 +830,7 @@ p {
 .organizations-grid,
 .opportunities-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     max-width: 800px;
     margin: 0 auto;
@@ -827,7 +838,7 @@ p {
 
 .festivals-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -837,13 +848,13 @@ p {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    gap: 1rem;
 }
 
 .organization-icon,
 .opportunity-icon,
 .festival-icon {
     font-size: 1.5rem;
-    margin-left: 1rem;
     flex-shrink: 0;
 }
 
@@ -1032,7 +1043,7 @@ p {
 }
 
 .footer-bottom {
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding-top: 2rem;
     margin-top: 2rem;
     text-align: center;
@@ -1066,25 +1077,6 @@ p {
     column-count: 4;
     column-gap: 1.5rem;
     margin: 0;
-}
-
-@media (max-width: 1200px) {
-    .masonry-gallery {
-        column-count: 3;
-    }
-}
-
-@media (max-width: 768px) {
-    .masonry-gallery {
-        column-count: 2;
-        column-gap: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .masonry-gallery {
-        column-count: 1;
-    }
 }
 
 .gallery-item {
@@ -1124,4 +1116,219 @@ p {
 /* Section padding top to account for fixed navbar */
 section {
     scroll-margin-top: 4rem;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Typography adjustments */
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    h3 {
+        font-size: 1.375rem;
+    }
+    
+    /* Section padding adjustments */
+    .about-section,
+    .lessons-section,
+    .calendar-section,
+    .recitals-section,
+    .community-section,
+    .contact-section {
+        padding: 4rem 0;
+    }
+    
+    .theory-levels-section {
+        padding: 3rem 0;
+    }
+    
+    .photo-gallery-section {
+        padding: 3rem 0;
+    }
+
+    /* Hero overlay container */
+    .hero-overlay .container {
+        padding: 1.5rem 2rem;
+        margin: 0 1rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 1.125rem;
+    }
+
+    .welcome-buttons {
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+    }
+    
+    /* Grid adjustments */
+    .instructors-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .instructor-quotes {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .lesson-images-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .lessons-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 600px;
+    }
+    
+    .age-groups-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .calendar-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+    }
+    
+    .recital-features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .organizations-grid,
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .festivals-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    /* Photo gallery responsive */
+    .masonry-gallery {
+        column-count: 2;
+        column-gap: 1rem;
+    }
+    
+    /* Form adjustments */
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* Card padding adjustments */
+    .card-header,
+    .card-content {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further typography adjustments */
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    /* Container and padding */
+    .container {
+        padding: 0 0.75rem;
+    }
+    
+    /* Hero adjustments */
+    .hero-overlay .container {
+        padding: 1.25rem 1.5rem;
+        margin: 0 0.5rem;
+    }
+    
+    .welcome-subtitle {
+        font-size: 1rem;
+    }
+    
+    .welcome-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+    }
+    
+    .welcome-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    /* Gallery single column */
+    .masonry-gallery {
+        column-count: 1;
+    }
+    
+    /* Calendar grid single column */
+    .calendar-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Card adjustments */
+    .card-header,
+    .card-content {
+        padding: 1rem;
+    }
+    
+    /* Instructor image smaller */
+    .instructor-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    /* Feature icon smaller */
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+    
+    /* Quote text smaller */
+    .quote-text {
+        font-size: 1rem;
+    }
+    
+    /* Organization header stack */
+    .organization-header,
+    .opportunity-header,
+    .festival-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .organization-icon,
+    .opportunity-icon,
+    .festival-icon {
+        align-self: center;
+        margin-left: 0;
+    }
 }

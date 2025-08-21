@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (hamburger && navMenu) {
             // Toggle menu when hamburger is clicked
-            hamburger.addEventListener('click', function() {
+            hamburger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
                 console.log('Hamburger clicked');
                 hamburger.classList.toggle('active');
                 navMenu.classList.toggle('active');
@@ -42,12 +44,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
             
-            // Close menu when clicking outside
+            // Close menu when clicking outside (but not on hamburger)
             document.addEventListener('click', function(event) {
                 if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                 }
+            });
+            
+            // Prevent menu from closing when clicking inside the menu
+            navMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
             });
         }
     };
@@ -83,8 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const chevronDown = document.querySelector('.chevron-down');
         const scrollIndicator = document.querySelector('.scroll-indicator');
+        const chevronLink = document.querySelector('.chevron-link');
 
-        const handleChevronClick = () => {
+        const handleChevronClick = (e) => {
+            e.preventDefault();
             console.log('Chevron clicked');
             window.scrollToSection('about');
         };
@@ -98,10 +107,73 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollIndicator.addEventListener('click', handleChevronClick);
             scrollIndicator.style.cursor = 'pointer';
         }
+        
+        if (chevronLink) {
+            chevronLink.addEventListener('click', handleChevronClick);
+        }
+    };
+
+    // Setup form submission
+    const setupContactForm = () => {
+        console.log('Setting up contact form...');
+        
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log('Form submitted');
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData.entries());
+                
+                // Here you would typically send the data to a server
+                console.log('Form data:', data);
+                
+                // Show success message (replace with your preferred method)
+                alert('Thank you for your message! We will get back to you soon.');
+                
+                // Reset form
+                contactForm.reset();
+            });
+        }
+    };
+
+    // Setup smooth scrolling for all anchor links
+    const setupSmoothScrolling = () => {
+        console.log('Setting up smooth scrolling...');
+        
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        anchorLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const sectionId = href.substring(1);
+                    if (sectionId) {
+                        window.scrollToSection(sectionId);
+                    }
+                }
+            });
+        });
     };
 
     // Initialize all interactions
     setupHamburgerMenu();
     setupHeroButtons();
     setupChevron();
+    setupContactForm();
+    setupSmoothScrolling();
+    
+    // Handle window resize to close mobile menu if window gets larger
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            if (hamburger && navMenu) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        }
+    });
 });
