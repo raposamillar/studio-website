@@ -5,6 +5,15 @@
     box-sizing: border-box;
 }
 
+a {
+  color: #006DAB;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #E06610;
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
@@ -398,15 +407,6 @@ p {
     margin-left: 1.5rem;
 }
 
-.instructor-links a {
-    color: #006DAB;
-    text-decoration: none;
-}
-
-.instructor-links a:hover {
-    color: #E06610;
-}
-
 /* Instructor Quotes Section */
 .instructor-quotes {
     display: grid;
@@ -610,6 +610,10 @@ p {
     margin-bottom: 0.75rem;
     font-size: 0.875rem;
     color: #6b7280;
+}
+
+.detail-item strong {
+  margin-right: 0.25rem; /* about one space */
 }
 
 .detail-icon {
