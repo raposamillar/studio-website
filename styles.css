@@ -296,6 +296,11 @@ p {
   color: #000000;
 }
 
+#contact-us a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 #contact-us:hover {
   background-color: #FFBF00;
 }
