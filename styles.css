@@ -216,6 +216,7 @@ p {
     padding-top: 4rem;
 }
 
+/* Hero Background with subtle lightening and warmth */
 .hero-background {
     position: absolute;
     top: 0;
@@ -226,23 +227,44 @@ p {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: #030213; /* Fallback color */
     z-index: 1;
+
+    /* Subtle brightness and warm tint */
+    filter: brightness(1.1) saturate(1.05);
 }
 
+/* Overlay behind text - subtle, transparent, non-blurry */
 .hero-overlay {
     position: relative;
     z-index: 2;
-    background: rgba(3, 2, 19, 0.7);
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
+    padding: 3rem 2rem;
+
+    /* Light, warm tint just behind the text */
+    background: rgba(255, 245, 230, 0.25); /* very subtle warm overlay */
+    border-radius: 0; /* keep corners sharp */
 }
 
 .hero-overlay h1 {
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-overlay .container {
+    display: inline-block;
+    padding: 2rem 2.5rem;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.6),  /* darker in the middle */
+        rgba(0, 0, 0, 0.3)   /* lighter at edges */
+    );
+    border-radius: 0.75rem;
+    text-align: center;
+    backdrop-filter: blur(2px); /* subtle softening of background */
 }
 
 .welcome-subtitle {
