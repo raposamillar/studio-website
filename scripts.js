@@ -115,28 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Setup form submission
     const setupContactForm = () => {
-        console.log('Setting up contact form...');
-        
-        const contactForm = document.querySelector('.contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                console.log('Form submitted');
-                
-                // Get form data
-                const formData = new FormData(contactForm);
-                const data = Object.fromEntries(formData.entries());
-                
-                // Here you would typically send the data to a server
-                console.log('Form data:', data);
-                
-                // Show success message (replace with your preferred method)
-                alert('Thank you for your message! We will get back to you soon.');
-                
-                // Reset form
-                contactForm.reset();
-            });
-        }
+        console.log('Contact form replaced with MyMusicStaff widget');
+        // Form handling removed since we're using external widget
     };
 
     // Setup smooth scrolling for all anchor links
