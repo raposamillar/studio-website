@@ -372,6 +372,15 @@ p {
     margin-left: 1.5rem;
 }
 
+.instructor-links a {
+    color: #006DAB;
+    text-decoration: none;
+}
+
+.instructor-links a:hover {
+    color: #E06610;
+}
+
 .certification-section {
     text-align: center;
     max-width: 600px;
