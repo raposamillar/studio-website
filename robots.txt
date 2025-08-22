@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Explicitly allow GPTBot
+User-agent: GPTBot
+Allow: /
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
