@@ -606,6 +606,90 @@ p {
     background-color: #f9f9fb;
 }
 
+/* Theory Level Cards with Background Images */
+.theory-levels-section .age-group-card {
+    position: relative;
+    overflow: hidden;
+    color: white;
+    height: 100%;
+}
+
+.theory-levels-section .age-group-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.theory-levels-section .age-group-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 109, 171, 0.85), rgba(0, 109, 171, 0.75));
+    z-index: 2;
+}
+
+/* Specific background images for each theory level */
+.theory-levels-section .age-group-card:nth-child(1)::before {
+    background-image: url('assets/images/treble-clef.jpg');
+}
+
+.theory-levels-section .age-group-card:nth-child(2)::before {
+    background-image: url('assets/images/bass-clef.jpg');
+}
+
+.theory-levels-section .age-group-card:nth-child(3)::before {
+    background-image: url('assets/images/c-clef.jpg');
+}
+
+.theory-levels-section .age-groups-grid:last-child .age-group-card:nth-child(1)::before {
+    background-image: url('assets/images/whole-note.jpg');
+}
+
+.theory-levels-section .age-groups-grid:last-child .age-group-card:nth-child(2)::before {
+    background-image: url('assets/images/eighth-note-single.jpg');
+}
+
+.theory-levels-section .age-groups-grid:last-child .age-group-card:nth-child(3)::before {
+    background-image: url('assets/images/rest.jpg');
+}
+
+.theory-levels-section .age-groups-grid:last-child .age-group-card:nth-child(4)::before {
+    background-image: url('assets/images/eighth-rest.jpg');
+}
+
+.theory-levels-section .age-group-card .card-header,
+.theory-levels-section .age-group-card .card-content {
+    position: relative;
+    z-index: 3;
+}
+
+.theory-levels-section .age-group-card .card-header h3,
+.theory-levels-section .age-group-card .age-subtitle,
+.theory-levels-section .age-group-card .card-content p {
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.theory-levels-section .age-group-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 109, 171, 0.3);
+}
+
+.theory-levels-section .age-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+}
+
 /* Lesson Images */
 .lesson-images {
     margin-bottom: 4rem;
@@ -729,12 +813,99 @@ p {
     gap: 2rem;
 }
 
+/* Age Groups Cards with Background Images */
 .age-group-card {
+    position: relative;
+    overflow: hidden;
+    color: white;
     height: 100%;
 }
 
+.age-group-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.age-group-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 109, 171, 0.85), rgba(0, 109, 171, 0.75));
+    z-index: 2;
+}
+
+/* Specific background images for each age group */
+.age-group-card:nth-child(1)::before {
+    background-image: url('assets/images/js-bach.jpg');
+}
+
+.age-group-card:nth-child(2)::before {
+    background-image: url('assets/images/chopin.jpg');
+}
+
+.age-group-card:nth-child(3)::before {
+    background-image: url('assets/images/path.jpg');
+}
+
+.age-group-card:nth-child(4)::before {
+    background-image: url('assets/images/treble-clef.jpg');
+}
+
+.age-group-card:nth-child(5)::before {
+    background-image: url('assets/images/c-clef.jpg');
+}
+
+.age-group-card:nth-child(6)::before {
+    background-image: url('assets/images/bass-clef.jpg');
+}
+
+.age-group-card:nth-child(7)::before {
+    background-image: url('assets/images/rest.jpg');
+}
+
+.age-group-card:nth-child(8)::before {
+    background-image: url('assets/images/eighth-rest.jpg');
+}
+
+.age-group-card:nth-child(9)::before {
+    background-image: url('assets/images/eighth-note-single.jpg');
+}
+
+.age-group-card:nth-child(10)::before {
+    background-image: url('assets/images/whole-note.jpg');
+}
+
+.age-group-card .card-header,
+.age-group-card .card-content {
+    position: relative;
+    z-index: 3;
+}
+
+.age-group-card .card-header h3,
+.age-group-card .age-subtitle,
+.age-group-card .card-content p {
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.age-group-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 109, 171, 0.3);
+}
+
 .age-subtitle {
-    color: #6b7280;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 1rem;
 }
 
