@@ -119,6 +119,70 @@ document.addEventListener('DOMContentLoaded', function() {
         // Form handling removed since we're using external widget
     };
 
+    // Setup FAQ accordion
+    const setupFAQAccordion = () => {
+        console.log('Setting up FAQ accordion...');
+        
+        // Get all FAQ questions specifically within the FAQ section
+        const faqSection = document.getElementById('faq');
+        if (!faqSection) {
+            console.log('FAQ section not found');
+            return;
+        }
+        
+        const faqQuestions = faqSection.querySelectorAll('.faq-question');
+        console.log('Found FAQ questions:', faqQuestions.length);
+        
+        faqQuestions.forEach((question, index) => {
+            question.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('FAQ question clicked:', index + 1);
+                
+                const faqId = this.getAttribute('data-faq');
+                const answer = document.getElementById(`faq-answer-${faqId}`);
+                const chevron = this.querySelector('.faq-chevron');
+                const faqIcon = this.querySelector('.faq-icon');
+                const isCurrentlyActive = this.classList.contains('active');
+                
+                console.log('FAQ ID:', faqId, 'Currently active:', isCurrentlyActive);
+                
+                // Close all FAQ items first
+                faqQuestions.forEach(otherQuestion => {
+                    const otherFaqId = otherQuestion.getAttribute('data-faq');
+                    const otherAnswer = document.getElementById(`faq-answer-${otherFaqId}`);
+                    const otherChevron = otherQuestion.querySelector('.faq-chevron');
+                    const otherIcon = otherQuestion.querySelector('.faq-icon');
+                    
+                    // Remove active class from question and answer
+                    otherQuestion.classList.remove('active');
+                    if (otherAnswer) {
+                        otherAnswer.classList.remove('active');
+                    }
+                    
+                    // Reset chevron rotation
+                    if (otherChevron) {
+                        otherChevron.style.transform = 'rotate(0deg)';
+                    }
+                });
+                
+                // If this question wasn't active, open it
+                if (!isCurrentlyActive) {
+                    this.classList.add('active');
+                    if (answer) {
+                        answer.classList.add('active');
+                    }
+                    if (chevron) {
+                        chevron.style.transform = 'rotate(180deg)';
+                    }
+                    console.log('Opened FAQ:', faqId);
+                } else {
+                    console.log('Closed FAQ:', faqId);
+                }
+            });
+        });
+    };
+
     // Setup smooth scrolling for all anchor links
     const setupSmoothScrolling = () => {
         console.log('Setting up smooth scrolling...');
@@ -143,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupHeroButtons();
     setupChevron();
     setupContactForm();
+    setupFAQAccordion();
     setupSmoothScrolling();
     
     // Handle window resize to close mobile menu if window gets larger

@@ -597,7 +597,7 @@ p {
 /* Lessons Section */
 .lessons-section {
     padding: 6rem 0;
-    background-color: rgba(236, 236, 240, 0.05);
+    background-color: rgba(0, 109, 171, 0.03);
 }
 
 /* Theory Levels Section */
@@ -777,7 +777,7 @@ p {
 /* Recitals Section */
 .recitals-section {
     padding: 6rem 0;
-    background-color: rgba(236, 236, 240, 0.05);
+    background-color: rgba(0, 109, 171, 0.03);
 }
 
 .recitals-intro {
@@ -805,6 +805,183 @@ p {
 .feature-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+/* Community Section */
+.community-section {
+    padding: 6rem 0;
+}
+
+.community-intro {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.community-section-block {
+    margin-bottom: 4rem;
+}
+
+.community-section-block h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.organizations-grid,
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.festivals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.organization-header,
+.opportunity-header,
+.festival-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.organization-icon,
+.opportunity-icon,
+.festival-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.organization-subtitle,
+.opportunity-subtitle,
+.festival-subtitle {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.opportunity-description {
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+/* Contact Section - NO BACKGROUND IMAGE */
+.contact-section {
+    padding: 6rem 0;
+    background-color: rgba(236, 236, 240, 0.05);
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 6rem 0;
+    background-color: rgba(0, 109, 171, 0.03);
+}
+
+.faq-intro {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: white;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.faq-question:hover {
+    background-color: rgba(0, 109, 171, 0.02);
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    flex: 1;
+    padding-right: 1rem;
+}
+
+.faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: rgba(0, 109, 171, 0.1);
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.faq-chevron {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #006DAB;
+    transition: transform 0.3s ease !important;
+    transform: rotate(0deg);
+}
+
+.faq-question.active .faq-icon {
+    background-color: #006DAB;
+}
+
+.faq-question.active .faq-chevron {
+    color: white;
+    transform: rotate(180deg) !important;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer.active {
+    max-height: 1000px;
+    padding: 0 1.5rem 1.5rem;
+}
+
+.faq-content {
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.faq-content p {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.6;
 }
 
 /* Community Section */
@@ -1139,7 +1316,8 @@ section {
     .calendar-section,
     .recitals-section,
     .community-section,
-    .contact-section {
+    .contact-section,
+    .faq-section {
         padding: 4rem 0;
     }
     
