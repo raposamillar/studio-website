@@ -160,7 +160,7 @@ p {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding: 2rem 0;
+        padding: 2rem 0 3rem 0;
         transition: left 0.3s ease;
         z-index: 40;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -199,7 +199,7 @@ p {
 /* Extra small mobile screens */
 @media (max-width: 480px) {
     .nav-menu {
-        padding: 1.5rem 0;
+        padding: 1.5rem 0 2.5rem 0;
         min-height: calc(var(--vh, 1vh) * 100 - 4rem);
         max-height: calc(var(--vh, 1vh) * 100 - 4rem);
     }
@@ -218,7 +218,7 @@ p {
 /* Very small screens (iPhone SE, etc.) */
 @media (max-width: 375px) {
     .nav-menu {
-        padding: 1rem 0;
+        padding: 1rem 0 2rem 0;
     }
     
     .nav-menu .nav-link {
@@ -232,7 +232,7 @@ p {
     .nav-menu {
         min-height: calc(var(--vh, 1vh) * 100 - 4rem);
         max-height: calc(var(--vh, 1vh) * 100 - 4rem);
-        padding: 1rem 0;
+        padding: 1rem 0 2rem 0;
     }
     
     .nav-menu .nav-link {
