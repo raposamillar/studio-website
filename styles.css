@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --vh: 1vh;
+}
+
 a {
   color: #006DAB;
   text-decoration: none;
@@ -148,16 +152,20 @@ p {
         top: 4rem;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 4rem);
+        height: auto;
+        min-height: calc(var(--vh, 1vh) * 100 - 4rem);
+        max-height: calc(var(--vh, 1vh) * 100 - 4rem);
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 2rem;
+        padding: 2rem 0;
         transition: left 0.3s ease;
         z-index: 40;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-menu.active {
@@ -166,10 +174,12 @@ p {
 
     .nav-menu .nav-link {
         font-size: 1.125rem;
-        padding: 1rem 0;
+        padding: 1.25rem 0;
         width: 100%;
         text-align: center;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        display: block;
+        flex-shrink: 0;
     }
 
     .hamburger {
@@ -188,6 +198,12 @@ p {
 
 /* Extra small mobile screens */
 @media (max-width: 480px) {
+    .nav-menu {
+        padding: 1.5rem 0;
+        min-height: calc(var(--vh, 1vh) * 100 - 4rem);
+        max-height: calc(var(--vh, 1vh) * 100 - 4rem);
+    }
+    
     .nav-brand {
         font-size: 0.9rem;
         line-height: 1.2;
@@ -195,7 +211,32 @@ p {
     
     .nav-menu .nav-link {
         font-size: 1rem;
+        padding: 1rem 0;
+    }
+}
+
+/* Very small screens (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    .nav-menu {
+        padding: 1rem 0;
+    }
+    
+    .nav-menu .nav-link {
+        font-size: 0.95rem;
         padding: 0.875rem 0;
+    }
+}
+
+/* Landscape orientation on small devices */
+@media (max-width: 768px) and (orientation: landscape) {
+    .nav-menu {
+        min-height: calc(var(--vh, 1vh) * 100 - 4rem);
+        max-height: calc(var(--vh, 1vh) * 100 - 4rem);
+        padding: 1rem 0;
+    }
+    
+    .nav-menu .nav-link {
+        padding: 0.75rem 0;
     }
 }
 
