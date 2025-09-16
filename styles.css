@@ -1508,6 +1508,29 @@ section {
     scroll-margin-top: 4rem;
 }
 
+#backToTop {
+  display: none;              /* hidden by default */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #333333;  /* charcoal */
+  color: #ffffff;             /* white */
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;         /* circle */
+  font-size: 20px;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#backToTop:hover {
+  background-color: #006DAB;  /* subtle blue on hover */
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     /* Typography adjustments */
