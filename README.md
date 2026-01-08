@@ -17,7 +17,7 @@ The website is hosted on **GitHub Pages** and uses **HTML, CSS, and JavaScript**
 
 ## License & Copyright
 
-© 2025 Raposa Millar Piano & Theory Studio. All rights reserved.  
+© 2025-2026 Raposa Millar Piano & Theory Studio. All rights reserved.  
 This project is published publicly for hosting purposes.  
 Unauthorized use, reproduction, or distribution of the code or content is prohibited.  
 For permissions or inquiries, please contact [lisa.raposamillar@gmail.com](mailto:lisa.raposamillar@gmail.com).
