@@ -976,6 +976,16 @@ p {
     gap: 0.5rem;
 }
 
+.date-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5 rem;
+}
+
+.calendar-icon {
+    margin-right: 0.5rem;
+}
+
 .calendar-date {
     display: flex;
     align-items: center;
@@ -983,8 +993,10 @@ p {
     font-size: 0.875rem;
 }
 
-.calendar-icon {
-    margin-right: 0.5rem;
+.spring-recital .calendar-date {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 /* Recitals Section */
