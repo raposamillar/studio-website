@@ -2,10 +2,10 @@
 
 I created and launched the current version of our studio website in **two days**, combining my skills in:
 
-- Prompt engineering
-- Coding
 - Design thinking
 - Content strategy
+- Frontend development (HTML, CSS, JavaScript)
+- AI-assisted development with extensive prompt iteration
 
 alongside an appetite for experimentation.
 
