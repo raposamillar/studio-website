@@ -4,35 +4,78 @@ document.addEventListener('DOMContentLoaded', function() {
     const setupHamburgerMenu = () => {
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-        const navLinks = document.querySelectorAll('.nav-link');
+        const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+        const main = document.getElementById('main-content');
+        const footer = document.querySelector('.footer');
 
         if (!hamburger || !navMenu) {
             return;
         }
 
+        const isMobileNav = () => window.innerWidth <= 768;
+
+        const getFocusableInMenu = () => [hamburger, ...navLinks];
+
+        const setBackgroundInert = (inert) => {
+            if (main) {
+                main.inert = inert;
+            }
+            if (footer) {
+                footer.inert = inert;
+            }
+        };
+
         const setMenuOpen = (open) => {
+            const mobile = isMobileNav();
+
             hamburger.classList.toggle('active', open);
             navMenu.classList.toggle('active', open);
             hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
             hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 
-            if (open) {
-                document.body.style.overflow = 'hidden';
-                document.body.style.position = 'fixed';
-                document.body.style.width = '100%';
-                const firstLink = navMenu.querySelector('.nav-link');
-                if (firstLink) {
-                    firstLink.focus();
+            if (mobile) {
+                navMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+                navLinks.forEach((link) => {
+                    if (open) {
+                        link.removeAttribute('tabindex');
+                    } else {
+                        link.setAttribute('tabindex', '-1');
+                    }
+                });
+                setBackgroundInert(open);
+
+                if (open) {
+                    document.body.style.overflow = 'hidden';
+                    document.body.style.position = 'fixed';
+                    document.body.style.width = '100%';
+                    const firstLink = navLinks[0];
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
+                } else {
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
                 }
             } else {
+                navMenu.removeAttribute('aria-hidden');
+                navLinks.forEach((link) => link.removeAttribute('tabindex'));
+                setBackgroundInert(false);
                 document.body.style.overflow = '';
                 document.body.style.position = '';
                 document.body.style.width = '';
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                hamburger.setAttribute('aria-label', 'Open menu');
             }
         };
 
         const closeMenu = () => setMenuOpen(false);
         const toggleMenu = () => setMenuOpen(!navMenu.classList.contains('active'));
+
+        // Initial mobile state: menu closed and not tabbable
+        setMenuOpen(false);
 
         hamburger.addEventListener('click', function(e) {
             e.preventDefault();
@@ -40,20 +83,53 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleMenu();
         });
 
-        navLinks.forEach(link => {
+        navLinks.forEach((link) => {
             link.addEventListener('click', closeMenu);
         });
 
         document.addEventListener('click', function(event) {
+            if (!isMobileNav() || !navMenu.classList.contains('active')) {
+                return;
+            }
             if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
                 closeMenu();
             }
         });
 
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+            if (!isMobileNav() || !navMenu.classList.contains('active')) {
+                return;
+            }
+
+            if (event.key === 'Escape') {
                 closeMenu();
                 hamburger.focus();
+                return;
+            }
+
+            if (event.key !== 'Tab') {
+                return;
+            }
+
+            const focusables = getFocusableInMenu().filter(
+                (el) => el && el.offsetParent !== null || el === hamburger
+            );
+            if (focusables.length === 0) {
+                return;
+            }
+
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            const active = document.activeElement;
+
+            if (event.shiftKey) {
+                if (active === first || !navMenu.contains(active) && active !== hamburger) {
+                    event.preventDefault();
+                    last.focus();
+                }
+            } else if (active === last) {
+                event.preventDefault();
+                first.focus();
             }
         });
 
@@ -62,9 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                closeMenu();
-            }
+            setMenuOpen(false);
         });
     };
 
@@ -77,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const faqQuestions = faqSection.querySelectorAll('.faq-question');
 
         const closeAll = (except) => {
-            faqQuestions.forEach(question => {
+            faqQuestions.forEach((question) => {
                 if (question === except) {
                     return;
                 }

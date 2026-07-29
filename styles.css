@@ -79,6 +79,43 @@ main > section > .container > h1 {
     text-align: center;
 }
 
+/* In-card / subsection h2s keep compact left-aligned styling */
+.instructor-card h2,
+.calendar-event-title,
+.contact-info > h2,
+.contact-form-card h2,
+.lesson-card-title,
+.age-group-card h3,
+.theory-levels-section .age-group-card h4 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.recital-features h2 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.calendar-event-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form-card h2 {
+    margin-top: 0;
+}
+
+.community-section-block > h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
 h3 {
     font-size: 1.5rem;
     font-weight: 600;
@@ -216,15 +253,19 @@ p {
         justify-content: flex-start;
         align-items: center;
         padding: 2rem 0 3rem 0;
-        transition: left 0.3s ease;
+        transition: left 0.3s ease, visibility 0.3s ease;
         z-index: 40;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .nav-menu.active {
         left: 0;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .nav-menu .nav-link {
@@ -1047,6 +1088,7 @@ a.btn-outline {
     margin-bottom: 4rem;
 }
 
+.community-section-block h2,
 .community-section-block h3 {
     text-align: center;
     margin-bottom: 2rem;
@@ -1453,7 +1495,7 @@ a.btn-outline {
 .gallery-item {
     display: inline-block;
     width: 100%;
-    margin-bottom: 1.5rem;
+    margin: 0 0 1.5rem;
     break-inside: avoid;
     background: white;
     border-radius: 12px;
