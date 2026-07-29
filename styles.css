@@ -1052,12 +1052,22 @@ p {
     margin-bottom: 2rem;
 }
 
-.organizations-grid,
+.organization-card {
+    display: grid;
+    grid-template-columns: 1fr; /* or omit auto-fit */
+    max-width: 420px; /* pick a size you like */
+    margin: 0 auto;
+    gap: 2rem;
+    justify-content: left;
+    text-align: left;
+}
+
 .opportunities-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 2rem;
-    max-width: 800px;
+    max-width: none;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -1629,10 +1639,10 @@ section {
         gap: 1.5rem;
     }
     
-    .organizations-grid,
-    .opportunities-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .organizations-grid, .opportunities-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     }
     
     .festivals-grid {
@@ -1756,5 +1766,14 @@ section {
     .festival-icon {
         align-self: center;
         margin-left: 0;
+    }
+
+    .opportunities-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .opportunities-grid .opportunity-card {
+        flex: 1 1 calc(33.333% - 2rem);
+        max-width: calc(33.333% - 2rem);
     }
 }
