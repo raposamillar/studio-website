@@ -95,9 +95,13 @@ p {
 }
 
 .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 1.25rem;
     font-weight: 600;
     color: #1a1a1a;
+    text-decoration: none;
 }
 
 .nav-menu {
@@ -113,8 +117,13 @@ p {
     transition: color 0.2s ease;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
     color: #030213;
+}
+
+.nav-link.active {
+    font-weight: 600;
 }
 
 .hamburger {
@@ -1463,10 +1472,11 @@ p {
     border-radius: 0 0 12px 12px;
 }
 
-/* Section padding top to account for fixed navbar */
-section {
-    scroll-margin-top: 4rem;
+/* Non-home pages: keep content clear of fixed navbar */
+body:not(.page-home) > section:first-of-type {
+    padding-top: 7rem;
 }
+
 
 #backToTop {
   display: none;              /* hidden by default */
