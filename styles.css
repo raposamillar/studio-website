@@ -7,10 +7,13 @@
 
 :root {
     --vh: 1vh;
+    --color-text: #1a1a1a;
+    --color-text-muted: #3f3f46; /* ~10:1 on white */
+    --color-text-secondary: #52525b; /* ~7:1 on white */
 }
 
 a {
-  color: #006DAB;
+  color: #005a8c;
   text-decoration: none;
 }
 
@@ -59,10 +62,10 @@ h4 {
 }
 
 p {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.0625rem;
+    line-height: 1.65;
     margin-bottom: 1rem;
-    color: #6b7280;
+    color: var(--color-text-secondary);
 }
 
 /* Layout */
@@ -110,9 +113,9 @@ p {
 }
 
 .nav-link {
-    color: #6b7280;
+    color: var(--color-text-muted);
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: color 0.2s ease;
 }
@@ -307,7 +310,7 @@ p {
 .badge {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 500;
     border-radius: 9999px;
 }
@@ -324,7 +327,7 @@ p {
 
 .badge-break {
     background-color: transparent;
-    color: #6b7280;
+    color: var(--color-text-secondary);
     border: 1px solid #d1d5db;
 }
 
@@ -397,7 +400,7 @@ p {
 
 .welcome-subtitle {
     font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
     max-width: 800px;
     margin: 0 auto 2rem;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -444,7 +447,7 @@ p {
 .chevron-down {
     width: 2rem;
     height: 2rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.92);
 }
 
 /* About Section */
@@ -489,20 +492,20 @@ p {
 }
 
 .instructor-title {
-    color: #6b7280;
-    font-size: 1rem;
+    color: var(--color-text-muted);
+    font-size: 1.0625rem;
     margin-bottom: 0.5rem;
 }
 
 .instructor-subtitle {
-    color: #9ca3af;
-    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
     margin-bottom: 0.25rem;
 }
 
 .instructor-links {
-    color: #9ca3af;
-    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
     margin-bottom: 0.25rem;
     margin-left: 1.5rem;
 }
@@ -577,7 +580,7 @@ p {
 .quote-text::before {
     content: "";
     font-size: 3rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.85);
     position: absolute;
     left: -1rem;
     top: -0.5rem;
@@ -588,7 +591,7 @@ p {
 .quote-author {
     font-style: normal;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #ffffff;
     display: block;
     text-align: right;
@@ -701,7 +704,7 @@ p {
 }
 
 .theory-levels-section .age-subtitle {
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
     font-size: 1rem;
 }
 
@@ -764,14 +767,14 @@ p {
 }
 
 .instructor-name {
-    color: #6b7280;
+    color: var(--color-text-secondary);
     font-size: 1rem;
     margin-bottom: 0.5rem;
 }
 
 .lesson-description {
-    color: #9ca3af;
-    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
 }
 
 .lesson-details {
@@ -782,8 +785,8 @@ p {
     display: flex;
     align-items: center;
     margin-bottom: 0.75rem;
-    font-size: 0.875rem;
-    color: #6b7280;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
 }
 
 .detail-item strong {
@@ -800,7 +803,7 @@ p {
 }
 
 .features-list h4 {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: #1a1a1a;
     margin-bottom: 0.75rem;
 }
@@ -811,8 +814,8 @@ p {
 }
 
 .features-list li {
-    font-size: 0.875rem;
-    color: #6b7280;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
     margin-bottom: 0.5rem;
 }
 
@@ -909,7 +912,7 @@ p {
 }
 
 .age-subtitle {
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
     font-size: 1rem;
 }
 
@@ -951,8 +954,8 @@ p {
 .calendar-date {
     display: flex;
     align-items: center;
-    color: #6b7280;
-    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
 }
 
 .spring-recital .calendar-date {
@@ -1066,14 +1069,14 @@ p {
 .organization-subtitle,
 .opportunity-subtitle,
 .festival-subtitle {
-    color: #6b7280;
-    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
     margin-bottom: 0.25rem;
 }
 
 .opportunity-description {
-    color: #9ca3af;
-    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
 }
 
 /* Contact Section - NO BACKGROUND IMAGE */
@@ -1185,8 +1188,9 @@ p {
 
 .faq-content p {
     margin: 0;
-    color: #6b7280;
-    line-height: 1.6;
+    color: var(--color-text-secondary);
+    font-size: 1.0625rem;
+    line-height: 1.65;
 }
 
 .contact-grid {
@@ -1237,8 +1241,8 @@ p {
 }
 
 .format-info {
-    font-size: 0.875rem;
-    color: #6b7280;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
 }
 
 .format-info div {
@@ -1246,8 +1250,8 @@ p {
 }
 
 .contact-form-card .card-header p {
-    color: #9ca3af;
-    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
     margin: 0;
 }
 
@@ -1270,7 +1274,7 @@ p {
 }
 
 .form-group label {
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
     color: #1a1a1a;
@@ -1324,8 +1328,8 @@ p {
 }
 
 .footer-section p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 0.875rem;
+    color: #ffffff;
+    font-size: 1rem;
 }
 
 .footer-links {
@@ -1335,9 +1339,9 @@ p {
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.92);
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -1346,8 +1350,8 @@ p {
 }
 
 .footer-contact {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    color: #ffffff;
 }
 
 .footer-contact div {
@@ -1359,12 +1363,12 @@ p {
     padding-top: 2rem;
     margin-top: 2rem;
     text-align: center;
-    color: #666;
+    color: rgba(255, 255, 255, 0.92);
 }
 
 .footer-bottom p {
-    color: rgba(255, 255, 255, 0.75);
-    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 1rem;
     margin: 0;
 }
 
@@ -1382,7 +1386,7 @@ p {
 .gallery-intro p {
     max-width: 600px;
     margin: 0 auto;
-    color: #666;
+    color: var(--color-text-muted);
 }
 
 .masonry-gallery {
@@ -1411,8 +1415,8 @@ p {
 
 .gallery-caption {
     padding: 1rem;
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 1rem;
+    color: var(--color-text-muted);
     font-weight: 500;
     text-align: center;
     background: white;
