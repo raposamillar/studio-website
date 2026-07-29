@@ -346,7 +346,15 @@ p {
     text-decoration: none;
     border: none;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: none;
+}
+
+/* Elevation on hover/focus/active — decorative only; focus ring remains the a11y cue */
+.btn:hover,
+.btn:focus-visible,
+.btn:active {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 
 .btn-primary {
@@ -376,6 +384,12 @@ a.btn-outline {
 .btn-outline:hover {
     background-color: #ffffff;
     color: #030213;
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible,
+.btn-outline:active {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
 }
 
 .full-width {
@@ -509,11 +523,17 @@ a.btn-outline {
 
 #explore-lessons:hover,
 #explore-lessons:focus-visible,
+#explore-lessons:active,
 #contact-us:hover,
-#contact-us:focus-visible {
+#contact-us:focus-visible,
+#contact-us:active,
+.lessons-section a.btn-primary:hover,
+.lessons-section a.btn-primary:focus-visible,
+.lessons-section a.btn-primary:active {
   background-color: #FFBF00;
   color: #000000;
   border-color: #FFBF00;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
 .scroll-indicator {
@@ -1205,8 +1225,11 @@ a.btn-outline {
     text-align: left;
 }
 
-.faq-question:hover {
+.faq-question:hover,
+.faq-question:focus-visible,
+.faq-question:active {
     background-color: rgba(0, 109, 171, 0.02);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
 .faq-question-text,
@@ -1540,12 +1563,15 @@ body:not(.page-home) > section:first-of-type {
   height: 44px;
   border-radius: 50%;
   font-size: 20px;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.2s ease;
+  box-shadow: none;
 }
 
 #backToTop:hover,
-#backToTop:focus-visible {
+#backToTop:focus-visible,
+#backToTop:active {
   background-color: #005a8c;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
 }
 
 .section-eyebrow {
