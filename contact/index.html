@@ -34,17 +34,18 @@
     <meta name="twitter:image" content="https://raposamillar.ca/assets/images/og-image.jpg" />
 
     <!-- Styles & Fonts -->
-    <link rel="stylesheet" href="/styles.css?v=1.2">
+    <link rel="stylesheet" href="/styles.css?v=1.3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="page-contact">
-    <!-- Fixed Navigation -->
+        <a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- Fixed Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-brand">
-                <img src="/brand-mark-black-32x32.png" alt="Studio Brand Mark" class="brand-mark">
+                <img src="/brand-mark-black-32x32.png" alt="" class="brand-mark">
                 Raposa Millar Piano & Theory Studio
             </a>
             <div class="nav-menu" id="navMenu">
@@ -55,19 +56,20 @@
                 <a href="/recitals/" class="nav-link">Recitals</a>
                 <a href="/community/" class="nav-link">Community</a>
                 <a href="/faq/" class="nav-link">FAQ</a>
-                <a href="/contact/" class="nav-link active">Contact</a>
+                <a href="/contact/" class="nav-link active" aria-current="page">Contact</a>
             </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
     </nav>
 
+<main id="main-content">
 <section id="contact" class="contact-section">
         <div class="container">
-            <h2>Contact Us</h2>
+            <h1>Contact Us</h1>
             
             <div class="contact-grid">
                 <div class="contact-info">
@@ -80,7 +82,7 @@
                     
                     <div class="contact-details">
                         <div class="contact-item">
-                            <div class="contact-icon">📍</div>
+                            <div class="contact-icon" aria-hidden="true">📍</div>
                             <div>
                                 <div>Swansea / Bloor West Village</div>
                                 <div>Toronto, Ontario, Canada</div>
@@ -89,7 +91,7 @@
                         </div>
                         
                         <div class="contact-item">
-                            <div class="contact-icon">✉️</div>
+                            <div class="contact-icon" aria-hidden="true">✉️</div>
                             <a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a>
                         </div>
                     </div>
@@ -106,31 +108,52 @@
                 <div class="contact-form-container">
                     <div class="card contact-form-card">
                         <div class="card-header">
-                            <h3>Questions About Lessons?</h3>
-                            <p>Fill out the form below to inquire about piano or theory lessons.</p>
+                            <h3 id="inquiry-form-heading">Questions About Lessons?</h3>
+                            <p id="inquiry-form-desc">
+                                Fill out the form below to inquire about piano or theory lessons.
+                                If the form does not load, email us at
+                                <a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a>.
+                            </p>
                         </div>
-                        <div class="card-content">
+                        <div
+                            class="card-content contact-widget"
+                            id="mymusicstaff-widget"
+                            role="region"
+                            aria-labelledby="inquiry-form-heading"
+                            aria-describedby="inquiry-form-desc"
+                        >
                             <script src="https://app.mymusicstaff.com/Widget/v4/Widget.ashx?settings=eyJTY2hvb2xJRCI6InNjaF9WcGdKTCIsIldlYnNpdGVJRCI6Indic182NUptIiwiV2Vic2l0ZUJsb2NrSUQiOiJ3YmJfY1M0SmsifQ=="></script>
+                            <noscript>
+                                <p>
+                                    JavaScript is required for the inquiry form.
+                                    Please email
+                                    <a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a>
+                                    instead.
+                                </p>
+                            </noscript>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    </main>
+
+
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>Raposa Millar Piano & Theory Studio</h3>
+                    <p class="footer-heading">Raposa Millar Piano & Theory Studio</p>
                     <p>
                         Offering piano & theory lessons to students of all levels in the GTA since 2017. Located in Swansea / Bloor West Village, Toronto just steps from High Park.
                     </p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Quick Navigation</h4>
+                    <p class="footer-heading">Quick Navigation</p>
                     <div class="footer-links">
                         <a href="/">Welcome</a>
                         <a href="/about/">About Us</a>
@@ -140,17 +163,17 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
+                    <p class="footer-heading">Contact Info</p>
                     <div class="footer-contact">
                         <div>Swansea / Bloor West Village</div>
                         <div>Toronto, Ontario, Canada</div>
                         <div>M6S 3E2</div>
-                        <div>studio@raposamillar.ca</div>
+                        <div><a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a></div>
                     </div>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Explore More</h4>
+                    <p class="footer-heading">Explore More</p>
                     <div class="footer-links">
                         <a href="https://rmbpianos.com">RmB Pianos, Inc.</a>
                         <a href="https://vimeo.com/millarpianoduo">Millar Piano Duo</a>
@@ -164,9 +187,7 @@
         </div>
     </footer>
 
-    <button id="backToTop" title="Back to top">
-    &#x25B2;
-    </button>
+    <button type="button" id="backToTop" aria-label="Back to top">&#x25B2;</button>
 
     <script src="/scripts.js"></script>
 </body>

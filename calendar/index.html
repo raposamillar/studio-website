@@ -34,40 +34,42 @@
     <meta name="twitter:image" content="https://raposamillar.ca/assets/images/og-image.jpg" />
 
     <!-- Styles & Fonts -->
-    <link rel="stylesheet" href="/styles.css?v=1.2">
+    <link rel="stylesheet" href="/styles.css?v=1.3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="page-calendar">
-    <!-- Fixed Navigation -->
+        <a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- Fixed Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-brand">
-                <img src="/brand-mark-black-32x32.png" alt="Studio Brand Mark" class="brand-mark">
+                <img src="/brand-mark-black-32x32.png" alt="" class="brand-mark">
                 Raposa Millar Piano & Theory Studio
             </a>
             <div class="nav-menu" id="navMenu">
                 <a href="/" class="nav-link">Home</a>
                 <a href="/about/" class="nav-link">About</a>
                 <a href="/lessons/" class="nav-link">Lessons</a>
-                <a href="/calendar/" class="nav-link active">Calendar</a>
+                <a href="/calendar/" class="nav-link active" aria-current="page">Calendar</a>
                 <a href="/recitals/" class="nav-link">Recitals</a>
                 <a href="/community/" class="nav-link">Community</a>
                 <a href="/faq/" class="nav-link">FAQ</a>
                 <a href="/contact/" class="nav-link">Contact</a>
             </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
     </nav>
 
+<main id="main-content">
 <section id="calendar" class="calendar-section">
         <div class="container">
-            <h2>Academic Calendar</h2>
+            <h1>Academic Calendar</h1>
             
             <div class="calendar-intro">
                 <p>
@@ -86,7 +88,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🟢</span>
+                                <span class="calendar-icon" aria-hidden="true">🟢</span>
                                 <span class="calendar-text">September 6, 2025</span>
                             </div>
                         </div>
@@ -103,7 +105,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🦃</span>
+                                <span class="calendar-icon" aria-hidden="true">🦃</span>
                                 <span class="calendar-text">October 11-13, 2025</span>
                             </div>
                         </div>
@@ -120,7 +122,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">❄️</span>
+                                <span class="calendar-icon" aria-hidden="true">❄️</span>
                                 <span class="calendar-text">December 21, 2025 - January 5, 2026</span>
                             </div>
                         </div>
@@ -137,7 +139,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🧑‍🧑‍🧒‍🧒</span>
+                                <span class="calendar-icon" aria-hidden="true">🧑‍🧑‍🧒‍🧒</span>
                                 <span class="calendar-text">February 14-16, 2026</span>
                             </div>
                         </div>
@@ -154,7 +156,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🏝️</span>
+                                <span class="calendar-icon" aria-hidden="true">🏝️</span>
                                 <span class="calendar-text">March 16-22, 2026</span>
                             </div>
                         </div>
@@ -171,7 +173,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🐣</span>
+                                <span class="calendar-icon" aria-hidden="true">🐣</span>
                                 <span class="calendar-text">April 3-6, 2026</span>
                             </div>
                         </div>
@@ -188,7 +190,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">👑</span>
+                                <span class="calendar-icon" aria-hidden="true">👑</span>
                                 <span class="calendar-text">May 18, 2026</span>
                             </div>
                         </div>
@@ -205,7 +207,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🍕 </span>
+                                <span class="calendar-icon" aria-hidden="true">🍕 </span>
                                 <span class="calendar-text">May 30, 2026 @ 1:00 pm</span>
                             </div>
                         </div>
@@ -222,7 +224,7 @@
                     <div class="card-content spring-recital">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🎹 🎻</span>
+                                <span class="calendar-icon" aria-hidden="true">🎹 🎻</span>
                                 <span class="calendar-text">June 6, 2026 @ 1:00 pm</span>
                             </div>
 
@@ -245,7 +247,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🔴</span>
+                                <span class="calendar-icon" aria-hidden="true">🔴</span>
                                 <span class="calendar-text">June 8, 2026</span>
                             </div>
                             
@@ -263,7 +265,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🎶</span>
+                                <span class="calendar-icon" aria-hidden="true">🎶</span>
                                 <span class="calendar-text">June 9-July 15, 2026</span>
                             </div>
                         </div>
@@ -280,7 +282,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon">🎼</span>
+                                <span class="calendar-icon" aria-hidden="true">🎼</span>
                                 <span class="calendar-text">Flexible through August 31, 2026</span>
                             </div>
                         </div>
@@ -291,20 +293,23 @@
     </section>
 
     <!-- Recitals Section -->
+    </main>
+
+
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>Raposa Millar Piano & Theory Studio</h3>
+                    <p class="footer-heading">Raposa Millar Piano & Theory Studio</p>
                     <p>
                         Offering piano & theory lessons to students of all levels in the GTA since 2017. Located in Swansea / Bloor West Village, Toronto just steps from High Park.
                     </p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Quick Navigation</h4>
+                    <p class="footer-heading">Quick Navigation</p>
                     <div class="footer-links">
                         <a href="/">Welcome</a>
                         <a href="/about/">About Us</a>
@@ -314,17 +319,17 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
+                    <p class="footer-heading">Contact Info</p>
                     <div class="footer-contact">
                         <div>Swansea / Bloor West Village</div>
                         <div>Toronto, Ontario, Canada</div>
                         <div>M6S 3E2</div>
-                        <div>studio@raposamillar.ca</div>
+                        <div><a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a></div>
                     </div>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Explore More</h4>
+                    <p class="footer-heading">Explore More</p>
                     <div class="footer-links">
                         <a href="https://rmbpianos.com">RmB Pianos, Inc.</a>
                         <a href="https://vimeo.com/millarpianoduo">Millar Piano Duo</a>
@@ -338,9 +343,7 @@
         </div>
     </footer>
 
-    <button id="backToTop" title="Back to top">
-    &#x25B2;
-    </button>
+    <button type="button" id="backToTop" aria-label="Back to top">&#x25B2;</button>
 
     <script src="/scripts.js"></script>
 </body>

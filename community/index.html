@@ -34,17 +34,18 @@
     <meta name="twitter:image" content="https://raposamillar.ca/assets/images/og-image.jpg" />
 
     <!-- Styles & Fonts -->
-    <link rel="stylesheet" href="/styles.css?v=1.2">
+    <link rel="stylesheet" href="/styles.css?v=1.3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="page-community">
-    <!-- Fixed Navigation -->
+        <a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- Fixed Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-brand">
-                <img src="/brand-mark-black-32x32.png" alt="Studio Brand Mark" class="brand-mark">
+                <img src="/brand-mark-black-32x32.png" alt="" class="brand-mark">
                 Raposa Millar Piano & Theory Studio
             </a>
             <div class="nav-menu" id="navMenu">
@@ -53,21 +54,22 @@
                 <a href="/lessons/" class="nav-link">Lessons</a>
                 <a href="/calendar/" class="nav-link">Calendar</a>
                 <a href="/recitals/" class="nav-link">Recitals</a>
-                <a href="/community/" class="nav-link active">Community</a>
+                <a href="/community/" class="nav-link active" aria-current="page">Community</a>
                 <a href="/faq/" class="nav-link">FAQ</a>
                 <a href="/contact/" class="nav-link">Contact</a>
             </div>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
     </nav>
 
+<main id="main-content">
 <section id="community" class="community-section">
         <div class="container">
-            <h2>Community</h2>
+            <h1>Community</h1>
             
             <div class="community-intro">
                 <p>
@@ -87,7 +89,7 @@
                                     <h4><a href="https://www.ormtactb.com/">The Central Toronto Branch of ORMTA</a></h4>
                                     <p class="organization-subtitle">Ontario Registered Music Teachers' Association</p>
                                 </div>
-                                <div class="organization-icon">👥</div>
+                                <div class="organization-icon" aria-hidden="true">👥</div>
                             </div>
                         </div>
                     </div>
@@ -105,7 +107,7 @@
                                     <h4><a href="https://www.rcmusic.com/learning/examinations/examination-resources-for-students/examination-dates">The Royal Conservatory – Exam Dates</a></h4>
                                     <p class="opportunity-subtitle">Formal evaluation and certification opportunities</p>
                                 </div>
-                                <div class="opportunity-icon">🎵</div>
+                                <div class="opportunity-icon" aria-hidden="true">🎵</div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +120,7 @@
                                     <p class="opportunity-subtitle">Contemporary Showcase</p>
                                     <p class="opportunity-description">Platform for contemporary Canadian music performance</p>
                                 </div>
-                                <div class="opportunity-icon">🎵</div>
+                                <div class="opportunity-icon" aria-hidden="true">🎵</div>
                             </div>
                         </div>
                     </div>
@@ -131,7 +133,7 @@
                                     <p class="opportunity-subtitle">Academy</p>
                                     <p class="opportunity-description">Perform on early keyboard instruments in master classes</p>
                                 </div>
-                                <div class="opportunity-icon">🎵</div>
+                                <div class="opportunity-icon" aria-hidden="true">🎵</div>
                             </div>
                         </div>
                     </div>
@@ -149,7 +151,7 @@
                                     <h4><a href="https://hamiltonmusicfestival.ca/">Hamilton Music Festival</a></h4>
                                     <p class="festival-subtitle">Annual music competition and performance festival</p>
                                 </div>
-                                <div class="festival-icon">⭐</div>
+                                <div class="festival-icon" aria-hidden="true">⭐</div>
                             </div>
                         </div>
                     </div>
@@ -161,7 +163,7 @@
                                     <h4><a href="https://www.peelmusicfestival.ca/">Peel Music Festival</a></h4>
                                     <p class="festival-subtitle">Regional music festival with various categories</p>
                                 </div>
-                                <div class="festival-icon">⭐</div>
+                                <div class="festival-icon" aria-hidden="true">⭐</div>
                             </div>
                         </div>
                     </div>
@@ -173,7 +175,7 @@
                                     <h4><a href="https://omfa.ca/">Ontario Music Festivals Association (OMFA)</a></h4>
                                     <p class="festival-subtitle">Provincial organization for member music festivals at the local level</p>
                                 </div>
-                                <div class="festival-icon">⭐</div>
+                                <div class="festival-icon" aria-hidden="true">⭐</div>
                             </div>
                         </div>
                     </div>
@@ -183,20 +185,23 @@
     </section>
 
     <!-- FAQ Section -->
+    </main>
+
+
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>Raposa Millar Piano & Theory Studio</h3>
+                    <p class="footer-heading">Raposa Millar Piano & Theory Studio</p>
                     <p>
                         Offering piano & theory lessons to students of all levels in the GTA since 2017. Located in Swansea / Bloor West Village, Toronto just steps from High Park.
                     </p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Quick Navigation</h4>
+                    <p class="footer-heading">Quick Navigation</p>
                     <div class="footer-links">
                         <a href="/">Welcome</a>
                         <a href="/about/">About Us</a>
@@ -206,17 +211,17 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Contact Info</h4>
+                    <p class="footer-heading">Contact Info</p>
                     <div class="footer-contact">
                         <div>Swansea / Bloor West Village</div>
                         <div>Toronto, Ontario, Canada</div>
                         <div>M6S 3E2</div>
-                        <div>studio@raposamillar.ca</div>
+                        <div><a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a></div>
                     </div>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Explore More</h4>
+                    <p class="footer-heading">Explore More</p>
                     <div class="footer-links">
                         <a href="https://rmbpianos.com">RmB Pianos, Inc.</a>
                         <a href="https://vimeo.com/millarpianoduo">Millar Piano Duo</a>
@@ -230,9 +235,7 @@
         </div>
     </footer>
 
-    <button id="backToTop" title="Back to top">
-    &#x25B2;
-    </button>
+    <button type="button" id="backToTop" aria-label="Back to top">&#x25B2;</button>
 
     <script src="/scripts.js"></script>
 </body>

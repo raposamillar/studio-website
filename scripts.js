@@ -1,40 +1,73 @@
-// Initialize page interactions
 document.addEventListener('DOMContentLoaded', function() {
-    // Setup hamburger menu
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const setupHamburgerMenu = () => {
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         const navLinks = document.querySelectorAll('.nav-link');
 
-        if (hamburger && navMenu) {
-            hamburger.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                });
-            });
-
-            document.addEventListener('click', function(event) {
-                if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                }
-            });
-
-            navMenu.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
+        if (!hamburger || !navMenu) {
+            return;
         }
+
+        const setMenuOpen = (open) => {
+            hamburger.classList.toggle('active', open);
+            navMenu.classList.toggle('active', open);
+            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+
+            if (open) {
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+                const firstLink = navMenu.querySelector('.nav-link');
+                if (firstLink) {
+                    firstLink.focus();
+                }
+            } else {
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+            }
+        };
+
+        const closeMenu = () => setMenuOpen(false);
+        const toggleMenu = () => setMenuOpen(!navMenu.classList.contains('active'));
+
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeMenu();
+                hamburger.focus();
+            }
+        });
+
+        navMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMenu();
+            }
+        });
     };
 
-    // Setup FAQ accordion (faq page only)
     const setupFAQAccordion = () => {
         const faqSection = document.getElementById('faq');
         if (!faqSection) {
@@ -43,56 +76,72 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const faqQuestions = faqSection.querySelectorAll('.faq-question');
 
-        faqQuestions.forEach((question) => {
-            question.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+        const closeAll = (except) => {
+            faqQuestions.forEach(question => {
+                if (question === except) {
+                    return;
+                }
+                const faqId = question.getAttribute('data-faq');
+                const answer = document.getElementById(`faq-answer-${faqId}`);
+                question.classList.remove('active');
+                question.setAttribute('aria-expanded', 'false');
+                if (answer) {
+                    answer.classList.remove('active');
+                    answer.hidden = true;
+                }
+            });
+        };
 
+        faqQuestions.forEach((question) => {
+            question.addEventListener('click', function() {
                 const faqId = this.getAttribute('data-faq');
                 const answer = document.getElementById(`faq-answer-${faqId}`);
-                const chevron = this.querySelector('.faq-chevron');
-                const isCurrentlyActive = this.classList.contains('active');
+                const isOpen = this.getAttribute('aria-expanded') === 'true';
 
-                faqQuestions.forEach(otherQuestion => {
-                    const otherFaqId = otherQuestion.getAttribute('data-faq');
-                    const otherAnswer = document.getElementById(`faq-answer-${otherFaqId}`);
-                    const otherChevron = otherQuestion.querySelector('.faq-chevron');
+                closeAll(this);
 
-                    otherQuestion.classList.remove('active');
-                    if (otherAnswer) {
-                        otherAnswer.classList.remove('active');
-                    }
-                    if (otherChevron) {
-                        otherChevron.style.transform = 'rotate(0deg)';
-                    }
-                });
-
-                if (!isCurrentlyActive) {
+                if (!isOpen) {
                     this.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
                     if (answer) {
+                        answer.hidden = false;
                         answer.classList.add('active');
                     }
-                    if (chevron) {
-                        chevron.style.transform = 'rotate(180deg)';
+                } else {
+                    this.classList.remove('active');
+                    this.setAttribute('aria-expanded', 'false');
+                    if (answer) {
+                        answer.classList.remove('active');
+                        answer.hidden = true;
                     }
                 }
             });
         });
     };
 
+    const setupThirdPartyWidgetA11y = () => {
+        const widgetRoot = document.getElementById('mymusicstaff-widget');
+        if (!widgetRoot) {
+            return;
+        }
+
+        const titleIframes = () => {
+            widgetRoot.querySelectorAll('iframe').forEach((iframe) => {
+                if (!iframe.getAttribute('title')) {
+                    iframe.setAttribute('title', 'Lesson inquiry form');
+                }
+            });
+        };
+
+        titleIframes();
+
+        const observer = new MutationObserver(titleIframes);
+        observer.observe(widgetRoot, { childList: true, subtree: true });
+    };
+
     setupHamburgerMenu();
     setupFAQAccordion();
-
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('navMenu');
-            if (hamburger && navMenu) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        }
-    });
+    setupThirdPartyWidgetA11y();
 
     const setViewportHeight = () => {
         const vh = window.innerHeight * 0.01;
@@ -105,30 +154,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(setViewportHeight, 100);
     });
 
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('navMenu');
-
-    if (hamburger && navMenu) {
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.attributeName === 'class') {
-                    if (navMenu.classList.contains('active')) {
-                        document.body.style.overflow = 'hidden';
-                        document.body.style.position = 'fixed';
-                        document.body.style.width = '100%';
-                    } else {
-                        document.body.style.overflow = '';
-                        document.body.style.position = '';
-                        document.body.style.width = '';
-                    }
-                }
-            });
-        });
-
-        observer.observe(navMenu, { attributes: true });
-    }
-
-    // Back-to-Top Button
     const backToTopBtn = document.getElementById('backToTop');
     if (backToTopBtn) {
         window.addEventListener('scroll', function() {
@@ -140,7 +165,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({
+                top: 0,
+                behavior: prefersReducedMotion ? 'auto' : 'smooth'
+            });
         });
     }
 });
