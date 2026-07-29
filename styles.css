@@ -1305,7 +1305,7 @@ p {
 
 /* Footer — soft charcoal + off-white (avoids pure black/white vibration) */
 .footer {
-    --footer-bg: #2f343d;
+    --footer-bg: #1a1e25; /* darker charcoal, not pure black — muted text still ~10.6:1 (AAA) */
     --footer-text: #e6e8ec;
     --footer-heading: #f1f3f5;
     --footer-muted: #c9ced6;
