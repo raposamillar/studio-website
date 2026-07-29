@@ -18,7 +18,7 @@ a {
 }
 
 a:hover {
-  color: #E06610;
+  color: #9A3412; /* darker orange — ~7.3:1 on white (WCAG AAA) */
 }
 
 body {
@@ -1303,10 +1303,15 @@ p {
     font-family: inherit;
 }
 
-/* Footer */
+/* Footer — soft charcoal + off-white (avoids pure black/white vibration) */
 .footer {
-    background-color: #030213;
-    color: white;
+    --footer-bg: #2f343d;
+    --footer-text: #e6e8ec;
+    --footer-heading: #f1f3f5;
+    --footer-muted: #c9ced6;
+    --footer-border: rgba(230, 232, 236, 0.22);
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
     padding: 3rem 0;
 }
 
@@ -1319,16 +1324,16 @@ p {
 
 .footer-section h3 {
     margin-bottom: 1rem;
-    color: white;
+    color: var(--footer-heading);
 }
 
 .footer-section h4 {
     margin-bottom: 1rem;
-    color: white;
+    color: var(--footer-heading);
 }
 
 .footer-section p {
-    color: #ffffff;
+    color: var(--footer-text);
     font-size: 1rem;
 }
 
@@ -1339,19 +1344,19 @@ p {
 }
 
 .footer-links a {
-    color: rgba(255, 255, 255, 0.92);
+    color: var(--footer-muted);
     text-decoration: none;
     font-size: 1rem;
     cursor: pointer;
 }
 
 .footer-links a:hover {
-    color: white;
+    color: var(--footer-heading);
 }
 
 .footer-contact {
     font-size: 1rem;
-    color: #ffffff;
+    color: var(--footer-text);
 }
 
 .footer-contact div {
@@ -1359,15 +1364,15 @@ p {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid var(--footer-border);
     padding-top: 2rem;
     margin-top: 2rem;
     text-align: center;
-    color: rgba(255, 255, 255, 0.92);
+    color: var(--footer-muted);
 }
 
 .footer-bottom p {
-    color: rgba(255, 255, 255, 0.92);
+    color: var(--footer-muted);
     font-size: 1rem;
     margin: 0;
 }
