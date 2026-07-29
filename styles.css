@@ -1052,23 +1052,31 @@ p {
     margin-bottom: 2rem;
 }
 
-.organization-card {
+.organizations-grid {
     display: grid;
-    grid-template-columns: 1fr; /* or omit auto-fit */
-    max-width: 420px; /* pick a size you like */
+    grid-template-columns: 1fr;
+    max-width: 420px;
     margin: 0 auto;
     gap: 2rem;
-    justify-content: left;
-    text-align: left;
+}
+
+.organization-card .organization-header {
+    justify-content: center;
+    text-align: center;
 }
 
 .opportunities-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-template-columns: 1fr;
     gap: 2rem;
-    max-width: none;
     width: 100%;
     margin: 0 auto;
+}
+
+@media (min-width: 900px) {
+    .opportunities-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 .festivals-grid {
@@ -1217,76 +1225,6 @@ p {
     margin: 0;
     color: #6b7280;
     line-height: 1.6;
-}
-
-/* Community Section */
-.community-section {
-    padding: 6rem 0;
-}
-
-.community-intro {
-    max-width: 800px;
-    margin: 0 auto 4rem;
-    text-align: center;
-}
-
-.community-section-block {
-    margin-bottom: 4rem;
-}
-
-.community-section-block h3 {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.organizations-grid,
-.opportunities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.festivals-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.organization-header,
-.opportunity-header,
-.festival-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-.organization-icon,
-.opportunity-icon,
-.festival-icon {
-    font-size: 1.5rem;
-    flex-shrink: 0;
-}
-
-.organization-subtitle,
-.opportunity-subtitle,
-.festival-subtitle {
-    color: #6b7280;
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
-}
-
-.opportunity-description {
-    color: #9ca3af;
-    font-size: 0.75rem;
-}
-
-/* Contact Section - NO BACKGROUND IMAGE */
-.contact-section {
-    padding: 6rem 0;
-    background-color: rgba(236, 236, 240, 0.05);
 }
 
 .contact-grid {
@@ -1639,15 +1577,26 @@ section {
         gap: 1.5rem;
     }
     
-    .organizations-grid, .opportunities-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    }
-    
+    .organizations-grid,
+    .opportunities-grid,
     .festivals-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+
+    .organization-header,
+    .opportunity-header,
+    .festival-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .organization-icon,
+    .opportunity-icon,
+    .festival-icon {
+        align-self: center;
+        margin-left: 0;
     }
     
     .contact-grid {
@@ -1752,28 +1701,4 @@ section {
         font-size: 1rem;
     }
     
-    /* Organization header stack */
-    .organization-header,
-    .opportunity-header,
-    .festival-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-    
-    .organization-icon,
-    .opportunity-icon,
-    .festival-icon {
-        align-self: center;
-        margin-left: 0;
-    }
-
-    .opportunities-grid {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .opportunities-grid .opportunity-card {
-        flex: 1 1 calc(33.333% - 2rem);
-        max-width: calc(33.333% - 2rem);
-    }
 }
