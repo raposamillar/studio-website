@@ -33,6 +33,12 @@ body {
     overflow-x: hidden;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 .skip-link {
     position: absolute;
     left: 0.75rem;
@@ -195,8 +201,9 @@ p {
 }
 
 .nav-brand:hover,
-.nav-brand:hover .nav-logo-wordmark {
-    color: #1a1a1a;
+.nav-brand:hover .nav-logo-wordmark,
+.nav-brand:focus-visible .nav-logo-wordmark {
+    color: var(--color-brand);
 }
 
 .nav-logo-wordmark {
@@ -212,6 +219,7 @@ p {
     font-family: var(--font-display);
     text-transform: uppercase;
     line-height: 1.05;
+    transition: color 0.2s ease;
 }
 
 .nav-logo-name {
@@ -240,12 +248,38 @@ p {
     flex: 0 0 auto;
 }
 
+.nav-logo-mark-wrap {
+    position: relative;
+    display: block;
+    flex-shrink: 0;
+    height: clamp(3.85rem, 11vw, 5.5rem);
+    width: auto;
+    aspect-ratio: 393 / 493;
+}
+
 .nav-logo-mark {
     display: block;
     width: auto;
-    height: clamp(3.85rem, 11vw, 5.5rem);
-    flex-shrink: 0;
+    height: 100%;
     object-fit: contain;
+    transition: opacity 0.2s ease;
+}
+
+.nav-logo-mark-blue {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.nav-brand:hover .nav-logo-mark-blue,
+.nav-brand:focus-visible .nav-logo-mark-blue {
+    opacity: 1;
+}
+
+.nav-brand:hover .nav-logo-mark-black,
+.nav-brand:focus-visible .nav-logo-mark-black {
+    opacity: 0;
 }
 
 .nav-logo {
@@ -273,12 +307,18 @@ p {
 }
 
 .nav-link:hover,
-.nav-link.active {
-    color: #030213;
+.nav-link:focus-visible {
+    color: var(--color-brand);
 }
 
 .nav-link.active {
+    color: #030213;
     font-weight: 600;
+}
+
+.nav-link.active:hover,
+.nav-link.active:focus-visible {
+    color: var(--color-brand);
 }
 
 .hamburger {
@@ -379,9 +419,8 @@ p {
         font-size: clamp(0.8rem, 2.8vw, 0.95rem);
     }
 
-    .nav-logo-mark {
+    .nav-logo-mark-wrap {
         height: clamp(4.25rem, 15vw, 5.25rem);
-        width: auto;
     }
 
     .footer-brand {
@@ -438,9 +477,8 @@ p {
         font-size: 0.8rem;
     }
 
-    .nav-logo-mark {
+    .nav-logo-mark-wrap {
         height: 4.25rem;
-        width: auto;
     }
 
     .nav-brand {
@@ -1010,7 +1048,22 @@ a.btn-outline {
 }
 
 .lesson-image-item {
+    display: block;
     text-align: center;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 0.625rem;
+    transition: transform 0.2s ease;
+}
+
+.lesson-image-item:hover,
+.lesson-image-item:focus-visible {
+    transform: translateY(-2px);
+}
+
+.lesson-image-item:focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 4px;
 }
 
 .lesson-image-item img {
@@ -1019,14 +1072,49 @@ a.btn-outline {
     object-fit: cover;
     border-radius: 0.625rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease;
+}
+
+.lesson-image-item:hover img,
+.lesson-image-item:focus-visible img {
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
 }
 
 .image-caption {
     margin-top: 1rem;
+    font-family: var(--font-display);
     font-size: 1.125rem;
     font-weight: 600;
     color: #1a1a1a;
     text-align: center;
+    transition: color 0.2s ease;
+}
+
+.lesson-image-item:hover .image-caption,
+.lesson-image-item:focus-visible .image-caption {
+    color: var(--color-brand);
+}
+
+#philosophy-piano,
+#philosophy-theory,
+#piano-lessons-card,
+#music-theory-card,
+#piano-lessons-section,
+#theory-lessons-section {
+    scroll-margin-top: calc(var(--nav-offset) + 1.25rem);
+}
+
+.philosophy-section h3 a,
+.lesson-card-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.philosophy-section h3 a:hover,
+.philosophy-section h3 a:focus-visible,
+.lesson-card-title a:hover,
+.lesson-card-title a:focus-visible {
+    color: var(--color-brand);
 }
 
 .philosophy-section {

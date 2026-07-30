@@ -34,7 +34,7 @@
     <meta name="twitter:image" content="https://raposamillar.ca/assets/images/og-image.jpg" />
 
     <!-- Styles & Fonts -->
-    <link rel="stylesheet" href="/styles.css?v=1.36">
+    <link rel="stylesheet" href="/styles.css?v=1.41">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -51,7 +51,10 @@
                     <span class="nav-logo-track" aria-hidden="true"><span>P</span><span>I</span><span>A</span><span>N</span><span>O</span><span>&amp;</span><span>T</span><span>H</span><span>E</span><span>O</span><span>R</span><span>Y</span></span>
                 </span>
             </span>
-                <img src="/assets/brand/logo-mark-black-nav.png?v=1" alt="" class="nav-logo-mark" width="393" height="493" aria-hidden="true">
+                <span class="nav-logo-mark-wrap" aria-hidden="true">
+                    <img src="/assets/brand/logo-mark-black-nav.png?v=1" alt="" class="nav-logo-mark nav-logo-mark-black" width="393" height="493">
+                    <img src="/assets/brand/logo-mark-blue-nav.png?v=1" alt="" class="nav-logo-mark nav-logo-mark-blue" width="393" height="493">
+                </span>
             </a>
             <div class="nav-menu" id="navMenu">
                 <a href="/" class="nav-link">Home</a>
@@ -79,14 +82,14 @@
             <!-- Lesson Images -->
             <div class="lesson-images">
                 <div class="lesson-images-grid">
-                    <div class="lesson-image-item">
+                    <a class="lesson-image-item" href="#philosophy-piano">
                         <img src="/assets/images/piano-keyboard.jpg" alt="Piano keyboard" />
                         <p class="image-caption">Piano Lessons</p>
-                    </div>
-                    <div class="lesson-image-item">
+                    </a>
+                    <a class="lesson-image-item" href="#philosophy-theory">
                         <img src="/assets/images/theory-example.jpg" alt="Music theory example" />
                         <p class="image-caption">Music Theory</p>
-                    </div>
+                    </a>
                 </div>
             </div>
             
@@ -94,7 +97,7 @@
             <div class="philosophy-section">
                 <h2>Our Philosophies</h2>
                 
-                <h3>Piano</h3>
+                <h3 id="philosophy-piano"><a href="#piano-lessons-card">Piano</a></h3>
                 <p>
                     Playing the piano is one of life's great pleasures. <br>We believe that anyone can be taught to play expressively. 
                     <br>There are musical wonders to be enjoyed at every stage, <br>from the simplest of tunes to the most intricate counterpoint.
@@ -103,7 +106,7 @@
                     Many paths are available for students studying piano. Some elect to prepare for festivals, exams, and university auditions, while others prefer to practice solely for personal growth and enjoyment. All students are encouraged to perform in our end-of-year Spring Recital.
                 </p>
                 
-                <h3>Theory</h3>
+                <h3 id="philosophy-theory"><a href="#music-theory-card">Theory</a></h3>
                 <p>
                     The study of music theory is an important complement to lessons, whether you sing, play the piano, violin, cello, or any other instrument.
                 </p>
@@ -122,9 +125,9 @@
 
             <!-- Lesson Programs -->
             <div class="lessons-grid">
-                <div class="card lesson-card">
+                <div class="card lesson-card" id="piano-lessons-card">
                     <div class="card-header">
-                        <h2 class="lesson-card-title">Piano Lessons</h2>
+                        <h2 class="lesson-card-title"><a href="#piano-lessons-section">Piano Lessons</a></h2>
                         <p class="instructor-name">Lisa Raposa Millar, DMA</p>
                         <p class="lesson-description">In-person lessons for students developing their <br>musical creativity + technique</p>
                     </div>
@@ -174,9 +177,9 @@
                     </div>
                 </div>
 
-                <div class="card lesson-card">
+                <div class="card lesson-card" id="music-theory-card">
                     <div class="card-header">
-                        <h2 class="lesson-card-title">Music Theory</h2>
+                        <h2 class="lesson-card-title"><a href="#theory-lessons-section">Music Theory</a></h2>
                         <p class="instructor-name">Gregory Millar, DMA</p>
                         <p class="lesson-description">Online or in-person lessons <br>following the Royal Conservatory curriculum</p>
                     </div>
@@ -228,7 +231,7 @@
             </div>
 
             <!-- Piano Development by Age -->
-            <h2>Piano Lessons</h2>
+            <h2 id="piano-lessons-section">Piano Lessons</h2>
             <p class="section-eyebrow">Ages 9 and Up</p>
             <div class="age-groups-grid">
                 <div class="card age-group-card">
@@ -275,7 +278,7 @@
     <!-- Theory Lessons by Level -->
     <section class="theory-levels-section">
         <div class="container">
-            <h2>Theory Lessons by Level</h2>
+            <h2 id="theory-lessons-section">Theory Lessons by Level</h2>
             
             <h3 class="theory-level-group">Early &amp; Intermediate Levels</h3>
             <div class="age-groups-grid">
