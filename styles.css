@@ -690,12 +690,22 @@ a.btn-outline {
     margin-bottom: 3rem;
 }
 
+/* Hero secondary CTA: solid fill for reliable contrast on the photo */
+.welcome-buttons #contact-us,
+.welcome-buttons .btn-outline {
+    background-color: #ffffff;
+    color: #030213;
+    border: 2px solid #ffffff;
+    font-weight: 600;
+    text-shadow: none;
+}
+
+.welcome-buttons #contact-us:hover,
+.welcome-buttons #contact-us:focus-visible,
+.welcome-buttons #contact-us:active,
 #explore-lessons:hover,
 #explore-lessons:focus-visible,
 #explore-lessons:active,
-#contact-us:hover,
-#contact-us:focus-visible,
-#contact-us:active,
 .lessons-section a.btn-primary:hover,
 .lessons-section a.btn-primary:focus-visible,
 .lessons-section a.btn-primary:active {
