@@ -614,6 +614,10 @@ a.btn-outline {
     margin-top: 3rem;
 }
 
+.testimonials-section {
+    padding-top: 4rem;
+}
+
 /* Instructor Quote Styling */
 .instructor-quote {
     position: relative;
