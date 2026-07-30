@@ -720,28 +720,36 @@ a.btn-outline {
 
 .instructors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
     gap: 2rem;
     margin-bottom: 4rem;
 }
 
 .instructor-card {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
 }
 
-/* Instructor Photo Styling */
+/* Instructor Photo Styling — full-bleed top of card, scales with card width */
 .instructor-photo {
-    padding: 1.5rem 1.5rem 0;
-    text-align: center;
+    padding: 0;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: #e8eaed;
 }
 
 .instructor-image {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid rgba(3, 2, 19, 0.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    object-position: center top;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    display: block;
 }
 
 .instructor-title {
@@ -2028,12 +2036,6 @@ body:not(.page-home) main > section:first-of-type {
     .card-header,
     .card-content {
         padding: 1rem;
-    }
-    
-    /* Instructor image smaller */
-    .instructor-image {
-        width: 150px;
-        height: 150px;
     }
     
     /* Feature icon smaller */
