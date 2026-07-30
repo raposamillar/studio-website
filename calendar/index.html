@@ -34,15 +34,20 @@
     <meta name="twitter:image" content="https://raposamillar.ca/assets/images/og-image.jpg" />
 
     <!-- Styles & Fonts -->
-    <link rel="stylesheet" href="/styles.css?v=1.58">
+    <link rel="stylesheet" href="/styles.css?v=1.60">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- Above-the-fold calendar card backgrounds -->
+    <link rel="preload" as="image" href="/assets/images/fall-leaves.webp" type="image/webp">
+    <link rel="preload" as="image" href="/assets/images/thanksgiving-turkey.webp" type="image/webp">
+    <link rel="preload" as="image" href="/assets/images/teachers-away-plane.webp" type="image/webp">
 </head>
 <body class="page-calendar">
         <a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- Fixed Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Primary">
         <div class="nav-container">
             <a href="/" class="nav-brand">
                 <span class="nav-logo-wordmark">
@@ -75,9 +80,9 @@
     </nav>
 
 <main id="main-content" tabindex="-1">
-<section id="calendar" class="calendar-section">
+<section id="calendar" class="calendar-section" aria-labelledby="calendar-heading">
         <div class="container">
-            <h1>Student Calendar</h1>
+            <h1 id="calendar-heading">Student Calendar</h1>
             
             <div class="calendar-intro">
                 <p>
@@ -85,8 +90,8 @@
                 </p>
             </div>
 
-            <div class="calendar-grid">
-                <div class="card calendar-card calendar-card--lessons-start calendar-card--fall" data-card-bg="lessons-start">
+            <ul class="calendar-grid">
+                <li class="card calendar-card calendar-card--lessons-start calendar-card--fall calendar-bg-on" data-card-bg="lessons-start">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Lessons Begin</h2>
@@ -97,13 +102,13 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">🟢</span>
-                                <span class="calendar-text">September 12, 2026</span>
+                                <time class="calendar-text" datetime="2026-09-12">September 12, 2026</time>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <div class="card calendar-card calendar-card--thanksgiving calendar-card--fall" data-card-bg="thanksgiving">
+                <li class="card calendar-card calendar-card--thanksgiving calendar-card--fall calendar-bg-on" data-card-bg="thanksgiving">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Thanksgiving Weekend</h2>
@@ -114,13 +119,13 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">🦃</span>
-                                <span class="calendar-text">October 10-12, 2026</span>
+                                <time class="calendar-text" datetime="2026-10-10/2026-10-12">October 10-12, 2026</time>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <div class="card calendar-card calendar-card--away" data-card-bg="away">
+                <li class="card calendar-card calendar-card--away calendar-bg-on" data-card-bg="away">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Teachers Away</h2>
@@ -131,13 +136,13 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">🛫</span>
-                                <span class="calendar-text">December 5, 2026</span>
+                                <time class="calendar-text" datetime="2026-12-05">December 5, 2026</time>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <div class="card calendar-card calendar-card--winter-break calendar-card--winter" data-card-bg="winter-break">
+                <li class="card calendar-card calendar-card--winter-break calendar-card--winter" data-card-bg="winter-break">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Winter Break</h2>
@@ -148,13 +153,13 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">❄️</span>
-                                <span class="calendar-text">December 18, 2026 - January 8, 2027</span>
+                                <time class="calendar-text" datetime="2026-12-18/2027-01-08">December 18, 2026 - January 8, 2027</time>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <div class="card calendar-card calendar-card--family-day calendar-card--winter" data-card-bg="family-day">
+                <li class="card calendar-card calendar-card--family-day calendar-card--winter" data-card-bg="family-day">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Family Day Weekend</h2>
@@ -165,13 +170,13 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">🧑‍🧑‍🧒‍🧒</span>
-                                <span class="calendar-text">February 13-15, 2027</span>
+                                <time class="calendar-text" datetime="2027-02-13/2027-02-15">February 13-15, 2027</time>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <div class="card calendar-card calendar-card--march-break calendar-card--spring" data-card-bg="march-break">
+                <li class="card calendar-card calendar-card--march-break calendar-card--spring" data-card-bg="march-break">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">March Break (incl. Easter)</h2>
@@ -182,30 +187,13 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">🏝️</span>
-                                <span class="calendar-text">March 15-29, 2027</span>
+                                <time class="calendar-text" datetime="2027-03-15/2027-03-29">March 15-29, 2027</time>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <!-- <div class="card calendar-card">
-                    <div class="card-header">
-                        <div class="calendar-event-header">
-                            <h2 class="calendar-event-title">Easter Weekend</h2>
-                            <span class="badge badge-holiday">Holiday</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="calendar-date">
-                            <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🐣</span>
-                                <span class="calendar-text">April 3-6, 2026</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                 <div class="card calendar-card calendar-card--away" data-card-bg="away">
+                <li class="card calendar-card calendar-card--away" data-card-bg="away">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Teachers Away for Adjudicating</h2>
@@ -216,48 +204,13 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">🛫</span>
-                                <span class="calendar-text">April 12-16, 2027</span>
+                                <time class="calendar-text" datetime="2027-04-12/2027-04-16">April 12-16, 2027</time>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <!-- <div class="card calendar-card">
-                    <div class="card-header">
-                        <div class="calendar-event-header">
-                            <h2 class="calendar-event-title">Pizza Party <br>Dress Rehearsal</h2>
-                            <span class="badge badge-event">Event</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="calendar-date">
-                            <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🍕 </span>
-                                <span class="calendar-text">May 29, 2027 @ 1:00 pm</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                 <div class="card calendar-card calendar-card--lessons-end calendar-card--spring" data-card-bg="lessons-end">
-                    <div class="card-header">
-                        <div class="calendar-event-header">
-                            <h2 class="calendar-event-title">Lessons End</h2>
-                            <span class="badge badge-academic">Academic</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="calendar-date">
-                            <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🔴</span>
-                                <span class="calendar-text">May 29, 2027</span>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card calendar-card calendar-card--victoria-day calendar-card--spring" data-card-bg="victoria-day">
+                <li class="card calendar-card calendar-card--victoria-day calendar-card--spring" data-card-bg="victoria-day">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Victoria Day</h2>
@@ -268,13 +221,30 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">👑</span>
-                                <span class="calendar-text">May 24, 2027</span>
+                                <time class="calendar-text" datetime="2027-05-24">May 24, 2027</time>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <div class="card calendar-card calendar-card--spring-recital calendar-card--spring" data-card-bg="spring-recital">
+                <li class="card calendar-card calendar-card--lessons-end calendar-card--spring" data-card-bg="lessons-end">
+                    <div class="card-header">
+                        <div class="calendar-event-header">
+                            <h2 class="calendar-event-title">Lessons End</h2>
+                            <span class="badge badge-academic">Academic</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="calendar-date">
+                            <div class="date-row">
+                                <span class="calendar-icon" aria-hidden="true">🔴</span>
+                                <time class="calendar-text" datetime="2027-05-29">May 29, 2027</time>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="card calendar-card calendar-card--spring-recital calendar-card--spring" data-card-bg="spring-recital">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Spring Recital</h2>
@@ -285,19 +255,13 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">🎹 🎻</span>
-                                <span class="calendar-text">June 2027 (Date/Time TBD)</span>
+                                <time class="calendar-text" datetime="2027-06">June 2027 (Date/Time TBD)</time>
                             </div>
-
-                            <!-- <div>
-                                <a href="https://www.ryru.ca/map">Royal York Road United Church</a>
-                            </div>
-                            <div>851 Royal York Rd</div>
-                            <div>Etobicoke, ON M8Y 2V3</div> -->
                         </div>
-                    </div> 
-                </div>
+                    </div>
+                </li>
 
-                <div class="card calendar-card calendar-card--makeup calendar-card--spring" data-card-bg="makeup">
+                <li class="card calendar-card calendar-card--makeup calendar-card--spring" data-card-bg="makeup">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Makeups</h2>
@@ -308,13 +272,13 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">🎶</span>
-                                <span class="calendar-text">Through June 30, 2027</span>
+                                <time class="calendar-text" datetime="2027-06-30">Through June 30, 2027</time>
                             </div>
                         </div>
                     </div>
-                </div>
+                </li>
 
-                <div class="card calendar-card calendar-card--summer-lessons calendar-card--summer" data-card-bg="summer-lessons">
+                <li class="card calendar-card calendar-card--summer-lessons calendar-card--summer" data-card-bg="summer-lessons">
                     <div class="card-header">
                         <div class="calendar-event-header">
                             <h2 class="calendar-event-title">Summer Lessons</h2>
@@ -325,16 +289,14 @@
                         <div class="calendar-date">
                             <div class="date-row">
                                 <span class="calendar-icon" aria-hidden="true">🎼</span>
-                                <span class="calendar-text">Flexible through August 31, 2027</span>
+                                <time class="calendar-text" datetime="2027-08-31">Flexible through August 31, 2027</time>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     </section>
-
-    <!-- Recitals Section -->
     </main>
 
 
@@ -381,8 +343,8 @@
                 <div class="footer-section">
                     <p class="footer-heading">Explore More</p>
                     <div class="footer-links">
-                        <a href="https://rmbpianos.com">RmB Pianos, Inc.</a>
-                        <a href="https://vimeo.com/millarpianoduo">Millar Piano Duo</a>
+                        <a href="https://rmbpianos.com">RmB Pianos, Inc.<span class="visually-hidden"> (opens external site)</span></a>
+                        <a href="https://vimeo.com/millarpianoduo">Millar Piano Duo<span class="visually-hidden"> (opens external site)</span></a>
                     </div>
                 </div>
             </div>

@@ -213,9 +213,49 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(widgetRoot, { childList: true, subtree: true });
     };
 
+    const setupCalendarCardBackgrounds = () => {
+        const cards = Array.from(document.querySelectorAll('.calendar-card[data-card-bg]'));
+        if (!cards.length) {
+            return;
+        }
+
+        const enableBg = (card) => {
+            card.classList.add('calendar-bg-on');
+        };
+
+        if (!('IntersectionObserver' in window)) {
+            cards.forEach(enableBg);
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries, obs) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    enableBg(entry.target);
+                    obs.unobserve(entry.target);
+                });
+            },
+            {
+                rootMargin: '200px 0px',
+                threshold: 0.01
+            }
+        );
+
+        cards.forEach((card) => {
+            if (card.classList.contains('calendar-bg-on')) {
+                return;
+            }
+            observer.observe(card);
+        });
+    };
+
     setupHamburgerMenu();
     setupFAQAccordion();
     setupThirdPartyWidgetA11y();
+    setupCalendarCardBackgrounds();
 
     const setViewportHeight = () => {
         const vh = window.innerHeight * 0.01;

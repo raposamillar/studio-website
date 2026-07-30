@@ -65,6 +65,18 @@ body {
     outline-offset: 2px;
 }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* Typography */
 h1,
 h2,
@@ -1307,6 +1319,14 @@ a.btn-outline {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.calendar-grid > li {
+    list-style: none;
+    margin: 0;
 }
 
 .calendar-event-header {
@@ -1438,7 +1458,45 @@ a.btn-outline {
     -webkit-backdrop-filter: blur(4px);
 }
 
-/* Badge-type defaults */
+@media (forced-colors: active) {
+    .calendar-card {
+        border: 1px solid CanvasText;
+        forced-color-adjust: none;
+    }
+
+    .calendar-card::before {
+        display: none;
+    }
+
+    .calendar-card::after {
+        background: Canvas;
+    }
+
+    .calendar-card .calendar-event-title,
+    .calendar-card .date-row {
+        background: Canvas;
+        color: CanvasText;
+        box-shadow: none;
+        forced-color-adjust: none;
+    }
+
+    .calendar-card .calendar-text,
+    .calendar-card .badge {
+        color: CanvasText;
+    }
+
+    .calendar-card .badge {
+        border: 1px solid CanvasText;
+        background: Canvas;
+    }
+
+    .calendar-card .badge-event {
+        background: CanvasText;
+        color: Canvas;
+    }
+}
+
+/* Badge-type defaults (only used when a card has no themed data-card-bg) */
 .calendar-card:has(.badge-academic)::before {
     background-image: url('assets/images/studio-windows.jpg');
 }
@@ -1464,10 +1522,9 @@ a.btn-outline {
     );
 }
 
-/* Topic modifiers — badge-type :has() defaults are (0,2,1); topic classes alone tie */
-
-.calendar-card.calendar-card--away::before {
-    background-image: url('assets/images/eighth-rest.jpg');
+/* Defer themed photo downloads until near viewport (.calendar-bg-on via JS) */
+.calendar-card[data-card-bg]:not(.calendar-bg-on)::before {
+    background-image: none;
 }
 
 /* Seasonal scrim tints */
@@ -1503,7 +1560,7 @@ a.btn-outline {
     );
 }
 
-/* Season + badge pairings */
+/* Season + badge pairings (fallback cards without data-card-bg) */
 .calendar-card--fall:has(.badge-holiday)::before {
     background-image: url('assets/images/whole-note.jpg');
 }
@@ -1516,15 +1573,16 @@ a.btn-outline {
     background-image: url('assets/images/path.jpg');
 }
 
-/* Lessons Begin — fall leaves must beat .calendar-card:has(.badge-academic)::before (0,2,1) */
-.calendar-card.calendar-card--lessons-start.calendar-card--fall:has(.badge-academic)::before,
-.calendar-card[data-card-bg="lessons-start"]::before {
+/* Themed card photos — WebP first via image-set; gated by .calendar-bg-on */
+.calendar-card[data-card-bg="lessons-start"].calendar-bg-on::before {
     background-image: url('assets/images/fall-leaves.jpg');
+    background-image: image-set(
+        url('assets/images/fall-leaves.webp') type('image/webp'),
+        url('assets/images/fall-leaves.jpg') type('image/jpeg')
+    );
     opacity: 0.76;
 }
 
-/* Lighter fall scrim so leaves show through on Lessons Begin */
-.calendar-card.calendar-card--lessons-start.calendar-card--fall::after,
 .calendar-card[data-card-bg="lessons-start"].calendar-card--fall::after {
     background: linear-gradient(
         145deg,
@@ -1533,15 +1591,15 @@ a.btn-outline {
     );
 }
 
-/* Thanksgiving Weekend — turkey must beat .calendar-card:has(.badge-holiday)::before (0,2,1) */
-.calendar-card.calendar-card--thanksgiving.calendar-card--fall:has(.badge-holiday)::before,
-.calendar-card[data-card-bg="thanksgiving"]::before {
+.calendar-card[data-card-bg="thanksgiving"].calendar-bg-on::before {
     background-image: url('assets/images/thanksgiving-turkey.jpg');
+    background-image: image-set(
+        url('assets/images/thanksgiving-turkey.webp') type('image/webp'),
+        url('assets/images/thanksgiving-turkey.jpg') type('image/jpeg')
+    );
     opacity: 0.78;
 }
 
-/* Lighter fall scrim so turkey shows through on Thanksgiving Weekend */
-.calendar-card.calendar-card--thanksgiving.calendar-card--fall::after,
 .calendar-card[data-card-bg="thanksgiving"].calendar-card--fall::after {
     background: linear-gradient(
         145deg,
@@ -1550,15 +1608,15 @@ a.btn-outline {
     );
 }
 
-/* Teachers Away — plane must beat .calendar-card:has(.badge-break)::before (0,2,1) */
-.calendar-card.calendar-card--away:has(.badge-break)::before,
-.calendar-card[data-card-bg="away"]::before {
+.calendar-card[data-card-bg="away"].calendar-bg-on::before {
     background-image: url('assets/images/teachers-away-plane.jpg');
+    background-image: image-set(
+        url('assets/images/teachers-away-plane.webp') type('image/webp'),
+        url('assets/images/teachers-away-plane.jpg') type('image/jpeg')
+    );
     opacity: 0.74;
 }
 
-/* Lighter scrim so plane shows through on Teachers Away */
-.calendar-card.calendar-card--away:has(.badge-break)::after,
 .calendar-card[data-card-bg="away"]::after {
     background: linear-gradient(
         145deg,
@@ -1567,15 +1625,15 @@ a.btn-outline {
     );
 }
 
-/* Winter Break — snowman must beat .calendar-card:has(.badge-break)::before (0,2,1) */
-.calendar-card.calendar-card--winter-break.calendar-card--winter:has(.badge-break)::before,
-.calendar-card[data-card-bg="winter-break"]::before {
+.calendar-card[data-card-bg="winter-break"].calendar-bg-on::before {
     background-image: url('assets/images/winter-break-snowman.jpg');
+    background-image: image-set(
+        url('assets/images/winter-break-snowman.webp') type('image/webp'),
+        url('assets/images/winter-break-snowman.jpg') type('image/jpeg')
+    );
     opacity: 0.75;
 }
 
-/* Lighter winter scrim so snowman shows through on Winter Break */
-.calendar-card.calendar-card--winter-break.calendar-card--winter:has(.badge-break)::after,
 .calendar-card[data-card-bg="winter-break"].calendar-card--winter::after {
     background: linear-gradient(
         145deg,
@@ -1584,15 +1642,15 @@ a.btn-outline {
     );
 }
 
-/* Family Day Weekend — stick family must beat .calendar-card:has(.badge-holiday)::before (0,2,1) */
-.calendar-card.calendar-card--family-day.calendar-card--winter:has(.badge-holiday)::before,
-.calendar-card[data-card-bg="family-day"]::before {
+.calendar-card[data-card-bg="family-day"].calendar-bg-on::before {
     background-image: url('assets/images/family-day-stick-family.jpg');
+    background-image: image-set(
+        url('assets/images/family-day-stick-family.webp') type('image/webp'),
+        url('assets/images/family-day-stick-family.jpg') type('image/jpeg')
+    );
     opacity: 0.75;
 }
 
-/* Lighter winter scrim so stick family shows through on Family Day Weekend */
-.calendar-card.calendar-card--family-day.calendar-card--winter::after,
 .calendar-card[data-card-bg="family-day"].calendar-card--winter::after {
     background: linear-gradient(
         145deg,
@@ -1601,15 +1659,15 @@ a.btn-outline {
     );
 }
 
-/* March Break — bunnies must beat .calendar-card--spring:has(.badge-break)::before (0,2,1) */
-.calendar-card.calendar-card--march-break.calendar-card--spring:has(.badge-break)::before,
-.calendar-card[data-card-bg="march-break"]::before {
+.calendar-card[data-card-bg="march-break"].calendar-bg-on::before {
     background-image: url('assets/images/march-break-bunnies.jpg');
+    background-image: image-set(
+        url('assets/images/march-break-bunnies.webp') type('image/webp'),
+        url('assets/images/march-break-bunnies.jpg') type('image/jpeg')
+    );
     opacity: 0.75;
 }
 
-/* Lighter spring scrim so bunnies show through on March Break */
-.calendar-card.calendar-card--march-break.calendar-card--spring:has(.badge-break)::after,
 .calendar-card[data-card-bg="march-break"].calendar-card--spring::after {
     background: linear-gradient(
         145deg,
@@ -1618,15 +1676,15 @@ a.btn-outline {
     );
 }
 
-/* Victoria Day — Queen Victoria must beat .calendar-card--spring:has(.badge-holiday)::before (0,2,1) */
-.calendar-card.calendar-card--victoria-day.calendar-card--spring:has(.badge-holiday)::before,
-.calendar-card[data-card-bg="victoria-day"]::before {
+.calendar-card[data-card-bg="victoria-day"].calendar-bg-on::before {
     background-image: url('assets/images/victoria-day-queen.jpg');
+    background-image: image-set(
+        url('assets/images/victoria-day-queen.webp') type('image/webp'),
+        url('assets/images/victoria-day-queen.jpg') type('image/jpeg')
+    );
     opacity: 0.75;
 }
 
-/* Lighter spring scrim so Queen Victoria shows through on Victoria Day */
-.calendar-card.calendar-card--victoria-day.calendar-card--spring:has(.badge-holiday)::after,
 .calendar-card[data-card-bg="victoria-day"].calendar-card--spring::after {
     background: linear-gradient(
         145deg,
@@ -1635,15 +1693,15 @@ a.btn-outline {
     );
 }
 
-/* Lessons End — May flowers must beat .calendar-card:has(.badge-academic)::before (0,2,1) */
-.calendar-card.calendar-card--lessons-end.calendar-card--spring:has(.badge-academic)::before,
-.calendar-card[data-card-bg="lessons-end"]::before {
+.calendar-card[data-card-bg="lessons-end"].calendar-bg-on::before {
     background-image: url('assets/images/lessons-end-may-flowers.jpg');
+    background-image: image-set(
+        url('assets/images/lessons-end-may-flowers.webp') type('image/webp'),
+        url('assets/images/lessons-end-may-flowers.jpg') type('image/jpeg')
+    );
     opacity: 0.75;
 }
 
-/* Lighter spring scrim so May flowers show through on Lessons End */
-.calendar-card.calendar-card--lessons-end.calendar-card--spring:has(.badge-academic)::after,
 .calendar-card[data-card-bg="lessons-end"].calendar-card--spring::after {
     background: linear-gradient(
         145deg,
@@ -1652,15 +1710,15 @@ a.btn-outline {
     );
 }
 
-/* Spring Recital — piano & violin must beat .calendar-card:has(.badge-event)::before (0,2,1) */
-.calendar-card.calendar-card--spring-recital.calendar-card--spring:has(.badge-event)::before,
-.calendar-card[data-card-bg="spring-recital"]::before {
+.calendar-card[data-card-bg="spring-recital"].calendar-bg-on::before {
     background-image: url('assets/images/spring-recital-piano-violin.jpg');
+    background-image: image-set(
+        url('assets/images/spring-recital-piano-violin.webp') type('image/webp'),
+        url('assets/images/spring-recital-piano-violin.jpg') type('image/jpeg')
+    );
     opacity: 0.75;
 }
 
-/* Lighter spring scrim so piano & violin show through on Spring Recital */
-.calendar-card.calendar-card--spring-recital.calendar-card--spring:has(.badge-event)::after,
 .calendar-card[data-card-bg="spring-recital"].calendar-card--spring::after {
     background: linear-gradient(
         145deg,
@@ -1669,15 +1727,15 @@ a.btn-outline {
     );
 }
 
-/* Summer Lessons — sunny beach must beat .calendar-card:has(.badge-academic)::before (0,2,1) */
-.calendar-card.calendar-card--summer-lessons.calendar-card--summer:has(.badge-academic)::before,
-.calendar-card[data-card-bg="summer-lessons"]::before {
+.calendar-card[data-card-bg="summer-lessons"].calendar-bg-on::before {
     background-image: url('assets/images/summer-lessons-beach.jpg');
+    background-image: image-set(
+        url('assets/images/summer-lessons-beach.webp') type('image/webp'),
+        url('assets/images/summer-lessons-beach.jpg') type('image/jpeg')
+    );
     opacity: 0.75;
 }
 
-/* Lighter summer scrim so beach shows through on Summer Lessons */
-.calendar-card.calendar-card--summer-lessons.calendar-card--summer:has(.badge-academic)::after,
 .calendar-card[data-card-bg="summer-lessons"].calendar-card--summer::after {
     background: linear-gradient(
         145deg,
@@ -1686,15 +1744,15 @@ a.btn-outline {
     );
 }
 
-/* Makeups — notes over field must beat .calendar-card:has(.badge-academic)::before (0,2,1) */
-.calendar-card.calendar-card--makeup.calendar-card--spring:has(.badge-academic)::before,
-.calendar-card[data-card-bg="makeup"]::before {
+.calendar-card[data-card-bg="makeup"].calendar-bg-on::before {
     background-image: url('assets/images/makeups-notes-field.jpg');
+    background-image: image-set(
+        url('assets/images/makeups-notes-field.webp') type('image/webp'),
+        url('assets/images/makeups-notes-field.jpg') type('image/jpeg')
+    );
     opacity: 0.75;
 }
 
-/* Lighter spring scrim so notes & field show through on Makeups */
-.calendar-card.calendar-card--makeup.calendar-card--spring:has(.badge-academic)::after,
 .calendar-card[data-card-bg="makeup"].calendar-card--spring::after {
     background: linear-gradient(
         145deg,
