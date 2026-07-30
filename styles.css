@@ -10,10 +10,12 @@
     --color-text: #1a1a1a;
     --color-text-muted: #3f3f46; /* ~10:1 on white */
     --color-text-secondary: #52525b; /* ~7:1 on white */
+    --color-brand: #004890; /* sampled from logo blue */
+    --nav-offset: 7.75rem;
 }
 
 a {
-  color: #005a8c;
+  color: var(--color-brand);
   text-decoration: none;
 }
 
@@ -50,7 +52,7 @@ body {
 }
 
 :focus-visible {
-    outline: 3px solid #005a8c;
+    outline: 3px solid var(--color-brand);
     outline-offset: 2px;
 }
 
@@ -156,31 +158,98 @@ p {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     z-index: 50;
+    overflow: visible;
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0.75rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 4rem;
+    min-height: var(--nav-offset);
+    height: auto;
+    box-sizing: border-box;
 }
 
 .nav-brand {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1a1a1a;
+    gap: 1rem;
+    flex-shrink: 0;
     text-decoration: none;
+    color: inherit;
+    overflow: visible;
+}
+
+.nav-brand:hover,
+.nav-brand:hover .nav-logo-wordmark {
+    color: #1a1a1a;
+}
+
+.nav-logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0.2em;
+    flex-shrink: 0;
+    width: max-content;
+    max-width: min(100%, 22rem);
+    color: #1a1a1a;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    text-transform: uppercase;
+    line-height: 1.05;
+}
+
+.nav-logo-name {
+    font-weight: 700;
+    font-size: clamp(1.15rem, 2.7vw, 1.5rem);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+.nav-logo-tagline {
+    font-weight: 400;
+    font-size: clamp(0.77rem, 1.8vw, 0.95rem);
+    padding-bottom: 0.22em;
+    border-bottom: 1.5px solid currentColor;
+    width: 100%;
+}
+
+.nav-logo-track {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.nav-logo-track > span {
+    flex: 0 0 auto;
+}
+
+.nav-logo-mark {
+    display: block;
+    width: auto;
+    height: clamp(3.85rem, 11vw, 5.5rem);
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.nav-logo {
+    display: none;
 }
 
 .nav-menu {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
+}
+
+@media (min-width: 1100px) {
+    .nav-menu {
+        gap: 2rem;
+    }
 }
 
 .nav-link {
@@ -241,12 +310,12 @@ p {
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
-        top: 4rem;
+        top: var(--nav-offset);
         left: -100%;
         width: 100%;
         height: auto;
-        min-height: calc(var(--vh, 1vh) * 100 - 4rem);
-        max-height: calc(var(--vh, 1vh) * 100 - 4rem);
+        min-height: calc(var(--vh, 1vh) * 100 - var(--nav-offset));
+        max-height: calc(var(--vh, 1vh) * 100 - var(--nav-offset));
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(10px);
         flex-direction: column;
@@ -282,9 +351,17 @@ p {
         display: flex;
     }
 
-    /* Responsive adjustments for smaller screens */
-    .nav-brand {
-        font-size: 1rem;
+    .nav-logo-name {
+        font-size: clamp(1.05rem, 3.4vw, 1.25rem);
+    }
+
+    .nav-logo-tagline {
+        font-size: clamp(0.7rem, 2.2vw, 0.85rem);
+    }
+
+    .nav-logo-mark {
+        height: clamp(3.5rem, 13vw, 4.65rem);
+        width: auto;
     }
     
     .container {
@@ -294,15 +371,34 @@ p {
 
 /* Extra small mobile screens */
 @media (max-width: 480px) {
-    .nav-menu {
-        padding: 1.5rem 0 2.5rem 0;
-        min-height: calc(var(--vh, 1vh) * 100 - 4rem);
-        max-height: calc(var(--vh, 1vh) * 100 - 4rem);
+    :root {
+        --nav-offset: 5.75rem;
     }
-    
-    .nav-brand {
-        font-size: 0.9rem;
-        line-height: 1.2;
+
+    .nav-container {
+        min-height: var(--nav-offset);
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .nav-menu {
+        top: var(--nav-offset);
+        padding: 1.5rem 0 2.5rem 0;
+        min-height: calc(var(--vh, 1vh) * 100 - var(--nav-offset));
+        max-height: calc(var(--vh, 1vh) * 100 - var(--nav-offset));
+    }
+
+    .nav-logo-name {
+        font-size: 1.05rem;
+    }
+
+    .nav-logo-tagline {
+        font-size: 0.7rem;
+    }
+
+    .nav-logo-mark {
+        height: 3.55rem;
+        width: auto;
     }
     
     .nav-menu .nav-link {
@@ -326,8 +422,8 @@ p {
 /* Landscape orientation on small devices */
 @media (max-width: 768px) and (orientation: landscape) {
     .nav-menu {
-        min-height: calc(var(--vh, 1vh) * 100 - 4rem);
-        max-height: calc(var(--vh, 1vh) * 100 - 4rem);
+        min-height: calc(var(--vh, 1vh) * 100 - var(--nav-offset));
+        max-height: calc(var(--vh, 1vh) * 100 - var(--nav-offset));
         padding: 1rem 0 2rem 0;
     }
     
@@ -451,7 +547,7 @@ a.btn-outline {
     align-items: center;
     text-align: center;
     color: white;
-    padding-top: 4rem;
+    padding-top: var(--nav-offset);
 }
 
 /* Hero Background with subtle lightening and warmth */
@@ -1435,6 +1531,63 @@ a.btn-outline {
     margin-bottom: 2rem;
 }
 
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 1.25rem;
+    min-width: 0;
+}
+
+.footer-logo-wordmark {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.2em;
+    flex: 0 1 auto;
+    min-width: 0;
+    width: max-content;
+    max-width: min(12.5rem, calc(100% - 6.5rem));
+    color: #ffffff;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    text-transform: uppercase;
+    line-height: 1.05;
+}
+
+.footer-logo-name {
+    font-weight: 700;
+    font-size: clamp(0.85rem, 2vw, 1.05rem);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.footer-logo-tagline {
+    font-weight: 400;
+    font-size: clamp(0.58rem, 1.35vw, 0.7rem);
+    padding-bottom: 0.22em;
+    border-bottom: 1.5px solid currentColor;
+    width: 100%;
+}
+
+.footer-logo-track {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.footer-logo-track > span {
+    flex: 0 0 auto;
+}
+
+.footer-logo-mark {
+    display: block;
+    height: auto;
+    width: clamp(4rem, 16vw, 5.25rem);
+    flex: 0 0 auto;
+    margin-top: -0.35rem;
+}
+
 .footer-heading {
     margin: 0 0 1rem;
     font-size: 1.25rem;
@@ -1548,8 +1701,8 @@ a.btn-outline {
 }
 
 /* Non-home pages: keep content clear of fixed navbar */
-body:not(.page-home) > section:first-of-type {
-    padding-top: 7rem;
+body:not(.page-home) main > section:first-of-type {
+    padding-top: calc(var(--nav-offset) + 2.5rem);
 }
 
 
