@@ -1417,12 +1417,12 @@ a.btn-outline {
     display: inline-block;
     margin-bottom: 0;
     padding: 0.35rem 0.65rem;
-    background: rgba(255, 252, 248, 0.92);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border-radius: 0.375rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    color: #030213;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    color: #0a0a0a;
     max-width: 100%;
 }
 
@@ -1434,16 +1434,16 @@ a.btn-outline {
     width: fit-content;
     max-width: 100%;
     padding: 0.45rem 0.75rem;
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border-radius: 0.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .calendar-card .calendar-text {
-    color: #1a1a1a;
-    font-weight: 500;
+    color: #0a0a0a;
+    font-weight: 600;
     line-height: 1.4;
 }
 
@@ -1452,10 +1452,24 @@ a.btn-outline {
     flex-shrink: 0;
 }
 
+.calendar-card .badge {
+    background-color: rgba(255, 255, 255, 0.97);
+    color: #0a0a0a;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.calendar-card .badge-event {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    border-color: #0a0a0a;
+}
+
 .calendar-card .badge-break {
-    background-color: rgba(255, 252, 248, 0.92);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0.97);
+    color: #0a0a0a;
+    border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 @media (forced-colors: active) {
