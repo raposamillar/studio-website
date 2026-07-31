@@ -34,14 +34,14 @@
     <meta name="twitter:image" content="https://raposamillar.ca/assets/images/og-image.jpg?v=4" />
 
     <!-- Styles & Fonts -->
-    <link rel="stylesheet" href="/styles.css?v=1.61">
+    <link rel="stylesheet" href="/styles.css?v=2.13">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
     <!-- Above-the-fold calendar card backgrounds -->
     <link rel="preload" as="image" href="/assets/images/fall-leaves.webp" type="image/webp">
-    <link rel="preload" as="image" href="/assets/images/thanksgiving-turkey.webp" type="image/webp">
+    <link rel="preload" as="image" href="/assets/images/thanksgiving-pumpkin.webp" type="image/webp">
     <link rel="preload" as="image" href="/assets/images/teachers-away-plane.webp" type="image/webp">
 </head>
 <body class="page-calendar">
@@ -90,6 +90,57 @@
                 </p>
             </div>
 
+            <ul class="calendar-summary" aria-label="Key dates">
+                <li>
+                    <span class="calendar-summary-event">Lessons Begin</span>
+                    <time datetime="2026-09-12">September 12, 2026</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Thanksgiving Weekend</span>
+                    <time datetime="2026-10-10/2026-10-12">October 10–12, 2026</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Teachers Away</span>
+                    <time datetime="2026-12-05">December 5, 2026</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Winter Break</span>
+                    <time datetime="2026-12-18/2027-01-08">December 18, 2026 – January 8, 2027</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Family Day Weekend</span>
+                    <time datetime="2027-02-13/2027-02-15">February 13–15, 2027</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">March Break (incl. Easter)</span>
+                    <time datetime="2027-03-15/2027-03-29">March 15–29, 2027</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Teachers Away for Adjudicating</span>
+                    <time datetime="2027-04-12/2027-04-16">April 12–16, 2027</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Victoria Day</span>
+                    <time datetime="2027-05-24">May 24, 2027</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Lessons End</span>
+                    <time datetime="2027-05-29">May 29, 2027</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Spring Recital</span>
+                    <time datetime="2027-06">June 2027 (Date/Time TBD)</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Makeups</span>
+                    <time datetime="2027-06-30">Through June 30, 2027</time>
+                </li>
+                <li>
+                    <span class="calendar-summary-event">Summer Lessons</span>
+                    <time datetime="2027-08-31">Flexible through August 31, 2027</time>
+                </li>
+            </ul>
+
             <ul class="calendar-grid">
                 <li class="card calendar-card calendar-card--lessons-start calendar-card--fall calendar-bg-on" data-card-bg="lessons-start">
                     <div class="card-header">
@@ -101,7 +152,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🟢</span>
+                                <span class="calendar-icon calendar-icon--dot-green" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2026-09-12">September 12, 2026</time>
                             </div>
                         </div>
@@ -118,7 +169,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🦃</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--pumpkin" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2026-10-10/2026-10-12">October 10-12, 2026</time>
                             </div>
                         </div>
@@ -135,7 +186,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🛫</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--plane" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2026-12-05">December 5, 2026</time>
                             </div>
                         </div>
@@ -152,7 +203,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">❄️</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--snowflake" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2026-12-18/2027-01-08">December 18, 2026 - January 8, 2027</time>
                             </div>
                         </div>
@@ -169,7 +220,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🧑‍🧑‍🧒‍🧒</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--family" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2027-02-13/2027-02-15">February 13-15, 2027</time>
                             </div>
                         </div>
@@ -186,7 +237,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🏝️</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--suitcase" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2027-03-15/2027-03-29">March 15-29, 2027</time>
                             </div>
                         </div>
@@ -203,7 +254,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🛫</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--plane" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2027-04-12/2027-04-16">April 12-16, 2027</time>
                             </div>
                         </div>
@@ -220,7 +271,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">👑</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--crown" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2027-05-24">May 24, 2027</time>
                             </div>
                         </div>
@@ -237,7 +288,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🔴</span>
+                                <span class="calendar-icon calendar-icon--dot-pink" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2027-05-29">May 29, 2027</time>
                             </div>
                         </div>
@@ -254,7 +305,7 @@
                     <div class="card-content spring-recital">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🎹 🎻</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--notes" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2027-06">June 2027 (Date/Time TBD)</time>
                             </div>
                         </div>
@@ -271,7 +322,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🎶</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--notes" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2027-06-30">Through June 30, 2027</time>
                             </div>
                         </div>
@@ -288,7 +339,7 @@
                     <div class="card-content">
                         <div class="calendar-date">
                             <div class="date-row">
-                                <span class="calendar-icon" aria-hidden="true">🎼</span>
+                                <span class="calendar-icon calendar-icon--svg calendar-icon--sun" aria-hidden="true"></span>
                                 <time class="calendar-text" datetime="2027-08-31">Flexible through August 31, 2027</time>
                             </div>
                         </div>

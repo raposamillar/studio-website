@@ -33,6 +33,63 @@ body {
     overflow-x: hidden;
 }
 
+/* Interior page atmospheres — soft brand-tinted fields (not flat white) */
+/* Sage/olive wash sampled from instructor photos (#6b7c51, #566c48) */
+body.page-about {
+    background-color: #f3f5f0;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 90% 0%, rgba(107, 124, 81, 0.16), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 0% 35%, rgba(86, 108, 72, 0.12), transparent 50%),
+        linear-gradient(180deg, #f4f6f1 0%, #eef1e9 100%);
+}
+
+body.page-lessons {
+    background-color: #f2f6fa;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 100% 0%, rgba(0, 72, 144, 0.1), transparent 55%),
+        linear-gradient(165deg, #f4f8fc 0%, #eaf1f7 40%, #f3f6f9 100%);
+}
+
+/* Warm beige wash sampled from Lessons Begin / fall-leaves (#f1bc77) */
+body.page-calendar {
+    background-color: #f7f1e8;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(241, 188, 119, 0.28), transparent 55%),
+        radial-gradient(ellipse 55% 40% at 100% 30%, rgba(249, 201, 136, 0.18), transparent 50%),
+        linear-gradient(180deg, #f8f2e9 0%, #f3ebe0 100%);
+}
+
+body.page-recitals {
+    background-color: #faf6e8;
+    background-image:
+        radial-gradient(ellipse 85% 50% at 15% 0%, rgba(240, 210, 120, 0.28), transparent 55%),
+        radial-gradient(ellipse 55% 40% at 100% 30%, rgba(245, 220, 140, 0.18), transparent 50%),
+        linear-gradient(180deg, #fbf7eb 0%, #f5efd8 55%, #faf6e8 100%);
+}
+
+body.page-community {
+    background-color: #f2f7f6;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 90% 0%, rgba(0, 72, 144, 0.1), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 0% 40%, rgba(20, 90, 100, 0.06), transparent 50%),
+        linear-gradient(180deg, #f4f8f7 0%, #eef4f3 100%);
+}
+
+body.page-contact {
+    background-color: #faf6e8;
+    background-image:
+        radial-gradient(ellipse 85% 50% at 15% 0%, rgba(240, 210, 120, 0.28), transparent 55%),
+        radial-gradient(ellipse 55% 40% at 100% 30%, rgba(245, 220, 140, 0.18), transparent 50%),
+        linear-gradient(180deg, #fbf7eb 0%, #f5efd8 55%, #faf6e8 100%);
+}
+
+body.page-faq {
+    background-color: #f3f6fa;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 72, 144, 0.1), transparent 55%),
+        linear-gradient(180deg, #f5f8fc 0%, #eef3f8 100%);
+}
+
 @media (prefers-reduced-motion: no-preference) {
     html {
         scroll-behavior: smooth;
@@ -778,6 +835,7 @@ a.btn-outline {
 /* About Section */
 .about-section {
     padding: 6rem 0;
+    background: transparent;
 }
 
 .studio-intro {
@@ -852,7 +910,10 @@ a.btn-outline {
 }
 
 .testimonials-section {
-    padding-top: 4rem;
+    padding: 3rem 1.25rem 2rem;
+    margin: 1rem 0 0;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.55);
 }
 
 /* Instructor Quote Styling */
@@ -958,13 +1019,18 @@ a.btn-outline {
 /* Lessons Section */
 .lessons-section {
     padding: 6rem 0;
-    background-color: rgba(0, 109, 171, 0.03);
+    background: transparent;
 }
 
 /* Theory Levels Section */
 .theory-levels-section {
     padding: 4rem 0;
-    background-color: #f9f9fb;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.35) 0%,
+            rgba(0, 72, 144, 0.06) 100%
+        );
 }
 
 /* Theory Level Cards with Background Images */
@@ -1307,17 +1373,56 @@ a.btn-outline {
 /* Calendar Section */
 .calendar-section {
     padding: 6rem 0;
+    background: transparent;
 }
 
 .calendar-intro {
     max-width: 800px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2rem;
     text-align: center;
+}
+
+.calendar-summary {
+    max-width: 40rem;
+    margin: 0 auto 3rem;
+    padding: 0.85rem 1.35rem;
+    list-style: none;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 4px rgba(60, 45, 30, 0.06);
+}
+
+.calendar-summary li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    justify-content: space-between;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.12);
+    font-size: 1rem;
+    line-height: 1.45;
+    color: var(--color-text-secondary);
+}
+
+.calendar-summary li:first-child {
+    border-top: 1px solid rgba(26, 26, 26, 0.12);
+}
+
+.calendar-summary-event {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.calendar-summary time {
+    color: var(--color-text-secondary);
 }
 
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: 18rem;
     gap: 1.5rem;
     list-style: none;
     margin: 0;
@@ -1327,14 +1432,15 @@ a.btn-outline {
 .calendar-grid > li {
     list-style: none;
     margin: 0;
+    min-height: 0;
 }
 
 .calendar-event-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    flex-wrap: nowrap;
+    gap: 0.75rem;
 }
 
 .date-row {
@@ -1354,18 +1460,21 @@ a.btn-outline {
     font-size: 1rem;
 }
 
-.spring-recital .calendar-date {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-/* Calendar cards — subtle seasonal backgrounds */
+/* Calendar cards — subtle seasonal backgrounds, simple frame */
 .calendar-card {
     position: relative;
     isolation: isolate;
-    background: transparent;
-    border-color: rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #faf7f2;
+    border: 1px solid rgba(92, 74, 55, 0.22);
+    border-radius: 0.4rem;
+    box-shadow:
+        0 0 0 4px #f7f1e8,
+        0 0 0 5px rgba(92, 74, 55, 0.16),
+        0 2px 8px rgba(60, 45, 30, 0.07);
+    overflow: hidden;
 }
 
 .calendar-card::before,
@@ -1406,6 +1515,10 @@ a.btn-outline {
     border-bottom-color: rgba(0, 0, 0, 0.06);
 }
 
+.calendar-card .card-content {
+    margin-top: auto;
+}
+
 /* Text panels — improve contrast over photo backgrounds */
 .calendar-card .calendar-event-header,
 .calendar-card .calendar-date {
@@ -1413,8 +1526,13 @@ a.btn-outline {
     z-index: 2;
 }
 
+.calendar-card .calendar-event-header {
+    align-items: flex-start;
+}
+
 .calendar-card .calendar-event-title {
-    display: inline-block;
+    flex: 1 1 auto;
+    min-width: 0;
     margin-bottom: 0;
     padding: 0.35rem 0.65rem;
     background: rgba(255, 255, 255, 0.97);
@@ -1423,16 +1541,16 @@ a.btn-outline {
     border-radius: 0.375rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     color: #0a0a0a;
-    max-width: 100%;
 }
 
 .calendar-card .date-row {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 0.5rem;
-    width: fit-content;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
     padding: 0.45rem 0.75rem;
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(6px);
@@ -1445,6 +1563,7 @@ a.btn-outline {
     color: #0a0a0a;
     font-weight: 600;
     line-height: 1.4;
+    min-width: 0;
 }
 
 .calendar-card .calendar-icon {
@@ -1452,7 +1571,98 @@ a.btn-outline {
     flex-shrink: 0;
 }
 
+/* Calendar status dots + SVG icons (emoji replaced for consistency / a11y) */
+.calendar-icon--dot-pink,
+.calendar-icon--dot-green {
+    display: inline-block;
+    width: 0.95em;
+    height: 0.95em;
+    border-radius: 50%;
+    box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.18);
+    vertical-align: -0.05em;
+}
+
+.calendar-icon--dot-pink {
+    background: #c2186b; /* 5.8:1 on white */
+}
+
+.calendar-icon--dot-green {
+    background: #5f7a4a; /* 4.8:1 on white — muted sage */
+}
+
+/* Calendar decorative icons — CSS/SVG for consistent cross-platform rendering.
+   Decorative only (aria-hidden); colors meet WCAG 1.4.11 (≥3:1) on white panels. */
+.calendar-icon--svg {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    flex-shrink: 0;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    vertical-align: -0.15em;
+}
+
+
+
+
+
+.calendar-icon--pumpkin {
+    background-color: #b45309;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cellipse%20cx%3D%227%22%20cy%3D%2214.5%22%20rx%3D%224.6%22%20ry%3D%226.2%22%2F%3E%3Cellipse%20cx%3D%2217%22%20cy%3D%2214.5%22%20rx%3D%224.6%22%20ry%3D%226.2%22%2F%3E%3Cellipse%20cx%3D%2212%22%20cy%3D%2213.8%22%20rx%3D%225.4%22%20ry%3D%226.8%22%2F%3E%3Cpath%20d%3D%22M10.8%207.2c0-2.6.7-4.6%201.8-5.8.25%201.8.35%203.7.3%205.5-.7.15-1.4.35-2.1.3z%22%2F%3E%3C%2Fsvg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cellipse%20cx%3D%227%22%20cy%3D%2214.5%22%20rx%3D%224.6%22%20ry%3D%226.2%22%2F%3E%3Cellipse%20cx%3D%2217%22%20cy%3D%2214.5%22%20rx%3D%224.6%22%20ry%3D%226.2%22%2F%3E%3Cellipse%20cx%3D%2212%22%20cy%3D%2213.8%22%20rx%3D%225.4%22%20ry%3D%226.8%22%2F%3E%3Cpath%20d%3D%22M10.8%207.2c0-2.6.7-4.6%201.8-5.8.25%201.8.35%203.7.3%205.5-.7.15-1.4.35-2.1.3z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.calendar-icon--plane {
+    background-color: #004890;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M21%2016v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10%202.67%2010%203.5V9l-8%205v2l8-2.5V19l-2%201.5V22l3.5-1%203.5%201v-1.5L13%2019v-5.5l8%202.5z%22%2F%3E%3C%2Fsvg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M21%2016v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10%202.67%2010%203.5V9l-8%205v2l8-2.5V19l-2%201.5V22l3.5-1%203.5%201v-1.5L13%2019v-5.5l8%202.5z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.calendar-icon--snowflake {
+    background-color: #3d5a73;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M12.82%2C12.00L12.82%2C2.70L11.18%2C2.70L11.18%2C12.00ZM12.43%2C5.05L10.15%2C3.26L9.28%2C4.37L11.57%2C6.15ZM12.43%2C6.15L14.72%2C4.37L13.85%2C3.26L11.57%2C5.05ZM12.40%2C7.79L10.67%2C6.43L9.87%2C7.46L11.60%2C8.81ZM12.40%2C8.81L14.13%2C7.46L13.33%2C6.43L11.60%2C7.79ZM12.41%2C12.71L20.47%2C8.06L19.64%2C6.64L11.59%2C11.29ZM18.24%2C8.90L18.64%2C6.03L17.25%2C5.83L16.85%2C8.70ZM17.28%2C9.45L19.97%2C10.54L20.49%2C9.24L17.80%2C8.15ZM15.85%2C10.24L16.15%2C8.06L14.87%2C7.88L14.56%2C10.06ZM14.96%2C10.75L17.00%2C11.58L17.49%2C10.37L15.45%2C9.55ZM11.59%2C12.71L19.64%2C17.36L20.47%2C15.94L12.41%2C11.29ZM17.80%2C15.85L20.49%2C14.76L19.97%2C13.46L17.28%2C14.55ZM16.85%2C15.30L17.25%2C18.17L18.64%2C17.97L18.24%2C15.10ZM15.45%2C14.45L17.49%2C13.63L17.00%2C12.42L14.96%2C13.25ZM14.56%2C13.94L14.87%2C16.12L16.15%2C15.94L15.85%2C13.76ZM11.18%2C12.00L11.18%2C21.30L12.82%2C21.30L12.82%2C12.00ZM11.57%2C18.95L13.85%2C20.74L14.72%2C19.63L12.43%2C17.85ZM11.57%2C17.85L9.28%2C19.63L10.15%2C20.74L12.43%2C18.95ZM11.60%2C16.21L13.33%2C17.57L14.13%2C16.54L12.40%2C15.19ZM11.60%2C15.19L9.87%2C16.54L10.67%2C17.57L12.40%2C16.21ZM11.59%2C11.29L3.53%2C15.94L4.36%2C17.36L12.41%2C12.71ZM5.76%2C15.10L5.36%2C17.97L6.75%2C18.17L7.15%2C15.30ZM6.72%2C14.55L4.03%2C13.46L3.51%2C14.76L6.20%2C15.85ZM8.15%2C13.76L7.85%2C15.94L9.13%2C16.12L9.44%2C13.94ZM9.04%2C13.25L7.00%2C12.42L6.51%2C13.63L8.55%2C14.45ZM12.41%2C11.29L4.36%2C6.64L3.53%2C8.06L11.59%2C12.71ZM6.20%2C8.15L3.51%2C9.24L4.03%2C10.54L6.72%2C9.45ZM7.15%2C8.70L6.75%2C5.83L5.36%2C6.03L5.76%2C8.90ZM8.55%2C9.55L6.51%2C10.37L7.00%2C11.58L9.04%2C10.75ZM9.44%2C10.06L9.13%2C7.88L7.85%2C8.06L8.15%2C10.24Z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%221.65%22%2F%3E%3C%2Fsvg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M12.82%2C12.00L12.82%2C2.70L11.18%2C2.70L11.18%2C12.00ZM12.43%2C5.05L10.15%2C3.26L9.28%2C4.37L11.57%2C6.15ZM12.43%2C6.15L14.72%2C4.37L13.85%2C3.26L11.57%2C5.05ZM12.40%2C7.79L10.67%2C6.43L9.87%2C7.46L11.60%2C8.81ZM12.40%2C8.81L14.13%2C7.46L13.33%2C6.43L11.60%2C7.79ZM12.41%2C12.71L20.47%2C8.06L19.64%2C6.64L11.59%2C11.29ZM18.24%2C8.90L18.64%2C6.03L17.25%2C5.83L16.85%2C8.70ZM17.28%2C9.45L19.97%2C10.54L20.49%2C9.24L17.80%2C8.15ZM15.85%2C10.24L16.15%2C8.06L14.87%2C7.88L14.56%2C10.06ZM14.96%2C10.75L17.00%2C11.58L17.49%2C10.37L15.45%2C9.55ZM11.59%2C12.71L19.64%2C17.36L20.47%2C15.94L12.41%2C11.29ZM17.80%2C15.85L20.49%2C14.76L19.97%2C13.46L17.28%2C14.55ZM16.85%2C15.30L17.25%2C18.17L18.64%2C17.97L18.24%2C15.10ZM15.45%2C14.45L17.49%2C13.63L17.00%2C12.42L14.96%2C13.25ZM14.56%2C13.94L14.87%2C16.12L16.15%2C15.94L15.85%2C13.76ZM11.18%2C12.00L11.18%2C21.30L12.82%2C21.30L12.82%2C12.00ZM11.57%2C18.95L13.85%2C20.74L14.72%2C19.63L12.43%2C17.85ZM11.57%2C17.85L9.28%2C19.63L10.15%2C20.74L12.43%2C18.95ZM11.60%2C16.21L13.33%2C17.57L14.13%2C16.54L12.40%2C15.19ZM11.60%2C15.19L9.87%2C16.54L10.67%2C17.57L12.40%2C16.21ZM11.59%2C11.29L3.53%2C15.94L4.36%2C17.36L12.41%2C12.71ZM5.76%2C15.10L5.36%2C17.97L6.75%2C18.17L7.15%2C15.30ZM6.72%2C14.55L4.03%2C13.46L3.51%2C14.76L6.20%2C15.85ZM8.15%2C13.76L7.85%2C15.94L9.13%2C16.12L9.44%2C13.94ZM9.04%2C13.25L7.00%2C12.42L6.51%2C13.63L8.55%2C14.45ZM12.41%2C11.29L4.36%2C6.64L3.53%2C8.06L11.59%2C12.71ZM6.20%2C8.15L3.51%2C9.24L4.03%2C10.54L6.72%2C9.45ZM7.15%2C8.70L6.75%2C5.83L5.36%2C6.03L5.76%2C8.90ZM8.55%2C9.55L6.51%2C10.37L7.00%2C11.58L9.04%2C10.75ZM9.44%2C10.06L9.13%2C7.88L7.85%2C8.06L8.15%2C10.24Z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%221.65%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.calendar-icon--family {
+    background-color: #5a4570;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Ccircle%20cx%3D%227%22%20cy%3D%226%22%20r%3D%222.2%22%2F%3E%3Cpath%20d%3D%22M3.8%2012.2c0-1.8%201.4-3.2%203.2-3.2s3.2%201.4%203.2%203.2V18H3.8v-5.8z%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%226%22%20r%3D%222.2%22%2F%3E%3Cpath%20d%3D%22M13.8%2012.2c0-1.8%201.4-3.2%203.2-3.2s3.2%201.4%203.2%203.2V18h-6.4v-5.8z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%227.2%22%20r%3D%221.8%22%2F%3E%3Cpath%20d%3D%22M9.4%2013c0-1.4%201.2-2.6%202.6-2.6s2.6%201.2%202.6%202.6V18h-5.2v-5z%22%2F%3E%3C%2Fsvg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Ccircle%20cx%3D%227%22%20cy%3D%226%22%20r%3D%222.2%22%2F%3E%3Cpath%20d%3D%22M3.8%2012.2c0-1.8%201.4-3.2%203.2-3.2s3.2%201.4%203.2%203.2V18H3.8v-5.8z%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%226%22%20r%3D%222.2%22%2F%3E%3Cpath%20d%3D%22M13.8%2012.2c0-1.8%201.4-3.2%203.2-3.2s3.2%201.4%203.2%203.2V18h-6.4v-5.8z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%227.2%22%20r%3D%221.8%22%2F%3E%3Cpath%20d%3D%22M9.4%2013c0-1.4%201.2-2.6%202.6-2.6s2.6%201.2%202.6%202.6V18h-5.2v-5z%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.calendar-icon--suitcase {
+    background-color: #5c4030;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M9.2%205.2V3.6c0-.9.7-1.6%201.6-1.6h2.4c.9%200%201.6.7%201.6%201.6v1.6h-1.35V3.7c0-.2-.15-.35-.35-.35h-2.1c-.2%200-.35.15-.35.35v1.5H9.2z%22%2F%3E%3Cpath%20d%3D%22M3%206.4c-.8%200-1.5.7-1.5%201.5v10.2c0%201.4%201.1%202.5%202.5%202.5h16c1.4%200%202.5-1.1%202.5-2.5V7.9c0-.8-.7-1.5-1.5-1.5H3zM5.6%208.3h1.35v9.4H5.6V8.3zM17.05%208.3H18.4v9.4h-1.35V8.3zM10.15%2010.4h3.7c.55%200%201%20.45%201%201v3.3c0%20.55-.45%201-1%201h-3.7c-.55%200-1-.45-1-1v-3.3c0-.55.45-1%201-1zM11.35%2011.7h1.3v2.2h-1.3v-2.2z%22%2F%3E%3Crect%20x%3D%225.2%22%20y%3D%2220.35%22%20width%3D%222.6%22%20height%3D%221.35%22%20rx%3D%220.55%22%2F%3E%3Crect%20x%3D%2216.2%22%20y%3D%2220.35%22%20width%3D%222.6%22%20height%3D%221.35%22%20rx%3D%220.55%22%2F%3E%3C%2Fsvg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M9.2%205.2V3.6c0-.9.7-1.6%201.6-1.6h2.4c.9%200%201.6.7%201.6%201.6v1.6h-1.35V3.7c0-.2-.15-.35-.35-.35h-2.1c-.2%200-.35.15-.35.35v1.5H9.2z%22%2F%3E%3Cpath%20d%3D%22M3%206.4c-.8%200-1.5.7-1.5%201.5v10.2c0%201.4%201.1%202.5%202.5%202.5h16c1.4%200%202.5-1.1%202.5-2.5V7.9c0-.8-.7-1.5-1.5-1.5H3zM5.6%208.3h1.35v9.4H5.6V8.3zM17.05%208.3H18.4v9.4h-1.35V8.3zM10.15%2010.4h3.7c.55%200%201%20.45%201%201v3.3c0%20.55-.45%201-1%201h-3.7c-.55%200-1-.45-1-1v-3.3c0-.55.45-1%201-1zM11.35%2011.7h1.3v2.2h-1.3v-2.2z%22%2F%3E%3Crect%20x%3D%225.2%22%20y%3D%2220.35%22%20width%3D%222.6%22%20height%3D%221.35%22%20rx%3D%220.55%22%2F%3E%3Crect%20x%3D%2216.2%22%20y%3D%2220.35%22%20width%3D%222.6%22%20height%3D%221.35%22%20rx%3D%220.55%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.calendar-icon--crown {
+    background-color: #7a5608;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M3%2016.5%205.5%208l4%204.5L12%205.5l2.5%207%204-4.5%202.5%208.5H3z%22%2F%3E%3Crect%20x%3D%224%22%20y%3D%2217.2%22%20width%3D%2216%22%20height%3D%222.3%22%20rx%3D%22.4%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%227.2%22%20r%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%224.5%22%20r%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%227.2%22%20r%3D%221.2%22%2F%3E%3C%2Fsvg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M3%2016.5%205.5%208l4%204.5L12%205.5l2.5%207%204-4.5%202.5%208.5H3z%22%2F%3E%3Crect%20x%3D%224%22%20y%3D%2217.2%22%20width%3D%2216%22%20height%3D%222.3%22%20rx%3D%22.4%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%227.2%22%20r%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%224.5%22%20r%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%227.2%22%20r%3D%221.2%22%2F%3E%3C%2Fsvg%3E");
+}
+
+
+.calendar-icon--notes {
+    background-color: #004890;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cellipse%20cx%3D%227%22%20cy%3D%2218%22%20rx%3D%223%22%20ry%3D%222%22%2F%3E%3Cellipse%20cx%3D%2216%22%20cy%3D%2216%22%20rx%3D%223%22%20ry%3D%222%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%225%22%20width%3D%222%22%20height%3D%2213%22%2F%3E%3Crect%20x%3D%2218%22%20y%3D%225%22%20width%3D%222%22%20height%3D%2211%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%225%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3C%2Fsvg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cellipse%20cx%3D%227%22%20cy%3D%2218%22%20rx%3D%223%22%20ry%3D%222%22%2F%3E%3Cellipse%20cx%3D%2216%22%20cy%3D%2216%22%20rx%3D%223%22%20ry%3D%222%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%225%22%20width%3D%222%22%20height%3D%2213%22%2F%3E%3Crect%20x%3D%2218%22%20y%3D%225%22%20width%3D%222%22%20height%3D%2211%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%225%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.calendar-icon--sun {
+    background-color: #8a5500;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%224.2%22%2F%3E%3Cpath%20d%3D%22M12.78%2C6.30L12.78%2C2.20L11.22%2C2.20L11.22%2C6.30Z%22%2F%3E%3Cpath%20d%3D%22M16.58%2C8.52L19.48%2C5.62L18.38%2C4.52L15.48%2C7.42Z%22%2F%3E%3Cpath%20d%3D%22M17.70%2C12.78L21.80%2C12.78L21.80%2C11.22L17.70%2C11.22Z%22%2F%3E%3Cpath%20d%3D%22M15.48%2C16.58L18.38%2C19.48L19.48%2C18.38L16.58%2C15.48Z%22%2F%3E%3Cpath%20d%3D%22M11.22%2C17.70L11.22%2C21.80L12.78%2C21.80L12.78%2C17.70Z%22%2F%3E%3Cpath%20d%3D%22M7.42%2C15.48L4.52%2C18.38L5.62%2C19.48L8.52%2C16.58Z%22%2F%3E%3Cpath%20d%3D%22M6.30%2C11.22L2.20%2C11.23L2.20%2C12.78L6.30%2C12.78Z%22%2F%3E%3Cpath%20d%3D%22M8.52%2C7.42L5.62%2C4.52L4.52%2C5.62L7.42%2C8.52Z%22%2F%3E%3C%2Fsvg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%224.2%22%2F%3E%3Cpath%20d%3D%22M12.78%2C6.30L12.78%2C2.20L11.22%2C2.20L11.22%2C6.30Z%22%2F%3E%3Cpath%20d%3D%22M16.58%2C8.52L19.48%2C5.62L18.38%2C4.52L15.48%2C7.42Z%22%2F%3E%3Cpath%20d%3D%22M17.70%2C12.78L21.80%2C12.78L21.80%2C11.22L17.70%2C11.22Z%22%2F%3E%3Cpath%20d%3D%22M15.48%2C16.58L18.38%2C19.48L19.48%2C18.38L16.58%2C15.48Z%22%2F%3E%3Cpath%20d%3D%22M11.22%2C17.70L11.22%2C21.80L12.78%2C21.80L12.78%2C17.70Z%22%2F%3E%3Cpath%20d%3D%22M7.42%2C15.48L4.52%2C18.38L5.62%2C19.48L8.52%2C16.58Z%22%2F%3E%3Cpath%20d%3D%22M6.30%2C11.22L2.20%2C11.23L2.20%2C12.78L6.30%2C12.78Z%22%2F%3E%3Cpath%20d%3D%22M8.52%2C7.42L5.62%2C4.52L4.52%2C5.62L7.42%2C8.52Z%22%2F%3E%3C%2Fsvg%3E");
+}
+
 .calendar-card .badge {
+    flex-shrink: 0;
+    margin-left: auto;
+    align-self: flex-start;
     background-color: rgba(255, 255, 255, 0.97);
     color: #0a0a0a;
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -1475,6 +1685,8 @@ a.btn-outline {
 @media (forced-colors: active) {
     .calendar-card {
         border: 1px solid CanvasText;
+        box-shadow: none;
+        background: Canvas;
         forced-color-adjust: none;
     }
 
@@ -1497,6 +1709,13 @@ a.btn-outline {
     .calendar-card .calendar-text,
     .calendar-card .badge {
         color: CanvasText;
+    }
+
+    .calendar-icon--svg,
+    .calendar-icon--dot-pink,
+    .calendar-icon--dot-green {
+        background-color: CanvasText !important;
+        box-shadow: none;
     }
 
     .calendar-card .badge {
@@ -1606,11 +1825,13 @@ a.btn-outline {
 }
 
 .calendar-card[data-card-bg="thanksgiving"].calendar-bg-on::before {
-    background-image: url('assets/images/thanksgiving-turkey.jpg');
+    background-image: url('assets/images/thanksgiving-pumpkin.jpg');
     background-image: image-set(
-        url('assets/images/thanksgiving-turkey.webp') type('image/webp'),
-        url('assets/images/thanksgiving-turkey.jpg') type('image/jpeg')
+        url('assets/images/thanksgiving-pumpkin.webp') type('image/webp'),
+        url('assets/images/thanksgiving-pumpkin.jpg') type('image/jpeg')
     );
+    background-size: cover;
+    background-position: center;
     opacity: 0.78;
 }
 
@@ -1645,14 +1866,20 @@ a.btn-outline {
         url('assets/images/winter-break-snowman.webp') type('image/webp'),
         url('assets/images/winter-break-snowman.jpg') type('image/jpeg')
     );
-    opacity: 0.75;
+    background-position: 88% 42%;
+    opacity: 0.95;
+}
+
+.calendar-card[data-card-bg="winter-break"] .date-row {
+    width: auto;
+    max-width: 100%;
 }
 
 .calendar-card[data-card-bg="winter-break"].calendar-card--winter::after {
     background: linear-gradient(
         145deg,
-        rgba(248, 250, 252, 0.35) 0%,
-        rgba(241, 245, 249, 0.25) 100%
+        rgba(248, 250, 252, 0.1) 0%,
+        rgba(241, 245, 249, 0.05) 100%
     );
 }
 
@@ -1662,14 +1889,21 @@ a.btn-outline {
         url('assets/images/family-day-stick-family.webp') type('image/webp'),
         url('assets/images/family-day-stick-family.jpg') type('image/jpeg')
     );
-    opacity: 0.75;
+    background-size: cover;
+    background-position: center bottom 4.5rem;
+    opacity: 0.92;
+}
+
+.calendar-card[data-card-bg="family-day"] .date-row {
+    width: auto;
+    max-width: 100%;
 }
 
 .calendar-card[data-card-bg="family-day"].calendar-card--winter::after {
     background: linear-gradient(
         145deg,
-        rgba(248, 250, 252, 0.35) 0%,
-        rgba(241, 245, 249, 0.25) 100%
+        rgba(248, 250, 252, 0.14) 0%,
+        rgba(241, 245, 249, 0.08) 100%
     );
 }
 
@@ -1708,10 +1942,10 @@ a.btn-outline {
 }
 
 .calendar-card[data-card-bg="lessons-end"].calendar-bg-on::before {
-    background-image: url('assets/images/lessons-end-may-flowers.jpg');
+    background-image: url('assets/images/lessons-end-wildflowers.jpg');
     background-image: image-set(
-        url('assets/images/lessons-end-may-flowers.webp') type('image/webp'),
-        url('assets/images/lessons-end-may-flowers.jpg') type('image/jpeg')
+        url('assets/images/lessons-end-wildflowers.webp') type('image/webp'),
+        url('assets/images/lessons-end-wildflowers.jpg') type('image/jpeg')
     );
     opacity: 0.75;
 }
@@ -1778,7 +2012,7 @@ a.btn-outline {
 /* Recitals Section */
 .recitals-section {
     padding: 6rem 0;
-    background-color: rgba(0, 109, 171, 0.03);
+    background: transparent;
 }
 
 .recitals-intro {
@@ -1811,6 +2045,7 @@ a.btn-outline {
 /* Community Section */
 .community-section {
     padding: 6rem 0;
+    background: transparent;
 }
 
 .community-intro {
@@ -1894,13 +2129,13 @@ a.btn-outline {
 /* Contact Section - NO BACKGROUND IMAGE */
 .contact-section {
     padding: 6rem 0;
-    background-color: rgba(236, 236, 240, 0.05);
+    background: transparent;
 }
 
 /* FAQ Section */
 .faq-section {
     padding: 6rem 0;
-    background-color: rgba(0, 109, 171, 0.03);
+    background: transparent;
 }
 
 .faq-intro {
@@ -2272,7 +2507,12 @@ a.btn-outline {
 /* Photo Gallery Section */
 .photo-gallery-section {
     padding: 4rem 0;
-    background: #f8f9fa;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(0, 72, 144, 0.07) 100%
+        );
 }
 
 .gallery-intro {
