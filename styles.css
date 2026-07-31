@@ -2341,14 +2341,15 @@ a.btn-outline {
 
 .contact-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 1.5rem;
 }
 
 .contact-icon {
     font-size: 1.5rem;
     margin-right: 1rem;
-    margin-top: 0.25rem;
+    line-height: 1;
+    flex-shrink: 0;
 }
 
 .contact-item a {
