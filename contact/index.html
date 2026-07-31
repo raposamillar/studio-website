@@ -34,7 +34,7 @@
     <meta name="twitter:image" content="https://raposamillar.ca/assets/images/og-image.jpg?v=4" />
 
     <!-- Styles & Fonts -->
-    <link rel="stylesheet" href="/styles.css?v=2.13">
+    <link rel="stylesheet" href="/styles.css?v=2.17">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -42,6 +42,7 @@
 <body class="page-contact">
         <a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- Fixed Navigation -->
+    <header>
     <nav class="navbar" aria-label="Primary">
         <div class="nav-container">
             <a href="/" class="nav-brand">
@@ -73,6 +74,7 @@
             </button>
         </div>
     </nav>
+    </header>
 
 <main id="main-content" tabindex="-1">
 <section id="contact" class="contact-section">
@@ -118,9 +120,10 @@
                         <div class="card-header">
                             <h2 id="inquiry-form-heading">Interested in Signing Up?</h2>
                             <p id="inquiry-form-desc">
-                                Fill out the form below to inquire about piano or theory lessons.
-                                If the form does not load, you can email us at
-                                <a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a>.
+                                Use the inquiry form below for piano or theory lessons.
+                                Prefer email? Write to
+                                <a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a>
+                                anytime — that option always works if the form is unavailable.
                             </p>
                         </div>
                         <div
@@ -128,12 +131,18 @@
                             id="mymusicstaff-widget"
                             role="region"
                             aria-labelledby="inquiry-form-heading"
-                            aria-describedby="inquiry-form-desc"
+                            aria-describedby="inquiry-form-desc inquiry-form-fallback"
+                            data-provider="mymusicstaff"
                         >
+                            <p id="inquiry-form-fallback" class="contact-widget-fallback">
+                                The form below is provided by our studio management system.
+                                If it does not appear or you prefer not to use it, email
+                                <a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a>.
+                            </p>
                             <script src="https://app.mymusicstaff.com/Widget/v4/Widget.ashx?settings=eyJTY2hvb2xJRCI6InNjaF9WcGdKTCIsIldlYnNpdGVJRCI6Indic182NUptIiwiV2Vic2l0ZUJsb2NrSUQiOiJ3YmJfY1M0SmsifQ=="></script>
                             <noscript>
                                 <p>
-                                    JavaScript is required for the inquiry form.
+                                    JavaScript is required for the embedded inquiry form.
                                     Please email
                                     <a href="mailto:studio@raposamillar.ca">studio@raposamillar.ca</a>
                                     instead.

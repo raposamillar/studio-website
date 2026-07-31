@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
+        let lockedScrollY = 0;
+
         const setMenuOpen = (open) => {
             const mobile = isMobileNav();
 
@@ -45,8 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 setBackgroundInert(open);
 
                 if (open) {
+                    lockedScrollY = window.scrollY || window.pageYOffset || 0;
                     document.body.style.overflow = 'hidden';
                     document.body.style.position = 'fixed';
+                    document.body.style.top = `-${lockedScrollY}px`;
                     document.body.style.width = '100%';
                     const firstLink = navLinks[0];
                     if (firstLink) {
@@ -55,7 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     document.body.style.overflow = '';
                     document.body.style.position = '';
+                    document.body.style.top = '';
                     document.body.style.width = '';
+                    window.scrollTo(0, lockedScrollY);
                 }
             } else {
                 navMenu.removeAttribute('aria-hidden');
@@ -63,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 setBackgroundInert(false);
                 document.body.style.overflow = '';
                 document.body.style.position = '';
+                document.body.style.top = '';
                 document.body.style.width = '';
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
@@ -203,6 +210,11 @@ document.addEventListener('DOMContentLoaded', function() {
             widgetRoot.querySelectorAll('iframe').forEach((iframe) => {
                 if (!iframe.getAttribute('title')) {
                     iframe.setAttribute('title', 'Lesson inquiry form');
+                }
+                // Best-effort host-side attributes; widget internals remain third-party
+                iframe.setAttribute('loading', 'lazy');
+                if (!iframe.getAttribute('referrerpolicy')) {
+                    iframe.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
                 }
             });
         };
