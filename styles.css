@@ -10,11 +10,48 @@
     --color-text-muted: #36363e; /* supporting labels/nav; ~12:1 on white, ≥10:1 on washes */
     --color-text-secondary: #2a2a31; /* body prose — stronger separation on soft page washes (AAA) */
     --color-brand: #004890; /* sampled from logo blue */
+    --color-brand-navy: #00366d;
+    /* Accent trio — yellow / orange / purple only (plus dark steps for icons/SVG) */
+    --color-accent-yellow: #FFBF00;
+    --color-accent-yellow-deep: #7a5608;
+    --color-accent-orange: #9A3412; /* ~7.3:1 on white (WCAG AAA) */
+    --color-accent-orange-mid: #b45309;
+    --color-accent-purple: #5a4570;
+    --color-accent-purple-deep: #4f3a72;
     /* Soft emboss for serif prose on light washes — highlight + shallow drop, not glow */
     --text-shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 1px rgba(0, 0, 0, 0.1);
+    /* Simple painting frame — cool gray / off-white (B/W + blue system) */
+    --photo-frame-border: 1px solid rgba(54, 54, 62, 0.18);
+    --photo-frame-radius: 0.4rem;
+    --photo-frame-mat: #f5f8fc;
+    --photo-frame-shadow:
+        0 0 0 4px var(--photo-frame-mat),
+        0 0 0 5px rgba(54, 54, 62, 0.12),
+        0 2px 8px rgba(26, 30, 37, 0.07);
     --nav-offset: 7.75rem;
     --font-display: 'Montserrat', Arial, Helvetica, sans-serif;
     --font-body: 'Source Serif 4', Georgia, 'Times New Roman', Times, serif;
+    /* Sage / beige tokens (instructor photos + warm cream) */
+    --color-sage: #6b7c51;
+    --color-sage-deep: #566c48;
+    /* Page atmosphere washes — pale enough for dark text (AA+) */
+    --wash-sage-base: #f3f5f0;
+    --wash-sage-mid: #eef1e9;
+    --wash-sage-glow: rgba(107, 124, 81, 0.16);
+    --wash-sage-glow-soft: rgba(86, 108, 72, 0.12);
+    --wash-beige-base: #faf6e8;
+    --wash-beige-mid: #f5efd8;
+    --wash-beige-glow: rgba(240, 210, 120, 0.28);
+    --wash-beige-glow-soft: rgba(245, 220, 140, 0.18);
+    --wash-blue-light-base: #f7fafc;
+    --wash-blue-light-mid: #f1f5f9;
+    --wash-blue-base: #f3f6fa;
+    --wash-blue-mid: #eef3f8;
+    --wash-blue-deep-base: #eef3f8;
+    --wash-blue-deep-mid: #e4ecf5;
+    --wash-blue-glow-soft: rgba(0, 72, 144, 0.06);
+    --wash-blue-glow: rgba(0, 72, 144, 0.1);
+    --wash-blue-glow-strong: rgba(0, 72, 144, 0.14);
 }
 
 a {
@@ -25,7 +62,7 @@ a {
 }
 
 a:hover {
-  color: #9A3412; /* darker orange — ~7.3:1 on white (WCAG AAA) */
+  color: var(--color-accent-orange);
 }
 
 /* Nav, buttons, and card-like controls: identified by context/affordance */
@@ -49,54 +86,50 @@ body {
     overflow-x: hidden;
 }
 
-/* Interior page atmospheres — soft brand-tinted fields (not flat white) */
-/* Sage/olive wash sampled from instructor photos (#6b7c51, #566c48) */
+/* Interior page atmospheres — four related families:
+   (1) Home: clean white
+   (2) Contact / Lessons / Recitals: warm beige / cream
+   (3) Our Story / Community: sage green wash
+   (4) FAQ / Calendar: cool brand-blue at light → mid */
+body.page-home {
+    background-color: #ffffff;
+}
+
+/* Warm beige — Contact, Lessons, Recitals */
+body.page-contact,
+body.page-lessons,
+body.page-recitals {
+    background-color: var(--wash-beige-base);
+    background-image:
+        radial-gradient(ellipse 85% 50% at 15% 0%, var(--wash-beige-glow), transparent 55%),
+        radial-gradient(ellipse 55% 40% at 100% 30%, var(--wash-beige-glow-soft), transparent 50%),
+        linear-gradient(180deg, #fbf7eb 0%, var(--wash-beige-mid) 55%, var(--wash-beige-base) 100%);
+}
+
+/* Sage — Our Story, Community (sampled from instructor photos) */
 body.page-about,
 body.page-community {
-    background-color: #f3f5f0;
+    background-color: var(--wash-sage-base);
     background-image:
-        radial-gradient(ellipse 80% 50% at 90% 0%, rgba(107, 124, 81, 0.16), transparent 55%),
-        radial-gradient(ellipse 60% 40% at 0% 35%, rgba(86, 108, 72, 0.12), transparent 50%),
-        linear-gradient(180deg, #f4f6f1 0%, #eef1e9 100%);
+        radial-gradient(ellipse 80% 50% at 90% 0%, var(--wash-sage-glow), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 0% 35%, var(--wash-sage-glow-soft), transparent 50%),
+        linear-gradient(180deg, #f4f6f1 0%, var(--wash-sage-mid) 100%);
 }
 
-body.page-lessons {
-    background-color: #f2f6fa;
-    background-image:
-        radial-gradient(ellipse 80% 50% at 100% 0%, rgba(0, 72, 144, 0.1), transparent 55%),
-        linear-gradient(165deg, #f4f8fc 0%, #eaf1f7 40%, #f3f6f9 100%);
-}
-
-/* Warm beige wash sampled from Lessons Begin / fall-leaves (#f1bc77) */
-body.page-calendar {
-    background-color: #f7f1e8;
-    background-image:
-        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(241, 188, 119, 0.28), transparent 55%),
-        radial-gradient(ellipse 55% 40% at 100% 30%, rgba(249, 201, 136, 0.18), transparent 50%),
-        linear-gradient(180deg, #f8f2e9 0%, #f3ebe0 100%);
-}
-
-body.page-recitals {
-    background-color: #faf6e8;
-    background-image:
-        radial-gradient(ellipse 85% 50% at 15% 0%, rgba(240, 210, 120, 0.28), transparent 55%),
-        radial-gradient(ellipse 55% 40% at 100% 30%, rgba(245, 220, 140, 0.18), transparent 50%),
-        linear-gradient(180deg, #fbf7eb 0%, #f5efd8 55%, #faf6e8 100%);
-}
-
-body.page-contact {
-    background-color: #faf6e8;
-    background-image:
-        radial-gradient(ellipse 85% 50% at 15% 0%, rgba(240, 210, 120, 0.28), transparent 55%),
-        radial-gradient(ellipse 55% 40% at 100% 30%, rgba(245, 220, 140, 0.18), transparent 50%),
-        linear-gradient(180deg, #fbf7eb 0%, #f5efd8 55%, #faf6e8 100%);
-}
-
+/* Cool blue — FAQ (lightest) */
 body.page-faq {
-    background-color: #f3f6fa;
+    background-color: var(--wash-blue-light-base);
     background-image:
-        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 72, 144, 0.1), transparent 55%),
-        linear-gradient(180deg, #f5f8fc 0%, #eef3f8 100%);
+        radial-gradient(ellipse 80% 48% at 50% 0%, var(--wash-blue-glow-soft), transparent 55%),
+        linear-gradient(180deg, var(--wash-blue-light-base) 0%, var(--wash-blue-light-mid) 100%);
+}
+
+/* Cool blue — Calendar (mid) */
+body.page-calendar {
+    background-color: var(--wash-blue-base);
+    background-image:
+        radial-gradient(ellipse 80% 50% at 50% 0%, var(--wash-blue-glow), transparent 55%),
+        linear-gradient(180deg, #f5f8fc 0%, var(--wash-blue-mid) 100%);
 }
 
 .skip-link {
@@ -116,7 +149,7 @@ body.page-faq {
 
 .skip-link:focus {
     transform: translateY(0);
-    outline: 3px solid #FFBF00;
+    outline: 3px solid var(--color-accent-yellow);
     outline-offset: 2px;
 }
 
@@ -138,7 +171,6 @@ body.page-faq {
 }
 
 /* Typography */
-h1,
 h2,
 h3,
 h4 {
@@ -146,15 +178,20 @@ h4 {
     font-weight: 600;
 }
 
+/* Page titles: Source Serif for a warmer, less geometric feel.
+   Sized above h2 so serif page titles stay optically larger than
+   bold geometric Montserrat section headings. */
 h1 {
-    font-size: 2.5rem;
+    font-family: var(--font-body);
+    font-size: 3.125rem;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
     margin-bottom: 1.5rem;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.125rem;
     font-weight: 600;
     line-height: 1.3;
     margin-bottom: 2rem;
@@ -163,9 +200,9 @@ h2 {
 
 /* Interior page titles (formerly h2) */
 main > section > .container > h1 {
-    font-size: 2.5rem;
+    font-size: 3.125rem;
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.2;
     margin-bottom: 2rem;
     text-align: center;
 }
@@ -819,9 +856,9 @@ a.btn-outline {
 .lessons-section a.btn-primary:hover,
 .lessons-section a.btn-primary:focus-visible,
 .lessons-section a.btn-primary:active {
-  background-color: #FFBF00;
+  background-color: var(--color-accent-yellow);
   color: #000000;
-  border-color: #FFBF00;
+  border-color: var(--color-accent-yellow);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
 }
 
@@ -847,6 +884,40 @@ a.btn-outline {
 .about-section {
     padding: 6rem 0;
     background: transparent;
+}
+
+.about-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.about-heading h1 {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.about-book {
+    width: clamp(4rem, 11vw, 5.25rem);
+    height: auto;
+    flex-shrink: 0;
+    opacity: 0.95;
+    align-self: flex-end;
+    margin-bottom: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .about-heading {
+        gap: 0.4rem;
+    }
+
+    .about-book {
+        width: clamp(3.25rem, 15vw, 4.25rem);
+        opacity: 0.92;
+    }
 }
 
 .studio-intro {
@@ -880,6 +951,9 @@ a.btn-outline {
     aspect-ratio: 4 / 3;
     overflow: hidden;
     background-color: #e8eaed;
+    border: var(--photo-frame-border);
+    border-radius: var(--photo-frame-radius);
+    box-shadow: var(--photo-frame-shadow);
 }
 
 .instructor-image {
@@ -930,10 +1004,10 @@ a.btn-outline {
 /* Instructor Quote Styling */
 .instructor-quote {
     position: relative;
-    border-left: 4px solid #030213;
-    border-radius: 0.625rem;
+    border: var(--photo-frame-border);
+    border-radius: var(--photo-frame-radius);
+    box-shadow: var(--photo-frame-shadow);
     padding: 1.5rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
     overflow: hidden;
 }
 
@@ -1031,6 +1105,46 @@ a.btn-outline {
 .lessons-section {
     padding: 6rem 0;
     background: transparent;
+}
+
+.lessons-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.lessons-heading h1 {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.lessons-icon {
+    display: block;
+    flex-shrink: 0;
+    align-self: baseline;
+    margin-bottom: 0;
+    color: #004890;
+    font-family: "Segoe UI Symbol", "Apple Symbols", "Noto Sans Symbols 2", "Noto Sans Symbols", "DejaVu Sans", Times, serif;
+    font-size: clamp(4.25rem, 12vw, 5.75rem);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    opacity: 0.95;
+    user-select: none;
+}
+
+@media (max-width: 768px) {
+    .lessons-heading {
+        gap: 0.4rem;
+    }
+
+    .lessons-icon {
+        font-size: clamp(3.5rem, 17vw, 4.75rem);
+        opacity: 0.92;
+    }
 }
 
 /* Theory Levels Section */
@@ -1142,13 +1256,7 @@ a.btn-outline {
     text-align: center;
     text-decoration: none;
     color: inherit;
-    border-radius: 0.625rem;
-    transition: transform 0.2s ease;
-}
-
-.lesson-image-item:hover,
-.lesson-image-item:focus-visible {
-    transform: translateY(-2px);
+    border-radius: var(--photo-frame-radius);
 }
 
 .lesson-image-item:focus-visible {
@@ -1160,14 +1268,18 @@ a.btn-outline {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    border-radius: 0.625rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: var(--photo-frame-border);
+    border-radius: var(--photo-frame-radius);
+    box-shadow: var(--photo-frame-shadow);
     transition: box-shadow 0.2s ease;
 }
 
 .lesson-image-item:hover img,
 .lesson-image-item:focus-visible img {
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+    box-shadow:
+        0 0 0 4px var(--photo-frame-mat),
+        0 0 0 5px rgba(54, 54, 62, 0.18),
+        0 4px 14px rgba(26, 30, 37, 0.1);
 }
 
 .image-caption {
@@ -1299,6 +1411,9 @@ a.btn-outline {
     overflow: hidden;
     color: white;
     height: 100%;
+    border: var(--photo-frame-border);
+    border-radius: var(--photo-frame-radius);
+    box-shadow: var(--photo-frame-shadow);
 }
 
 .age-group-card::before {
@@ -1391,10 +1506,44 @@ a.btn-outline {
     background: transparent;
 }
 
+.calendar-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.calendar-heading h1 {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.calendar-heading-image {
+    width: clamp(3.35rem, 9vw, 4.5rem);
+    height: auto;
+    flex-shrink: 0;
+    opacity: 0.95;
+    align-self: flex-end;
+    margin-bottom: 0.05em;
+}
+
 .calendar-intro {
     max-width: 800px;
     margin: 0 auto 2rem;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .calendar-heading {
+        gap: 0.4rem;
+    }
+
+    .calendar-heading-image {
+        width: clamp(2.85rem, 13vw, 3.75rem);
+        opacity: 0.92;
+    }
 }
 
 .calendar-summary {
@@ -1405,7 +1554,7 @@ a.btn-outline {
     text-align: left;
     background: rgba(255, 255, 255, 0.88);
     border-radius: 0.5rem;
-    box-shadow: 0 1px 4px rgba(60, 45, 30, 0.06);
+    box-shadow: 0 1px 4px rgba(26, 30, 37, 0.06);
 }
 
 .calendar-summary li {
@@ -1482,13 +1631,10 @@ a.btn-outline {
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: #faf7f2;
-    border: 1px solid rgba(92, 74, 55, 0.22);
-    border-radius: 0.4rem;
-    box-shadow:
-        0 0 0 4px #f7f1e8,
-        0 0 0 5px rgba(92, 74, 55, 0.16),
-        0 2px 8px rgba(60, 45, 30, 0.07);
+    background: #f8fafc;
+    border: var(--photo-frame-border);
+    border-radius: var(--photo-frame-radius);
+    box-shadow: var(--photo-frame-shadow);
     overflow: hidden;
 }
 
@@ -1587,8 +1733,8 @@ a.btn-outline {
 }
 
 /* Calendar status dots + SVG icons (emoji replaced for consistency / a11y) */
-.calendar-icon--dot-pink,
-.calendar-icon--dot-green {
+.calendar-icon--dot-purple,
+.calendar-icon--dot-blue {
     display: inline-block;
     width: 0.95em;
     height: 0.95em;
@@ -1597,12 +1743,12 @@ a.btn-outline {
     vertical-align: -0.05em;
 }
 
-.calendar-icon--dot-pink {
-    background: #c2186b; /* 5.8:1 on white */
+.calendar-icon--dot-purple {
+    background: var(--color-accent-purple); /* ~7:1 on white */
 }
 
-.calendar-icon--dot-green {
-    background: #5f7a4a; /* 4.8:1 on white — muted sage */
+.calendar-icon--dot-blue {
+    background: var(--color-brand); /* brand blue — replaces sage green */
 }
 
 /* Calendar decorative icons — CSS/SVG for consistent cross-platform rendering.
@@ -1626,50 +1772,50 @@ a.btn-outline {
 
 
 .calendar-icon--pumpkin {
-    background-color: #b45309;
+    background-color: var(--color-accent-orange-mid);
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cellipse%20cx%3D%227%22%20cy%3D%2214.5%22%20rx%3D%224.6%22%20ry%3D%226.2%22%2F%3E%3Cellipse%20cx%3D%2217%22%20cy%3D%2214.5%22%20rx%3D%224.6%22%20ry%3D%226.2%22%2F%3E%3Cellipse%20cx%3D%2212%22%20cy%3D%2213.8%22%20rx%3D%225.4%22%20ry%3D%226.8%22%2F%3E%3Cpath%20d%3D%22M10.8%207.2c0-2.6.7-4.6%201.8-5.8.25%201.8.35%203.7.3%205.5-.7.15-1.4.35-2.1.3z%22%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cellipse%20cx%3D%227%22%20cy%3D%2214.5%22%20rx%3D%224.6%22%20ry%3D%226.2%22%2F%3E%3Cellipse%20cx%3D%2217%22%20cy%3D%2214.5%22%20rx%3D%224.6%22%20ry%3D%226.2%22%2F%3E%3Cellipse%20cx%3D%2212%22%20cy%3D%2213.8%22%20rx%3D%225.4%22%20ry%3D%226.8%22%2F%3E%3Cpath%20d%3D%22M10.8%207.2c0-2.6.7-4.6%201.8-5.8.25%201.8.35%203.7.3%205.5-.7.15-1.4.35-2.1.3z%22%2F%3E%3C%2Fsvg%3E");
 }
 
 .calendar-icon--plane {
-    background-color: #004890;
+    background-color: var(--color-brand);
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M21%2016v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10%202.67%2010%203.5V9l-8%205v2l8-2.5V19l-2%201.5V22l3.5-1%203.5%201v-1.5L13%2019v-5.5l8%202.5z%22%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M21%2016v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10%202.67%2010%203.5V9l-8%205v2l8-2.5V19l-2%201.5V22l3.5-1%203.5%201v-1.5L13%2019v-5.5l8%202.5z%22%2F%3E%3C%2Fsvg%3E");
 }
 
 .calendar-icon--snowflake {
-    background-color: #3d5a73;
+    background-color: var(--color-brand-navy);
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M12.82%2C12.00L12.82%2C2.70L11.18%2C2.70L11.18%2C12.00ZM12.43%2C5.05L10.15%2C3.26L9.28%2C4.37L11.57%2C6.15ZM12.43%2C6.15L14.72%2C4.37L13.85%2C3.26L11.57%2C5.05ZM12.40%2C7.79L10.67%2C6.43L9.87%2C7.46L11.60%2C8.81ZM12.40%2C8.81L14.13%2C7.46L13.33%2C6.43L11.60%2C7.79ZM12.41%2C12.71L20.47%2C8.06L19.64%2C6.64L11.59%2C11.29ZM18.24%2C8.90L18.64%2C6.03L17.25%2C5.83L16.85%2C8.70ZM17.28%2C9.45L19.97%2C10.54L20.49%2C9.24L17.80%2C8.15ZM15.85%2C10.24L16.15%2C8.06L14.87%2C7.88L14.56%2C10.06ZM14.96%2C10.75L17.00%2C11.58L17.49%2C10.37L15.45%2C9.55ZM11.59%2C12.71L19.64%2C17.36L20.47%2C15.94L12.41%2C11.29ZM17.80%2C15.85L20.49%2C14.76L19.97%2C13.46L17.28%2C14.55ZM16.85%2C15.30L17.25%2C18.17L18.64%2C17.97L18.24%2C15.10ZM15.45%2C14.45L17.49%2C13.63L17.00%2C12.42L14.96%2C13.25ZM14.56%2C13.94L14.87%2C16.12L16.15%2C15.94L15.85%2C13.76ZM11.18%2C12.00L11.18%2C21.30L12.82%2C21.30L12.82%2C12.00ZM11.57%2C18.95L13.85%2C20.74L14.72%2C19.63L12.43%2C17.85ZM11.57%2C17.85L9.28%2C19.63L10.15%2C20.74L12.43%2C18.95ZM11.60%2C16.21L13.33%2C17.57L14.13%2C16.54L12.40%2C15.19ZM11.60%2C15.19L9.87%2C16.54L10.67%2C17.57L12.40%2C16.21ZM11.59%2C11.29L3.53%2C15.94L4.36%2C17.36L12.41%2C12.71ZM5.76%2C15.10L5.36%2C17.97L6.75%2C18.17L7.15%2C15.30ZM6.72%2C14.55L4.03%2C13.46L3.51%2C14.76L6.20%2C15.85ZM8.15%2C13.76L7.85%2C15.94L9.13%2C16.12L9.44%2C13.94ZM9.04%2C13.25L7.00%2C12.42L6.51%2C13.63L8.55%2C14.45ZM12.41%2C11.29L4.36%2C6.64L3.53%2C8.06L11.59%2C12.71ZM6.20%2C8.15L3.51%2C9.24L4.03%2C10.54L6.72%2C9.45ZM7.15%2C8.70L6.75%2C5.83L5.36%2C6.03L5.76%2C8.90ZM8.55%2C9.55L6.51%2C10.37L7.00%2C11.58L9.04%2C10.75ZM9.44%2C10.06L9.13%2C7.88L7.85%2C8.06L8.15%2C10.24Z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%221.65%22%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M12.82%2C12.00L12.82%2C2.70L11.18%2C2.70L11.18%2C12.00ZM12.43%2C5.05L10.15%2C3.26L9.28%2C4.37L11.57%2C6.15ZM12.43%2C6.15L14.72%2C4.37L13.85%2C3.26L11.57%2C5.05ZM12.40%2C7.79L10.67%2C6.43L9.87%2C7.46L11.60%2C8.81ZM12.40%2C8.81L14.13%2C7.46L13.33%2C6.43L11.60%2C7.79ZM12.41%2C12.71L20.47%2C8.06L19.64%2C6.64L11.59%2C11.29ZM18.24%2C8.90L18.64%2C6.03L17.25%2C5.83L16.85%2C8.70ZM17.28%2C9.45L19.97%2C10.54L20.49%2C9.24L17.80%2C8.15ZM15.85%2C10.24L16.15%2C8.06L14.87%2C7.88L14.56%2C10.06ZM14.96%2C10.75L17.00%2C11.58L17.49%2C10.37L15.45%2C9.55ZM11.59%2C12.71L19.64%2C17.36L20.47%2C15.94L12.41%2C11.29ZM17.80%2C15.85L20.49%2C14.76L19.97%2C13.46L17.28%2C14.55ZM16.85%2C15.30L17.25%2C18.17L18.64%2C17.97L18.24%2C15.10ZM15.45%2C14.45L17.49%2C13.63L17.00%2C12.42L14.96%2C13.25ZM14.56%2C13.94L14.87%2C16.12L16.15%2C15.94L15.85%2C13.76ZM11.18%2C12.00L11.18%2C21.30L12.82%2C21.30L12.82%2C12.00ZM11.57%2C18.95L13.85%2C20.74L14.72%2C19.63L12.43%2C17.85ZM11.57%2C17.85L9.28%2C19.63L10.15%2C20.74L12.43%2C18.95ZM11.60%2C16.21L13.33%2C17.57L14.13%2C16.54L12.40%2C15.19ZM11.60%2C15.19L9.87%2C16.54L10.67%2C17.57L12.40%2C16.21ZM11.59%2C11.29L3.53%2C15.94L4.36%2C17.36L12.41%2C12.71ZM5.76%2C15.10L5.36%2C17.97L6.75%2C18.17L7.15%2C15.30ZM6.72%2C14.55L4.03%2C13.46L3.51%2C14.76L6.20%2C15.85ZM8.15%2C13.76L7.85%2C15.94L9.13%2C16.12L9.44%2C13.94ZM9.04%2C13.25L7.00%2C12.42L6.51%2C13.63L8.55%2C14.45ZM12.41%2C11.29L4.36%2C6.64L3.53%2C8.06L11.59%2C12.71ZM6.20%2C8.15L3.51%2C9.24L4.03%2C10.54L6.72%2C9.45ZM7.15%2C8.70L6.75%2C5.83L5.36%2C6.03L5.76%2C8.90ZM8.55%2C9.55L6.51%2C10.37L7.00%2C11.58L9.04%2C10.75ZM9.44%2C10.06L9.13%2C7.88L7.85%2C8.06L8.15%2C10.24Z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%221.65%22%2F%3E%3C%2Fsvg%3E");
 }
 
 .calendar-icon--family {
-    background-color: #5a4570;
+    background-color: var(--color-accent-purple);
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Ccircle%20cx%3D%227%22%20cy%3D%226%22%20r%3D%222.2%22%2F%3E%3Cpath%20d%3D%22M3.8%2012.2c0-1.8%201.4-3.2%203.2-3.2s3.2%201.4%203.2%203.2V18H3.8v-5.8z%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%226%22%20r%3D%222.2%22%2F%3E%3Cpath%20d%3D%22M13.8%2012.2c0-1.8%201.4-3.2%203.2-3.2s3.2%201.4%203.2%203.2V18h-6.4v-5.8z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%227.2%22%20r%3D%221.8%22%2F%3E%3Cpath%20d%3D%22M9.4%2013c0-1.4%201.2-2.6%202.6-2.6s2.6%201.2%202.6%202.6V18h-5.2v-5z%22%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Ccircle%20cx%3D%227%22%20cy%3D%226%22%20r%3D%222.2%22%2F%3E%3Cpath%20d%3D%22M3.8%2012.2c0-1.8%201.4-3.2%203.2-3.2s3.2%201.4%203.2%203.2V18H3.8v-5.8z%22%2F%3E%3Ccircle%20cx%3D%2217%22%20cy%3D%226%22%20r%3D%222.2%22%2F%3E%3Cpath%20d%3D%22M13.8%2012.2c0-1.8%201.4-3.2%203.2-3.2s3.2%201.4%203.2%203.2V18h-6.4v-5.8z%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%227.2%22%20r%3D%221.8%22%2F%3E%3Cpath%20d%3D%22M9.4%2013c0-1.4%201.2-2.6%202.6-2.6s2.6%201.2%202.6%202.6V18h-5.2v-5z%22%2F%3E%3C%2Fsvg%3E");
 }
 
 .calendar-icon--suitcase {
-    background-color: #5c4030;
+    background-color: var(--color-accent-orange-mid);
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M9.2%205.2V3.6c0-.9.7-1.6%201.6-1.6h2.4c.9%200%201.6.7%201.6%201.6v1.6h-1.35V3.7c0-.2-.15-.35-.35-.35h-2.1c-.2%200-.35.15-.35.35v1.5H9.2z%22%2F%3E%3Cpath%20d%3D%22M3%206.4c-.8%200-1.5.7-1.5%201.5v10.2c0%201.4%201.1%202.5%202.5%202.5h16c1.4%200%202.5-1.1%202.5-2.5V7.9c0-.8-.7-1.5-1.5-1.5H3zM5.6%208.3h1.35v9.4H5.6V8.3zM17.05%208.3H18.4v9.4h-1.35V8.3zM10.15%2010.4h3.7c.55%200%201%20.45%201%201v3.3c0%20.55-.45%201-1%201h-3.7c-.55%200-1-.45-1-1v-3.3c0-.55.45-1%201-1zM11.35%2011.7h1.3v2.2h-1.3v-2.2z%22%2F%3E%3Crect%20x%3D%225.2%22%20y%3D%2220.35%22%20width%3D%222.6%22%20height%3D%221.35%22%20rx%3D%220.55%22%2F%3E%3Crect%20x%3D%2216.2%22%20y%3D%2220.35%22%20width%3D%222.6%22%20height%3D%221.35%22%20rx%3D%220.55%22%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%20fill-rule%3D%22evenodd%22%3E%3Cpath%20d%3D%22M9.2%205.2V3.6c0-.9.7-1.6%201.6-1.6h2.4c.9%200%201.6.7%201.6%201.6v1.6h-1.35V3.7c0-.2-.15-.35-.35-.35h-2.1c-.2%200-.35.15-.35.35v1.5H9.2z%22%2F%3E%3Cpath%20d%3D%22M3%206.4c-.8%200-1.5.7-1.5%201.5v10.2c0%201.4%201.1%202.5%202.5%202.5h16c1.4%200%202.5-1.1%202.5-2.5V7.9c0-.8-.7-1.5-1.5-1.5H3zM5.6%208.3h1.35v9.4H5.6V8.3zM17.05%208.3H18.4v9.4h-1.35V8.3zM10.15%2010.4h3.7c.55%200%201%20.45%201%201v3.3c0%20.55-.45%201-1%201h-3.7c-.55%200-1-.45-1-1v-3.3c0-.55.45-1%201-1zM11.35%2011.7h1.3v2.2h-1.3v-2.2z%22%2F%3E%3Crect%20x%3D%225.2%22%20y%3D%2220.35%22%20width%3D%222.6%22%20height%3D%221.35%22%20rx%3D%220.55%22%2F%3E%3Crect%20x%3D%2216.2%22%20y%3D%2220.35%22%20width%3D%222.6%22%20height%3D%221.35%22%20rx%3D%220.55%22%2F%3E%3C%2Fsvg%3E");
 }
 
 .calendar-icon--crown {
-    background-color: #7a5608;
+    background-color: var(--color-accent-yellow-deep);
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M3%2016.5%205.5%208l4%204.5L12%205.5l2.5%207%204-4.5%202.5%208.5H3z%22%2F%3E%3Crect%20x%3D%224%22%20y%3D%2217.2%22%20width%3D%2216%22%20height%3D%222.3%22%20rx%3D%22.4%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%227.2%22%20r%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%224.5%22%20r%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%227.2%22%20r%3D%221.2%22%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cpath%20d%3D%22M3%2016.5%205.5%208l4%204.5L12%205.5l2.5%207%204-4.5%202.5%208.5H3z%22%2F%3E%3Crect%20x%3D%224%22%20y%3D%2217.2%22%20width%3D%2216%22%20height%3D%222.3%22%20rx%3D%22.4%22%2F%3E%3Ccircle%20cx%3D%225.5%22%20cy%3D%227.2%22%20r%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%224.5%22%20r%3D%221.2%22%2F%3E%3Ccircle%20cx%3D%2218.5%22%20cy%3D%227.2%22%20r%3D%221.2%22%2F%3E%3C%2Fsvg%3E");
 }
 
 
 .calendar-icon--notes {
-    background-color: #004890;
+    background-color: var(--color-brand);
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cellipse%20cx%3D%227%22%20cy%3D%2218%22%20rx%3D%223%22%20ry%3D%222%22%2F%3E%3Cellipse%20cx%3D%2216%22%20cy%3D%2216%22%20rx%3D%223%22%20ry%3D%222%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%225%22%20width%3D%222%22%20height%3D%2213%22%2F%3E%3Crect%20x%3D%2218%22%20y%3D%225%22%20width%3D%222%22%20height%3D%2211%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%225%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Cellipse%20cx%3D%227%22%20cy%3D%2218%22%20rx%3D%223%22%20ry%3D%222%22%2F%3E%3Cellipse%20cx%3D%2216%22%20cy%3D%2216%22%20rx%3D%223%22%20ry%3D%222%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%225%22%20width%3D%222%22%20height%3D%2213%22%2F%3E%3Crect%20x%3D%2218%22%20y%3D%225%22%20width%3D%222%22%20height%3D%2211%22%2F%3E%3Crect%20x%3D%229%22%20y%3D%225%22%20width%3D%2211%22%20height%3D%223%22%2F%3E%3C%2Fsvg%3E");
 }
 
 .calendar-icon--sun {
-    background-color: #8a5500;
+    background-color: var(--color-accent-yellow-deep);
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%224.2%22%2F%3E%3Cpath%20d%3D%22M12.78%2C6.30L12.78%2C2.20L11.22%2C2.20L11.22%2C6.30Z%22%2F%3E%3Cpath%20d%3D%22M16.58%2C8.52L19.48%2C5.62L18.38%2C4.52L15.48%2C7.42Z%22%2F%3E%3Cpath%20d%3D%22M17.70%2C12.78L21.80%2C12.78L21.80%2C11.22L17.70%2C11.22Z%22%2F%3E%3Cpath%20d%3D%22M15.48%2C16.58L18.38%2C19.48L19.48%2C18.38L16.58%2C15.48Z%22%2F%3E%3Cpath%20d%3D%22M11.22%2C17.70L11.22%2C21.80L12.78%2C21.80L12.78%2C17.70Z%22%2F%3E%3Cpath%20d%3D%22M7.42%2C15.48L4.52%2C18.38L5.62%2C19.48L8.52%2C16.58Z%22%2F%3E%3Cpath%20d%3D%22M6.30%2C11.22L2.20%2C11.23L2.20%2C12.78L6.30%2C12.78Z%22%2F%3E%3Cpath%20d%3D%22M8.52%2C7.42L5.62%2C4.52L4.52%2C5.62L7.42%2C8.52Z%22%2F%3E%3C%2Fsvg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22black%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%224.2%22%2F%3E%3Cpath%20d%3D%22M12.78%2C6.30L12.78%2C2.20L11.22%2C2.20L11.22%2C6.30Z%22%2F%3E%3Cpath%20d%3D%22M16.58%2C8.52L19.48%2C5.62L18.38%2C4.52L15.48%2C7.42Z%22%2F%3E%3Cpath%20d%3D%22M17.70%2C12.78L21.80%2C12.78L21.80%2C11.22L17.70%2C11.22Z%22%2F%3E%3Cpath%20d%3D%22M15.48%2C16.58L18.38%2C19.48L19.48%2C18.38L16.58%2C15.48Z%22%2F%3E%3Cpath%20d%3D%22M11.22%2C17.70L11.22%2C21.80L12.78%2C21.80L12.78%2C17.70Z%22%2F%3E%3Cpath%20d%3D%22M7.42%2C15.48L4.52%2C18.38L5.62%2C19.48L8.52%2C16.58Z%22%2F%3E%3Cpath%20d%3D%22M6.30%2C11.22L2.20%2C11.23L2.20%2C12.78L6.30%2C12.78Z%22%2F%3E%3Cpath%20d%3D%22M8.52%2C7.42L5.62%2C4.52L4.52%2C5.62L7.42%2C8.52Z%22%2F%3E%3C%2Fsvg%3E");
 }
@@ -1708,7 +1854,12 @@ a.btn-outline {
     .faq-question,
     .hamburger,
     .calendar-summary,
-    .calendar-card {
+    .calendar-card,
+    .gallery-item,
+    .instructor-photo,
+    .instructor-quote,
+    .lesson-image-item img,
+    .age-group-card {
         border: 1px solid CanvasText;
         box-shadow: none;
         background: Canvas;
@@ -1716,7 +1867,7 @@ a.btn-outline {
     }
 
     .nav-link,
-    .footer-links a,
+    .footer a,
     .faq-question,
     .btn {
         color: LinkText;
@@ -1754,8 +1905,8 @@ a.btn-outline {
     }
 
     .calendar-icon--svg,
-    .calendar-icon--dot-pink,
-    .calendar-icon--dot-green {
+    .calendar-icon--dot-purple,
+    .calendar-icon--dot-blue {
         background-color: CanvasText !important;
         box-shadow: none;
     }
@@ -1840,8 +1991,8 @@ a.btn-outline {
 .calendar-card--spring::after {
     background: linear-gradient(
         145deg,
-        rgba(247, 252, 248, 0.94) 0%,
-        rgba(240, 249, 244, 0.9) 100%
+        rgba(245, 248, 252, 0.94) 0%,
+        rgba(238, 243, 248, 0.9) 100%
     );
 }
 
@@ -2112,7 +2263,8 @@ a.btn-outline {
 
 .recital-keyboard {
     display: block;
-    width: clamp(16rem, 55vw, 24rem);
+    /* Min ~18rem keeps black keys ≥24×24 CSS px (WCAG 2.5.8) with SVG key width 7 */
+    width: clamp(18rem, 70vw, 26rem);
     height: auto;
     margin: 0 auto;
     overflow: visible;
@@ -2170,7 +2322,7 @@ a.btn-outline {
     }
 
     .recital-keyboard {
-        width: min(22rem, 92vw);
+        width: min(26rem, calc(100vw - 1.25rem));
     }
 }
 
@@ -2182,7 +2334,7 @@ a.btn-outline {
     overflow: hidden;
 }
 
-/* Decorative grass — olive tones from page wash; non-interactive */
+/* Decorative grass — sage greens; non-interactive */
 .community-grass {
     position: absolute;
     inset: 0;
@@ -2347,6 +2499,46 @@ a.btn-outline {
     background: transparent;
 }
 
+.faq-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.faq-heading h1 {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.faq-mark {
+    display: block;
+    flex-shrink: 0;
+    align-self: baseline;
+    margin-bottom: 0;
+    color: #004890;
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 10vw, 4.75rem);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1;
+    opacity: 0.95;
+    user-select: none;
+}
+
+@media (max-width: 768px) {
+    .faq-heading {
+        gap: 0.4rem;
+    }
+
+    .faq-mark {
+        font-size: clamp(2.85rem, 14vw, 3.75rem);
+        opacity: 0.92;
+    }
+}
+
 .faq-intro {
     max-width: 800px;
     margin: 0 auto 4rem;
@@ -2424,7 +2616,6 @@ a.btn-outline {
     width: 1.25rem;
     height: 1.25rem;
     color: var(--color-brand); /* 9:1 on white — AAA */
-    transition: transform 0.3s ease !important;
     transform: rotate(0deg);
 }
 
@@ -2434,7 +2625,7 @@ a.btn-outline {
 
 .faq-question.active .faq-chevron {
     color: white;
-    transform: rotate(180deg) !important;
+    transform: rotate(180deg);
 }
 
 .faq-answer {
@@ -2672,13 +2863,20 @@ a.btn-outline {
     color: var(--footer-heading);
 }
 
-.footer-contact a {
-    color: var(--footer-text);
-    text-decoration: underline;
+.footer a {
+    color: #ffffff;
 }
 
-.footer-contact a:hover {
+.footer a:hover {
     color: var(--footer-heading);
+}
+
+.footer a:focus-visible {
+    outline-color: #ffbf00; /* gold — visible on dark footer */
+}
+
+.footer-contact a {
+    text-decoration: underline;
 }
 
 .footer-section p {
@@ -2694,17 +2892,12 @@ a.btn-outline {
 }
 
 .footer-links a {
-    color: var(--footer-muted);
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.16em;
     font-family: var(--font-display);
     font-size: 1rem;
     cursor: pointer;
-}
-
-.footer-links a:hover {
-    color: var(--footer-heading);
 }
 
 .footer-contact {
@@ -2731,6 +2924,12 @@ a.btn-outline {
     text-shadow: none;
 }
 
+.footer-bottom a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+}
+
 /* Photo Gallery */
 .masonry-gallery {
     column-count: 4;
@@ -2744,16 +2943,17 @@ a.btn-outline {
     margin: 0 0 1.5rem;
     break-inside: avoid;
     background: white;
-    border-radius: 12px;
+    border: var(--photo-frame-border);
+    border-radius: var(--photo-frame-radius);
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--photo-frame-shadow);
 }
 
 .gallery-item img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 12px 12px 0 0;
+    border-radius: 0;
 }
 
 .gallery-caption {
@@ -2763,7 +2963,7 @@ a.btn-outline {
     font-weight: 500;
     text-align: center;
     background: white;
-    border-radius: 0 0 12px 12px;
+    border-radius: 0;
 }
 
 /* Non-home pages: keep content clear of fixed navbar */
@@ -2836,13 +3036,14 @@ body:not(.page-home) main > section:first-of-type {
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-    /* Typography adjustments */
-    h1 {
-        font-size: 2rem;
+    /* Typography adjustments — keep h1 clearly above Montserrat h2 */
+    h1,
+    main > section > .container > h1 {
+        font-size: 2.5rem;
     }
     
     h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     h3 {
@@ -3001,13 +3202,14 @@ body:not(.page-home) main > section:first-of-type {
 }
 
 @media (max-width: 480px) {
-    /* Further typography adjustments */
-    h1 {
-        font-size: 1.75rem;
+    /* Further typography adjustments — keep h1 clearly above Montserrat h2 */
+    h1,
+    main > section > .container > h1 {
+        font-size: 2.125rem;
     }
     
     h2 {
-        font-size: 1.75rem;
+        font-size: 1.55rem;
     }
     
     h3 {
