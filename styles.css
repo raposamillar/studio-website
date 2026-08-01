@@ -2077,8 +2077,100 @@ a.btn-outline {
 
 .recitals-intro {
     max-width: 800px;
-    margin: 0 auto 4rem;
+    margin: 0 auto 1.75rem;
     text-align: center;
+}
+
+.recital-play {
+    margin: 0 auto 3.5rem;
+    text-align: center;
+}
+
+.recital-play-label {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 0.35rem;
+    padding-right: 2.75rem;
+    color: #004890;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: clamp(1.15rem, 2.8vw, 1.4rem);
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.2;
+    text-shadow: var(--text-shadow-lift);
+}
+
+.recital-play-arrow {
+    position: absolute;
+    right: 0;
+    top: 0.15em;
+    width: 2.4rem;
+    height: auto;
+    transform: rotate(18deg);
+    pointer-events: none;
+}
+
+.recital-keyboard {
+    display: block;
+    width: clamp(16rem, 55vw, 24rem);
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.piano-key {
+    cursor: pointer;
+    outline: none;
+    transition: fill 0.08s ease;
+}
+
+.piano-key--white {
+    fill: #f7f2e8;
+    stroke: #cfc6b4;
+    stroke-width: 1;
+}
+
+.piano-key--black {
+    fill: #1a1a1c;
+    stroke: #0d0d0e;
+    stroke-width: 0.5;
+}
+
+.piano-key--white:hover,
+.piano-key--white:focus-visible {
+    fill: #efe8da;
+}
+
+.piano-key--black:hover,
+.piano-key--black:focus-visible {
+    fill: #333338;
+}
+
+.piano-key--white.is-pressed,
+.piano-key--white:active {
+    fill: #e2d8c4;
+}
+
+.piano-key--black.is-pressed,
+.piano-key--black:active {
+    fill: #4a4a50;
+}
+
+.piano-key:focus-visible {
+    stroke: #004890;
+    stroke-width: 1.5;
+}
+
+@media (max-width: 768px) {
+    .recital-play {
+        margin-bottom: 2.75rem;
+    }
+
+    .recital-keyboard {
+        width: min(22rem, 92vw);
+    }
 }
 
 /* Community Section */

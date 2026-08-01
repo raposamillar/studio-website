@@ -247,10 +247,113 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
+
+    const setupRecitalKeyboard = () => {
+        const keyboard = document.querySelector('.recital-keyboard');
+        if (!keyboard) {
+            return;
+        }
+
+        const keys = Array.from(keyboard.querySelectorAll('.piano-key'));
+        if (!keys.length) {
+            return;
+        }
+
+        let audioCtx = null;
+
+        const getAudioContext = () => {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) {
+                return null;
+            }
+            if (!audioCtx) {
+                audioCtx = new AudioContextClass();
+            }
+            return audioCtx;
+        };
+
+        const playTone = (freq) => {
+            const ctx = getAudioContext();
+            if (!ctx || !freq) {
+                return;
+            }
+
+            const start = () => {
+                const now = ctx.currentTime;
+                const osc1 = ctx.createOscillator();
+                const osc2 = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc1.type = 'triangle';
+                osc2.type = 'sine';
+                osc1.frequency.setValueAtTime(freq, now);
+                osc2.frequency.setValueAtTime(freq * 2, now);
+
+                gain.gain.setValueAtTime(0.0001, now);
+                gain.gain.exponentialRampToValueAtTime(0.22, now + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.85);
+
+                osc1.connect(gain);
+                osc2.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc1.start(now);
+                osc2.start(now);
+                osc1.stop(now + 0.9);
+                osc2.stop(now + 0.9);
+            };
+
+            if (ctx.state === 'suspended') {
+                ctx.resume().then(start).catch(() => {});
+            } else {
+                start();
+            }
+        };
+
+        const pressKey = (key) => {
+            key.classList.add('is-pressed');
+            const freq = parseFloat(key.getAttribute('data-freq'));
+            playTone(freq);
+        };
+
+        const releaseKey = (key) => {
+            key.classList.remove('is-pressed');
+        };
+
+        keys.forEach((key) => {
+            key.addEventListener('pointerdown', (event) => {
+                event.preventDefault();
+                if (key.setPointerCapture) {
+                    key.setPointerCapture(event.pointerId);
+                }
+                pressKey(key);
+            });
+
+            key.addEventListener('pointerup', () => releaseKey(key));
+            key.addEventListener('pointercancel', () => releaseKey(key));
+            key.addEventListener('pointerleave', () => releaseKey(key));
+
+            key.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    pressKey(key);
+                }
+            });
+
+            key.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    releaseKey(key);
+                }
+            });
+        });
+    };
+
     setupHamburgerMenu();
     setupFAQAccordion();
     setupThirdPartyWidgetA11y();
     setupCalendarCardBackgrounds();
+    setupRecitalKeyboard();
 
     const backToTopBtn = document.getElementById('backToTop');
     if (backToTopBtn) {
