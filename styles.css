@@ -6,10 +6,12 @@
 }
 
 :root {
-    --color-text: #1a1a1a;
-    --color-text-muted: #3f3f46; /* ~10:1 on white */
-    --color-text-secondary: #45454d; /* ≥8:1 on white; ≥8:1 on calendar/lessons washes (AAA) */
+    --color-text: #141416; /* primary ink — slightly deeper than prior #1a1a1a */
+    --color-text-muted: #36363e; /* supporting labels/nav; ~12:1 on white, ≥10:1 on washes */
+    --color-text-secondary: #2a2a31; /* body prose — stronger separation on soft page washes (AAA) */
     --color-brand: #004890; /* sampled from logo blue */
+    /* Soft emboss for serif prose on light washes — highlight + shallow drop, not glow */
+    --text-shadow-lift: 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 1px rgba(0, 0, 0, 0.1);
     --nav-offset: 7.75rem;
     --font-display: 'Montserrat', Arial, Helvetica, sans-serif;
     --font-body: 'Source Serif 4', Georgia, 'Times New Roman', Times, serif;
@@ -42,7 +44,7 @@ a:hover {
 body {
     font-family: var(--font-body);
     line-height: 1.65;
-    color: #1a1a1a;
+    color: var(--color-text);
     background-color: #ffffff;
     overflow-x: hidden;
 }
@@ -190,14 +192,6 @@ main > section > .container > h1 {
     margin-bottom: 0.75rem;
 }
 
-.recital-features h2 {
-    font-size: 1.5rem;
-    line-height: 1.4;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-}
-
 .calendar-event-title {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
@@ -233,6 +227,7 @@ p {
     line-height: 1.65;
     margin-bottom: 1rem;
     color: var(--color-text-secondary);
+    text-shadow: var(--text-shadow-lift);
 }
 
 /* Layout */
@@ -1710,6 +1705,10 @@ a.btn-outline {
 }
 
 @media (forced-colors: active) {
+    :root {
+        --text-shadow-lift: none;
+    }
+
     .navbar,
     .footer,
     .btn,
@@ -2087,27 +2086,6 @@ a.btn-outline {
     max-width: 800px;
     margin: 0 auto 4rem;
     text-align: center;
-}
-
-.recital-features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.feature-card {
-    text-align: center;
-}
-
-.feature-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
 }
 
 /* Community Section */
@@ -2543,6 +2521,7 @@ a.btn-outline {
 .footer-section p {
     color: var(--footer-text);
     font-size: 1rem;
+    text-shadow: none;
 }
 
 .footer-links {
@@ -2586,30 +2565,10 @@ a.btn-outline {
     color: var(--footer-muted);
     font-size: 1rem;
     margin: 0;
+    text-shadow: none;
 }
 
-/* Photo Gallery Section */
-.photo-gallery-section {
-    padding: 4rem 0;
-    background:
-        linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.4) 0%,
-            rgba(0, 72, 144, 0.07) 100%
-        );
-}
-
-.gallery-intro {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.gallery-intro p {
-    max-width: 600px;
-    margin: 0 auto;
-    color: var(--color-text-muted);
-}
-
+/* Photo Gallery */
 .masonry-gallery {
     column-count: 4;
     column-gap: 1.5rem;
@@ -2741,10 +2700,6 @@ body:not(.page-home) main > section:first-of-type {
     .theory-levels-section {
         padding: 3rem 0;
     }
-    
-    .photo-gallery-section {
-        padding: 3rem 0;
-    }
 
     /* Hero: fill the viewport but grow/scroll with zoomed or taller content */
     .welcome-section {
@@ -2828,11 +2783,6 @@ body:not(.page-home) main > section:first-of-type {
     .calendar-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1rem;
-    }
-    
-    .recital-features {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
     }
     
     .organizations-grid,
@@ -2949,11 +2899,6 @@ body:not(.page-home) main > section:first-of-type {
     .card-header,
     .card-content {
         padding: 1rem;
-    }
-    
-    /* Feature icon smaller */
-    .feature-icon {
-        font-size: 2.5rem;
     }
     
     /* Quote text smaller */
