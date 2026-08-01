@@ -2083,8 +2083,85 @@ a.btn-outline {
 
 /* Community Section */
 .community-section {
+    position: relative;
     padding: 6rem 0;
     background: transparent;
+    overflow: hidden;
+}
+
+/* Decorative grass — olive tones from page wash; non-interactive */
+.community-grass {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.community-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.community-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.community-heading h1 {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.community-tree {
+    width: clamp(3.35rem, 9vw, 4.5rem);
+    height: auto;
+    flex-shrink: 0;
+    opacity: 0.95;
+    align-self: flex-end;
+    margin-bottom: 0.05em;
+}
+
+.community-grass-cluster {
+    position: absolute;
+    width: min(11rem, 28vw);
+    height: auto;
+    opacity: 0.88;
+}
+
+.community-grass-cluster--left {
+    left: -0.75rem;
+}
+
+.community-grass-cluster--right {
+    right: -0.75rem;
+}
+
+.community-grass-cluster--bottom {
+    bottom: -0.5rem;
+}
+
+@media (max-width: 768px) {
+    .community-heading {
+        gap: 0.4rem;
+    }
+
+    .community-tree {
+        width: clamp(2.85rem, 13vw, 3.75rem);
+        opacity: 0.92;
+    }
+
+    .community-grass-cluster {
+        opacity: 0.75;
+    }
+
+    .community-grass-cluster--bottom {
+        width: min(7.5rem, 34vw);
+        bottom: -0.25rem;
+    }
 }
 
 .community-intro {
