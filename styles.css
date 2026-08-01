@@ -8,7 +8,7 @@
 :root {
     --color-text: #1a1a1a;
     --color-text-muted: #3f3f46; /* ~10:1 on white */
-    --color-text-secondary: #52525b; /* ~7:1 on white */
+    --color-text-secondary: #45454d; /* ≥8:1 on white; ≥8:1 on calendar/lessons washes (AAA) */
     --color-brand: #004890; /* sampled from logo blue */
     --nav-offset: 7.75rem;
     --font-display: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -478,7 +478,7 @@ p {
         align-items: center;
         justify-content: center;
         flex: 1 1 0;
-        min-height: 0;
+        min-height: 44px; /* AAA 2.5.5 target size */
         box-sizing: border-box;
     }
 
@@ -615,6 +615,7 @@ p {
     .nav-menu .nav-link {
         font-size: clamp(0.95rem, 5.5vh, 1.2rem);
         padding: 0.15rem 1rem;
+        min-height: 44px; /* keep AAA target when flex-shrunk in landscape */
     }
 }
 
@@ -785,9 +786,10 @@ a.btn-outline {
 .hero-overlay .container {
     display: inline-block;
     padding: 2rem 2.5rem;
+    /* Opaque enough that white copy stays ≥7:1 even over bright window areas (AAA) */
     background: linear-gradient(
-        rgba(0, 0, 0, 0.6),  /* darker in the middle */
-        rgba(0, 0, 0, 0.3)   /* lighter at edges */
+        rgba(0, 0, 0, 0.78),
+        rgba(0, 0, 0, 0.70)
     );
     border-radius: 0.75rem;
     text-align: center;
@@ -2524,6 +2526,8 @@ a.btn-outline {
     font-family: var(--font-display);
     font-size: 1.25rem;
     font-weight: 600;
+    line-height: 1.3;
+    text-align: inherit;
     color: var(--footer-heading);
 }
 
@@ -2742,15 +2746,13 @@ body:not(.page-home) main > section:first-of-type {
         padding: 3rem 0;
     }
 
-    /* Hero: keep overlay within the visible viewport on mobile */
+    /* Hero: fill the viewport but grow/scroll with zoomed or taller content */
     .welcome-section {
-        height: 100vh;
-        height: 100dvh;
         min-height: 100vh;
         min-height: 100dvh;
-        max-height: 100vh;
-        max-height: 100dvh;
-        overflow: hidden;
+        height: auto;
+        max-height: none;
+        overflow: visible;
     }
 
     .hero-overlay {
