@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const setupHamburgerMenu = () => {
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
@@ -25,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        let lockedScrollY = 0;
-
         const setMenuOpen = (open) => {
             const mobile = isMobileNav();
 
@@ -45,32 +41,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
                 setBackgroundInert(open);
+                document.body.style.overflow = open ? 'hidden' : '';
 
                 if (open) {
-                    lockedScrollY = window.scrollY || window.pageYOffset || 0;
-                    document.body.style.overflow = 'hidden';
-                    document.body.style.position = 'fixed';
-                    document.body.style.top = `-${lockedScrollY}px`;
-                    document.body.style.width = '100%';
                     const firstLink = navLinks[0];
                     if (firstLink) {
                         firstLink.focus();
                     }
-                } else {
-                    document.body.style.overflow = '';
-                    document.body.style.position = '';
-                    document.body.style.top = '';
-                    document.body.style.width = '';
-                    window.scrollTo(0, lockedScrollY);
                 }
             } else {
                 navMenu.removeAttribute('aria-hidden');
                 navLinks.forEach((link) => link.removeAttribute('tabindex'));
                 setBackgroundInert(false);
                 document.body.style.overflow = '';
-                document.body.style.position = '';
-                document.body.style.top = '';
-                document.body.style.width = '';
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
                 hamburger.setAttribute('aria-expanded', 'false');
@@ -269,17 +252,6 @@ document.addEventListener('DOMContentLoaded', function() {
     setupThirdPartyWidgetA11y();
     setupCalendarCardBackgrounds();
 
-    const setViewportHeight = () => {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-    };
-
-    setViewportHeight();
-    window.addEventListener('resize', setViewportHeight);
-    window.addEventListener('orientationchange', () => {
-        setTimeout(setViewportHeight, 100);
-    });
-
     const backToTopBtn = document.getElementById('backToTop');
     if (backToTopBtn) {
         window.addEventListener('scroll', function() {
@@ -291,10 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: prefersReducedMotion ? 'auto' : 'smooth'
-            });
+            window.scrollTo(0, 0);
         });
     }
 });
