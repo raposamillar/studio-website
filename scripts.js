@@ -260,6 +260,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         let audioCtx = null;
+        let isGlissing = false;
+        let activeKey = null;
 
         const getAudioContext = () => {
             const AudioContextClass = window.AudioContext || window.webkitAudioContext;
@@ -272,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return audioCtx;
         };
 
-        const playTone = (freq) => {
+        const playTone = (freq, duration = 0.85) => {
             const ctx = getAudioContext();
             if (!ctx || !freq) {
                 return;
@@ -289,9 +291,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 osc1.frequency.setValueAtTime(freq, now);
                 osc2.frequency.setValueAtTime(freq * 2, now);
 
+                const peak = duration < 0.4 ? 0.18 : 0.22;
                 gain.gain.setValueAtTime(0.0001, now);
-                gain.gain.exponentialRampToValueAtTime(0.22, now + 0.02);
-                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.85);
+                gain.gain.exponentialRampToValueAtTime(peak, now + 0.015);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
 
                 osc1.connect(gain);
                 osc2.connect(gain);
@@ -299,8 +302,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 osc1.start(now);
                 osc2.start(now);
-                osc1.stop(now + 0.9);
-                osc2.stop(now + 0.9);
+                osc1.stop(now + duration + 0.05);
+                osc2.stop(now + duration + 0.05);
             };
 
             if (ctx.state === 'suspended') {
@@ -310,40 +313,77 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        const pressKey = (key) => {
+        const releaseKey = (key) => {
+            if (key) {
+                key.classList.remove('is-pressed');
+            }
+        };
+
+        const pressKey = (key, glissando = false) => {
+            if (!key || key === activeKey) {
+                return;
+            }
+            releaseKey(activeKey);
+            activeKey = key;
             key.classList.add('is-pressed');
             const freq = parseFloat(key.getAttribute('data-freq'));
-            playTone(freq);
+            playTone(freq, glissando ? 0.28 : 0.85);
         };
 
-        const releaseKey = (key) => {
-            key.classList.remove('is-pressed');
+        const keyFromPoint = (clientX, clientY) => {
+            const el = document.elementFromPoint(clientX, clientY);
+            if (!el) {
+                return null;
+            }
+            return el.closest('.piano-key');
         };
+
+        const endGlissando = () => {
+            isGlissing = false;
+            releaseKey(activeKey);
+            activeKey = null;
+        };
+
+        keyboard.addEventListener('pointerdown', (event) => {
+            const key = event.target.closest('.piano-key');
+            if (!key) {
+                return;
+            }
+            event.preventDefault();
+            isGlissing = true;
+            keyboard.setPointerCapture?.(event.pointerId);
+            pressKey(key, false);
+        });
+
+        keyboard.addEventListener('pointermove', (event) => {
+            if (!isGlissing) {
+                return;
+            }
+            const key = keyFromPoint(event.clientX, event.clientY);
+            if (key && keyboard.contains(key)) {
+                pressKey(key, true);
+            }
+        });
+
+        keyboard.addEventListener('pointerup', endGlissando);
+        keyboard.addEventListener('pointercancel', endGlissando);
+        keyboard.addEventListener('lostpointercapture', endGlissando);
 
         keys.forEach((key) => {
-            key.addEventListener('pointerdown', (event) => {
-                event.preventDefault();
-                if (key.setPointerCapture) {
-                    key.setPointerCapture(event.pointerId);
-                }
-                pressKey(key);
-            });
-
-            key.addEventListener('pointerup', () => releaseKey(key));
-            key.addEventListener('pointercancel', () => releaseKey(key));
-            key.addEventListener('pointerleave', () => releaseKey(key));
-
             key.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
-                    pressKey(key);
+                    pressKey(key, false);
                 }
             });
 
             key.addEventListener('keyup', (event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
-                    releaseKey(key);
+                    if (activeKey === key) {
+                        releaseKey(key);
+                        activeKey = null;
+                    }
                 }
             });
         });

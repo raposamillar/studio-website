@@ -2117,13 +2117,14 @@ a.btn-outline {
     margin: 0 auto;
     overflow: visible;
     -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
+    touch-action: none;
+    user-select: none;
 }
 
 .piano-key {
     cursor: pointer;
     outline: none;
-    transition: fill 0.08s ease;
+    transition: fill 0.06s ease;
 }
 
 .piano-key--white {
@@ -2140,22 +2141,22 @@ a.btn-outline {
 
 .piano-key--white:hover,
 .piano-key--white:focus-visible {
-    fill: #efe8da;
+    fill: #fffef8;
 }
 
 .piano-key--black:hover,
 .piano-key--black:focus-visible {
-    fill: #333338;
+    fill: #6a6a72;
 }
 
 .piano-key--white.is-pressed,
 .piano-key--white:active {
-    fill: #e2d8c4;
+    fill: #ffe08a;
 }
 
 .piano-key--black.is-pressed,
 .piano-key--black:active {
-    fill: #4a4a50;
+    fill: #8a8a94;
 }
 
 .piano-key:focus-visible {
