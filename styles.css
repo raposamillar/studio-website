@@ -1734,7 +1734,8 @@ a.btn-outline {
 
 /* Calendar status dots + SVG icons (emoji replaced for consistency / a11y) */
 .calendar-icon--dot-purple,
-.calendar-icon--dot-blue {
+.calendar-icon--dot-blue,
+.calendar-icon--dot-brown {
     display: inline-block;
     width: 0.95em;
     height: 0.95em;
@@ -1749,6 +1750,10 @@ a.btn-outline {
 
 .calendar-icon--dot-blue {
     background: var(--color-brand); /* brand blue — replaces sage green */
+}
+
+.calendar-icon--dot-brown {
+    background: #8b6914; /* warm brown — ≥3:1 on white for UI graphics */
 }
 
 /* Calendar decorative icons — CSS/SVG for consistent cross-platform rendering.
@@ -1906,7 +1911,8 @@ a.btn-outline {
 
     .calendar-icon--svg,
     .calendar-icon--dot-purple,
-    .calendar-icon--dot-blue {
+    .calendar-icon--dot-blue,
+    .calendar-icon--dot-brown {
         background-color: CanvasText !important;
         box-shadow: none;
     }
@@ -2068,6 +2074,42 @@ a.btn-outline {
         145deg,
         rgba(255, 255, 255, 0.35) 0%,
         rgba(255, 252, 248, 0.25) 100%
+    );
+}
+
+.calendar-card[data-card-bg="no-lessons"].calendar-bg-on::before {
+    background-image: url('assets/images/no-lessons-piano.jpg');
+    background-image: image-set(
+        url('assets/images/no-lessons-piano.webp') type('image/webp'),
+        url('assets/images/no-lessons-piano.jpg') type('image/jpeg')
+    );
+    background-position: center 40%;
+    opacity: 0.72;
+}
+
+.calendar-card[data-card-bg="no-lessons"]::after {
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.42) 0%,
+        rgba(255, 252, 248, 0.28) 100%
+    );
+}
+
+.calendar-card[data-card-bg="no-theory"].calendar-bg-on::before {
+    background-image: url('assets/images/no-lessons-staff.jpg');
+    background-image: image-set(
+        url('assets/images/no-lessons-staff.webp') type('image/webp'),
+        url('assets/images/no-lessons-staff.jpg') type('image/jpeg')
+    );
+    background-position: center;
+    opacity: 0.78;
+}
+
+.calendar-card[data-card-bg="no-theory"]::after {
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.45) 0%,
+        rgba(255, 252, 248, 0.30) 100%
     );
 }
 
