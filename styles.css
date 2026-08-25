@@ -1095,6 +1095,12 @@ a.btn-outline {
     margin-top: 2rem;
 }
 
+.ormta-logo {
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+}
+
 .rcm-logo {
     max-width: 320px;
     width: 100%;
