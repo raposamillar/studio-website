@@ -1,6 +1,6 @@
 # Studio Website
 
-I created and launched the current version of our studio website in **two days**, combining my skills in:
+I created and launched the initial version of our studio website in two days, combining my skills in:
 
 - Design thinking
 - Content strategy
@@ -9,7 +9,7 @@ I created and launched the current version of our studio website in **two days**
 
 alongside an appetite for experimentation.
 
-I used **Figma Make** to generate code through prompt engineering. By employing a cycle of continuous testing and feedback using **VS Code** and other online code editors, I quickly arrived at an **MVP**.
+In v1, I used **Figma Make** to generate code through prompt engineering. By employing a cycle of continuous testing and feedback using **VS Code** and other online code editors, I quickly arrived at an **MVP**.
 
 The website is hosted on **GitHub Pages** and uses **HTML, CSS, and JavaScript**.
 
