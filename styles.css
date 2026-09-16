@@ -267,6 +267,11 @@ p {
     padding: 0 1.5rem;
 }
 
+/* Update (Temporary section) */
+.updated-offerings {
+    text-align: center;
+}
+
 /* Navigation */
 .navbar {
     position: fixed;
